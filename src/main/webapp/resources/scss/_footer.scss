@@ -1,14 +1,13 @@
-footer.sticky-footer {
-  padding: 2rem 0;
-  flex-shrink: 0;
-  .copyright {
-    line-height: 1;
-    font-size: 0.8rem;
-  }
-}
+/*
+Footer styles
+*/
 
-body.sidebar-toggled {
-  footer.sticky-footer {
+.footer{
+     height: 35px;
+    bottom: 0px;
+    left: 0;
+    line-height: 35px;
+    position: absolute;
+    padding: 0px 15px;
     width: 100%;
-  }
 }
