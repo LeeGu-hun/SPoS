@@ -10,32 +10,32 @@
         <title>Assan admin</title>
 
         <!-- Bootstrap -->
-        <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="resources/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!--side menu plugin-->
-        <link href="assets/plugins/hoe-nav/hoe.css" rel="stylesheet">
+        <link href="resources/plugins/hoe-nav/hoe.css" rel="stylesheet">
         <!-- icons-->
-        <link href="assets/plugins/ionicons/css/ionicons.min.css" rel="stylesheet">
-        <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <link href="assets/plugins/iCheck/custom.css" rel="stylesheet">
+        <link href="resources/plugins/ionicons/css/ionicons.min.css" rel="stylesheet">
+        <link href="resources/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="resources/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+        <link href="resources/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
         <!--template custom css file-->
-        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="resources/css/style.css" rel="stylesheet">
 
-        <script src="assets/js/modernizr.js"></script>
+        <script src="resources/js/modernizr.js"></script>
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-		<style>
-		/*datepicer 버튼 롤오버 시 손가락 모양 표시*/
-		.ui-datepicker-trigger{cursor: pointer;}
-		/*datepicer input 롤오버 시 손가락 모양 표시*/
-		.hasDatepicker{cursor: pointer;}
-		</style>
+        <style>
+        	/* .newPetBoard{
+        		display: table-cell;
+        		vertical-align: bottom;
+        		text-align: center;
+        		background-size: cover;
+        	} */
+        </style>
     </head>
     <body hoe-navigation-type="vertical" hoe-nav-placement="left" theme-layout="wide-layout">
 
@@ -89,15 +89,15 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><img src="assets/images/us.png" alt=""> English</a>
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><img src="resources/images/us.png" alt=""> English</a>
                             <ul class="dropdown-menu dropdown-menu-scale lang-dropdown">
-                                <li><a href="#"><img src="assets/images/us.png" alt=""> English </a></li>
-                                <li><a href="#"><img src="assets/images/es.png" alt=""> Spanish </a></li>
-                                <li><a href="#"><img src="assets/images/tr.png" alt=""> Turkish </a></li>
+                                <li><a href="#"><img src="resources/images/us.png" alt=""> English </a></li>
+                                <li><a href="#"><img src="resources/images/es.png" alt=""> Spanish </a></li>
+                                <li><a href="#"><img src="resources/images/tr.png" alt=""> Turkish </a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><img src="assets/images/avtar.png" alt="" width="30" class="img-circle"> Emily Doe</a>
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><img src="resources/images/avtar.png" alt="" width="30" class="img-circle"> Emily Doe</a>
                             <ul class="dropdown-menu dropdown-menu-scale user-dropdown">
                                 <li><a href="#"><i class="ion-email-unread"></i> Inbox <span class="label label-warning">3</span></a></li>
                                 <li><a href="#"><i class="ion-person"></i> Profile </a></li>
@@ -115,7 +115,7 @@
 
                     <ul class="nav panel-list">
 
-                        <li>
+                        <li class="active">
                             <a href="index.html">
                                 <i class="fa fa-home"></i>
                                 <span class="menu-text">Dashboard</span>
@@ -182,7 +182,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="hoe-has-menu active">
+                        <li class="hoe-has-menu">
                             <a href="javascript:void(0)">
                                 <i class="fa fa-th-large"></i>
                                 <span class="menu-text">Forms</span>
@@ -426,256 +426,431 @@
                 <section id="main-content">
                     <div class="space-30"></div>
                     <div class="container">
-
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="panel">
                                     <header class="panel-heading">
-
-                                        <h2 class="panel-title">basic form</h2>
+                                        <h2 class="panel-title">제목<span class="helping-text">내용쪼금</span></h2>
                                     </header>
                                     <div class="panel-body">
-                                        <form role="form">
-
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="E-Mail or Phone">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="password" class="form-control" placeholder="Password">
-                                            </div>
-                                            <div class="form-group clearfix">
-                                                <div class="checkbox pull-left">
-                                                    <input type="checkbox" id="myCheckbox" name="myCheckbox" class="i-checks">
-                                                    <label for="myCheckbox">Remember Me </label>
-                                                </div>
-                                                <div class="pull-right">
-                                                    <button type="submit" class="btn btn-success rounded">Sign in</button>
-                                                </div>
-                                            </div>
-
-                                        </form>
-
-                                    </div>
-                                </div>
-                            </div>
-
+                                    	<a href ="#" >
+                                       		<img alt="이미지: 식물" class="FFVAD" decoding="auto" sizes="293px" srcset="https://scontent-gmp1-1.cdninstagram.com/vp/526af2807cb4cbdab70319c0cc747e9b/5E2C29CD/t51.2885-15/e35/c0.179.1440.1440a/s150x150/70406534_511811672709278_5119870505587555496_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&amp;_nc_cat=1 150w,https://scontent-gmp1-1.cdninstagram.com/vp/600aa10443f0f3cc7ef7cfa923d39a1d/5E343B87/t51.2885-15/e35/c0.179.1440.1440a/s240x240/70406534_511811672709278_5119870505587555496_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&amp;_nc_cat=1 240w,https://scontent-gmp1-1.cdninstagram.com/vp/898857d440aba38e57cf12864c9c0476/5E343C3D/t51.2885-15/e35/c0.179.1440.1440a/s320x320/70406534_511811672709278_5119870505587555496_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&amp;_nc_cat=1 320w,https://scontent-gmp1-1.cdninstagram.com/vp/187fcafefb80b67a089d53b773f8e086/5E2D2B67/t51.2885-15/e35/c0.179.1440.1440a/s480x480/70406534_511811672709278_5119870505587555496_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&amp;_nc_cat=1 480w,https://scontent-gmp1-1.cdninstagram.com/vp/afc39fae20309032caa1bc8cc5c31a79/5E1D2406/t51.2885-15/sh0.08/e35/c0.179.1440.1440a/s640x640/70406534_511811672709278_5119870505587555496_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&amp;_nc_cat=1 640w" src="https://scontent-gmp1-1.cdninstagram.com/vp/afc39fae20309032caa1bc8cc5c31a79/5E1D2406/t51.2885-15/sh0.08/e35/c0.179.1440.1440a/s640x640/70406534_511811672709278_5119870505587555496_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&amp;_nc_cat=1" style="object-fit: cover;">
+                                       	</a>
+                                    </div><!--end panel body-->
+                                </div><!--end panel-->
+                            </div><!--end col 6--><div class="col-md-6">
+                                <div class="panel">
+                                    <header class="panel-heading">
+                                        <h2 class="panel-title">제목<span class="helping-text">내용쪼금</span></h2>
+                                    </header>
+                                    <div class="panel-body">
+                                    	<a href ="#" >
+                                       		<img alt="이미지: 식물" class="FFVAD" decoding="auto" sizes="293px" srcset="https://scontent-gmp1-1.cdninstagram.com/vp/526af2807cb4cbdab70319c0cc747e9b/5E2C29CD/t51.2885-15/e35/c0.179.1440.1440a/s150x150/70406534_511811672709278_5119870505587555496_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&amp;_nc_cat=1 150w,https://scontent-gmp1-1.cdninstagram.com/vp/600aa10443f0f3cc7ef7cfa923d39a1d/5E343B87/t51.2885-15/e35/c0.179.1440.1440a/s240x240/70406534_511811672709278_5119870505587555496_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&amp;_nc_cat=1 240w,https://scontent-gmp1-1.cdninstagram.com/vp/898857d440aba38e57cf12864c9c0476/5E343C3D/t51.2885-15/e35/c0.179.1440.1440a/s320x320/70406534_511811672709278_5119870505587555496_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&amp;_nc_cat=1 320w,https://scontent-gmp1-1.cdninstagram.com/vp/187fcafefb80b67a089d53b773f8e086/5E2D2B67/t51.2885-15/e35/c0.179.1440.1440a/s480x480/70406534_511811672709278_5119870505587555496_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&amp;_nc_cat=1 480w,https://scontent-gmp1-1.cdninstagram.com/vp/afc39fae20309032caa1bc8cc5c31a79/5E1D2406/t51.2885-15/sh0.08/e35/c0.179.1440.1440a/s640x640/70406534_511811672709278_5119870505587555496_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&amp;_nc_cat=1 640w" src="https://scontent-gmp1-1.cdninstagram.com/vp/afc39fae20309032caa1bc8cc5c31a79/5E1D2406/t51.2885-15/sh0.08/e35/c0.179.1440.1440a/s640x640/70406534_511811672709278_5119870505587555496_n.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&amp;_nc_cat=1" style="object-fit: cover;">
+                                       	</a>
+                                    </div><!--end panel body-->
+                                </div><!--end panel-->
+                            </div><!--end col 6-->
                             <div class="col-md-6">
                                 <div class="panel">
                                     <header class="panel-heading">
-
-                                        <h2 class="panel-title">basic form</h2>
+                                        <div class="panel-actions">
+                                            <a href="javascript:void(0)" class="panel-action panel-action-toggle" data-panel-toggle=""></a>
+                                            <a href="javascript:void(0)" class="panel-action action-link"><i class="ion-refresh"></i></a>
+                                            <a href="javascript:void(0)" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
+                                            <div class="dropdown pull-left">
+                                                <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="ion-more"></i></a>
+                                                <ul class="dropdown-menu dropdown-menu-scale">
+                                                    <li><a href="javascript:void(0)">Action</a></li>
+                                                    <li><a href="javascript:void(0)">Just Action</a></li>
+                                                    <li><a href="javascript:void(0)">Action Now</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <h2 class="panel-title">Analytics</h2>
                                     </header>
                                     <div class="panel-body">
-                                        <form role="form" class="form-horizontal">
-                                            <div class="form-group"><label class="col-lg-2 control-label">Email</label>
-                                                <div class="col-lg-10"><input type="email" placeholder="Email" class="form-control">
-                                                </div>
+                                        <div class="chartjs-data">
+                                            <canvas id="barChart" height="145"></canvas>
+                                        </div>
+                                    </div><!--end panel body-->
+                                </div><!--end panel-->
+                            </div><!--end col 6-->
+                        </div><!--end row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="panel">
+                                    <header class="panel-heading">
+                                        <div class="panel-actions">
+                                            <a href="javascript:void(0)" class="panel-action panel-action-toggle" data-panel-toggle=""></a>                                   
+                                            <a href="javascript:void(0)" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
+                                            <div class="dropdown pull-left">
+                                                <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="ion-more"></i></a>
+                                                <ul class="dropdown-menu dropdown-menu-scale">
+                                                    <li><a href="javascript:void(0)">Action</a></li>
+                                                    <li><a href="javascript:void(0)">Just Action</a></li>
+                                                    <li><a href="javascript:void(0)">Action Now</a></li>
+                                                </ul>
                                             </div>
-                                            <div class="form-group"><label class="col-lg-2 control-label">Password</label>
-                                                <div class="col-lg-10"><input type="password" placeholder="Password" class="form-control"></div>
+                                        </div>
+                                        <h2 class="panel-title">Recent orders</h2>
+                                    </header>
+                                    <div class="panel-body">
+                                        <div class="scrollDiv">
+                                            <table class="table table-striped">
+                                                <tbody><tr>
+                                                        <th><div>Status</div></th>
+                                                <th><div>Clients</div></th>
+                                                <th align="center"><div>Orders#</div></th>
+                                                <th align="center"><div>Date</div></th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="label label-primary">Paid</span>
+                                                        <span class="label label-success">Active</span>
+                                                    </td>
+                                                    <td>John Doe</td>
+                                                    <td align="center">7556588</td>
+                                                    <td class="color-blue-grey" nowrap="" align="center"><span class="semibold">Today</span> 8:30</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="label label-primary">Paid</span>
+                                                        <span class="label label-success">Active</span>
+                                                    </td>
+                                                    <td>Thomas Bayer</td>
+                                                    <td align="center">7556588</td>
+                                                    <td class="color-blue-grey" nowrap="" align="center"><span class="semibold">Today</span> 16:30</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="label label-primary">Paid</span>
+                                                        <span class="label label-default">Inactive</span>
+                                                    </td>
+                                                    <td>Nicolas Karabat</td>
+                                                    <td align="center">7556588</td>
+                                                    <td class="color-blue-grey" nowrap="" align="center"><span class="semibold">Yesterday</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="label label-default">Unpaid</span>
+                                                        <span class="label label-default">Inactive</span>
+                                                    </td>
+                                                    <td>Alexandre Pome</td>
+                                                    <td align="center">7556588</td>
+                                                    <td class="color-blue-grey" nowrap="" align="center">23th May</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="label label-primary">Paid</span>
+                                                        <span class="label label-success">Active</span>
+                                                    </td>
+                                                    <td>John Doe</td>
+                                                    <td align="center">7556588</td>
+                                                    <td class="color-blue-grey" nowrap="" align="center"><span class="semibold">Today</span> 8:30</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="label label-primary">Paid</span>
+                                                        <span class="label label-success">Active</span>
+                                                    </td>
+                                                    <td>Thomas Bayer</td>
+                                                    <td align="center">7556588</td>
+                                                    <td class="color-blue-grey" nowrap="" align="center"><span class="semibold">Today</span> 16:30</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="label label-primary">Paid</span>
+                                                        <span class="label label-default">Inactive</span>
+                                                    </td>
+                                                    <td>Nicolas Karabat</td>
+                                                    <td align="center">7556588</td>
+                                                    <td class="color-blue-grey" nowrap="" align="center"><span class="semibold">Yesterday</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="label label-default">Unpaid</span>
+                                                        <span class="label label-default">Inactive</span>
+                                                    </td>
+                                                    <td>Alexandre Pome</td>
+                                                    <td align="center">7556588</td>
+                                                    <td class="color-blue-grey" nowrap="" align="center">23th May</td>
+                                                </tr>
+                                                </tbody></table>
+                                        </div>
+                                    </div><!--end panel body-->
+                                </div><!--end panel-->
+                            </div><!--end col 6-->
+                            <div class="col-md-6">
+                                <div class="panel">
+                                    <header class="panel-heading">
+                                        <div class="panel-actions">
+                                            <a href="javascript:void(0)" class="panel-action panel-action-toggle" data-panel-toggle=""></a>                                   
+                                            <a href="javascript:void(0)" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
+                                            <div class="dropdown pull-left">
+                                                <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="ion-more"></i></a>
+                                                <ul class="dropdown-menu dropdown-menu-scale">
+                                                    <li><a href="javascript:void(0)">Action</a></li>
+                                                    <li><a href="javascript:void(0)">Just Action</a></li>
+                                                    <li><a href="javascript:void(0)">Action Now</a></li>
+                                                </ul>
                                             </div>
-                                            <div class="form-group">
-                                                <div class="col-lg-offset-2 col-lg-10">
-                                                    <div class="checkbox pull-left">
-                                                        <input type="checkbox" id="myCheckbox2" name="myCheckbox2" class="i-checks">
-                                                        <label for="myCheckbox2">Remember Me </label>
+                                        </div>
+                                        <h2 class="panel-title">Recent Tickets</h2>
+                                    </header>
+                                    <div class="panel-body">
+                                        <div class="scrollDiv">
+                                            <table class="table table-striped">
+                                                <tbody>
+                                                    <tr>
+                                                        <th><div>Status</div></th>
+                                                <th><div>Subject</div></th>
+                                                <th align="center"><div>Department</div></th>
+                                                <th align="center"><div>Date</div></th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="label label-success">Open</span>
+                                                    </td>
+                                                    <td>Website time load</td>
+                                                    <td align="center">Support</td>
+                                                    <td nowrap="" align="center"><span class="semibold">Today</span> 8:30</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="label label-success">Open</span>
+                                                    </td>
+                                                    <td>Database table format</td>
+                                                    <td align="center">Support</td>
+                                                    <td nowrap="" align="center"><span class="semibold">Today</span> 16:30</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="label label-warning">Progress</span>
+                                                    </td>
+                                                    <td>Loosing control on server</td>
+                                                    <td align="center">Support</td>
+                                                    <td nowrap="" align="center"><span class="semibold">Yesterday</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="label label-danger">Closed</span>
+                                                    </td>
+                                                    <td>Authorizations keys</td>
+                                                    <td align="center">Support</td>
+                                                    <td nowrap="" align="center">23th May</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="label label-success">Open</span>
+                                                    </td>
+                                                    <td>Website down for one week</td>
+                                                    <td align="center">Support</td>
+                                                    <td nowrap="" align="center"><span class="semibold">Today</span> 8:30</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="label label-success">Open</span>
+                                                    </td>
+                                                    <td>Restoring default settings</td>
+                                                    <td align="center">Support</td>
+                                                    <td nowrap="" align="center"><span class="semibold">Today</span> 16:30</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="label label-warning">Progress</span>
+                                                    </td>
+                                                    <td>Loosing control on server</td>
+                                                    <td align="center">Support</td>
+                                                    <td nowrap="" align="center"><span class="semibold">Yesterday</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="label label-danger">Closed</span>
+                                                    </td>
+                                                    <td>Authorizations keys</td>
+                                                    <td align="center">Support</td>
+                                                    <td nowrap="" align="center">23th May</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div><!--end panel body-->
+                                </div><!--end panel-->
+                            </div><!--end col 6-->
+                        </div><!--end row-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="panel">
+                                    <header class="panel-heading">
+                                        <div class="panel-actions">
+                                            <a href="javascript:void(0)" class="panel-action panel-action-toggle" data-panel-toggle=""></a>                                   
+                                            <a href="javascript:void(0)" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
+                                            <div class="dropdown pull-left">
+                                                <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="ion-more"></i></a>
+                                                <ul class="dropdown-menu dropdown-menu-scale">
+                                                    <li><a href="javascript:void(0)">Action</a></li>
+                                                    <li><a href="javascript:void(0)">Just Action</a></li>
+                                                    <li><a href="javascript:void(0)">Action Now</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <h2 class="panel-title">Recent Activities</h2>
+                                    </header>
+                                    <div class="panel-body">
+                                        <div class="scrollDiv">
+                                            <div class="streamline">
+                                                <div class="stream-item stream-primary">
+                                                    <div class="stream-content">
+                                                        <small class="text-muted">34 mins ago</small>
+                                                        <p>Rakesh has just started working on the restaurant project</p>
                                                     </div>
-                                                    <div class="pull-right">
-                                                        <button class="btn btn-default rounded" type="submit">Sign in</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
+                                                </div><!-- .stream-item -->
 
-                                    </div>
-                                </div>
-                            </div>
+                                                <div class="stream-item stream-danger">
+                                                    <div class="stream-content">
+                                                        <small class="text-muted">39 mins ago</small>
+                                                        <p>Nine theme sent you collaboration request</p>
+                                                    </div>
+                                                </div><!-- .stream-item -->
+
+                                                <div class="stream-item stream-success">
+                                                    <div class="stream-content">
+                                                        <small class="text-muted">1 hour ago</small>
+                                                        <p>Emily added you to her group</p>
+                                                    </div>
+                                                </div><!-- .stream-item -->
+
+                                                <div class="stream-item stream-warning">
+                                                    <div class="stream-content">
+                                                        <small class="text-muted">4 hour ago</small>
+                                                        <p>Rakesh has finished her task</p>
+                                                    </div>
+                                                </div><!-- .stream-item -->
+                                            </div>
+                                        </div>
+                                    </div><!--end panel body-->
+                                </div><!--end panel-->
+                            </div><!--end col 6-->
+                            <div class="col-md-6">
+                                <div class="panel">
+                                    <header class="panel-heading">
+                                        <div class="panel-actions">
+                                            <a href="javascript:void(0)" class="panel-action panel-action-toggle" data-panel-toggle=""></a>                                   
+                                            <a href="javascript:void(0)" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
+                                            <div class="dropdown pull-left">
+                                                <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="ion-more"></i></a>
+                                                <ul class="dropdown-menu dropdown-menu-scale">
+                                                    <li><a href="javascript:void(0)">Action</a></li>
+                                                    <li><a href="javascript:void(0)">Just Action</a></li>
+                                                    <li><a href="javascript:void(0)">Action Now</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <h2 class="panel-title">Feeds</h2>
+                                    </header>
+                                    <div class="panel-body">
+                                        <div class="scrollDiv">
+                                            <div class="media-group feeds-group">
+
+                                                <div class="media-group-item">
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <div class="avatar">
+                                                                <img src="resources/images/avtar-1.jpg" alt="" class="img-circle" width="40">
+                                                            </div>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h5><a href="javascript:void(0)" class="text-color">Some of the fantastic things people have had to say about Ooooh</a></h5>
+                                                            <small class="text-muted">2 days ago</small>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- .media-group-item -->
+
+                                                <div class="media-group-item">
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <div class="avatar">
+                                                                <img src="resources/images/avtar-2.jpg" alt="" class="img-circle" width="40">
+                                                            </div>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h5><a href="javascript:void(0)" class="text-color">Here are just some of the magazine reviews we have had</a></h5>
+                                                            <small class="text-muted">1 day ago</small>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- .media-group-item -->
+
+                                                <div class="media-group-item">
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <div class="avatar">
+                                                                <img src="resources/images/avtar-3.jpg" alt="" class="img-circle" width="40">
+                                                            </div>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h5><a href="javascript:void(0)" class="text-color">Lorem ipsum dolor amet, consectetur adipisicing elit.</a></h5>
+                                                            <small class="text-muted">2 days ago</small>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- .media-group-item -->
+
+                                                <div class="media-group-item">
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <div class="avatar">
+                                                                <img src="resources/images/avtar-4.jpg" alt="" class="img-circle" width="40">
+                                                            </div>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h5><a href="javascript:void(0)" class="text-color">“It’s just brilliant. I will recommend it to everyone!”</a></h5>
+                                                            <small class="text-muted">2 mins ago</small>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- .media-group-item -->
+
+                                                <div class="media-group-item">
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <div class="avatar">
+                                                                <img src="resources/images/avtar-5.jpg" alt="" class="img-circle" width="40">
+                                                            </div>
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h5><a href="javascript:void(0)" class="text-color">John has just started working on the project</a></h5>
+                                                            <small class="text-muted">right now</small>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- .media-group-item -->
+                                            </div>
+                                        </div>
+                                    </div><!--end panel body-->
+                                </div><!--end panel-->
+                            </div><!--end col 6-->
                         </div><!--end row-->
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="panel">
                                     <header class="panel-heading">
-                                        <h2 class="panel-title">All Form Elements</h2>
+                                        <div class="panel-actions">
+                                            <a href="javascript:void(0)" class="panel-action panel-action-toggle" data-panel-toggle=""></a>                                   
+                                            <a href="javascript:void(0)" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
+                                            <div class="dropdown pull-left">
+                                                <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="ion-more"></i></a>
+                                                <ul class="dropdown-menu dropdown-menu-scale">
+                                                    <li><a href="javascript:void(0)">Action</a></li>
+                                                    <li><a href="javascript:void(0)">Just Action</a></li>
+                                                    <li><a href="javascript:void(0)">Action Now</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <h2 class="panel-title">World Map</h2>
                                     </header>
-                                    기간: <input type="text" id="datepicker"> <b>~</b> <input type="text" id="datepicker2">
                                     <div class="panel-body">
-                                        <form method="get" role="form">
-                                            <div class="form-group">
-                                                <label>Basic</label>  
-                                                <input type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Help Text</label>  
-                                                <input type="text" class="form-control">
-                                                <span class="help-block m-b-none">This is a example of help text input</span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Placeholder</label>  
-                                                <input type="text" class="form-control" placeholder="placeholder">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Password</label>  
-                                                <input type="password" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Disabled</label>  
-                                                <input type="text" disabled="" placeholder="Disabled input here..." class="form-control">
-                                            </div>
-                                            <hr>
-                                            <div class="form-group clearfix"><label class="col-sm-2 control-label">Checkboxes and radios <br/>
-                                                    <small class="text-muted">Normal Bootstrap elements</small></label>
-
-                                                <div class="col-sm-10">
-                                                    <div><label> <input type="checkbox" value=""> Option one is this and that&mdash;be sure to include why it's great </label></div>
-                                                    <div><label> <input type="radio" checked="" value="option1" id="optionsRadios1" name="optionsRadios"> Option one is this and that&mdash;be sure to
-                                                            include why it's great </label></div>
-                                                    <div><label> <input type="radio" value="option2" id="optionsRadios2" name="optionsRadios"> Option two can be something else and selecting it will
-                                                            deselect option one </label></div>
-                                                </div>
-                                            </div>
-
-                                            <hr>
-                                            <div class="form-group clearfix"><label class="col-sm-2 control-label">Inline checkboxes</label>
-
-                                                <div class="col-sm-10"><label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> a </label> <label class="checkbox-inline">
-                                                        <input type="checkbox" value="option2" id="inlineCheckbox2"> b </label> <label class="checkbox-inline">
-                                                        <input type="checkbox" value="option3" id="inlineCheckbox3"> c </label></div>
-                                            </div>
-                                            <hr>
-                                            <div class="form-group clearfix"><label class="col-sm-2 control-label">Checkboxes &amp; radios <br/><small>Custom elements</small></label>
-
-                                                <div class="col-sm-10">
-                                                    <div class="i-checks"><label> <input type="checkbox" value=""> <i></i> Option one </label></div>
-                                                    <div class="i-checks"><label> <input type="checkbox" value="" checked=""> <i></i> Option two checked </label></div>
-                                                    <div class="i-checks"><label> <input type="checkbox" value="" disabled="" checked=""> <i></i> Option three checked and disabled </label></div>
-                                                    <div class="i-checks"><label> <input type="checkbox" value="" disabled=""> <i></i> Option four disabled </label></div>
-                                                    <div class="i-checks"><label> <input type="radio" value="option1" name="a"> <i></i> Option one </label></div>
-                                                    <div class="i-checks"><label> <input type="radio" checked="" value="option2" name="a"> <i></i> Option two checked </label></div>
-                                                    <div class="i-checks"><label> <input type="radio" disabled="" checked="" value="option2"> <i></i> Option three checked and disabled </label></div>
-                                                    <div class="i-checks"><label> <input type="radio" disabled="" name="a"> <i></i> Option four disabled </label></div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="form-group">
-                                                <label>Select</label>
-                                                <select class="form-control margin-b-20" name="account">
-                                                    <option>option 1</option>
-                                                    <option>option 2</option>
-                                                    <option>option 3</option>
-                                                    <option>option 4</option>
-                                                </select>
-                                                <div class="row">
-                                                    <div class="col-lg-4"><select class="form-control" multiple="">
-                                                            <option>option 1</option>
-                                                            <option>option 2</option>
-                                                            <option>option 3</option>
-                                                            <option>option 4</option>
-                                                        </select></div>
-                                                </div>
-                                            </div>
-                                            <hr>
-                                            <div class="form-group">
-                                                <label>Input with error</label>
-                                                <input type="text" class="form-control input-error">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Input with success</label>
-                                                <input type="text" class="form-control input-success">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Input with warning</label>
-                                                <input type="text" class="form-control input-warning">
-                                            </div>
-                                            <hr>
-                                            <div class="form-group">
-                                                <label>Input groups</label> 
-                                                <div class="input-group margin-b-20"><span class="input-group-addon">@</span> <input type="text" placeholder="Username" class="form-control"></div>
-                                                <div class="input-group margin-b-20"><input type="text" class="form-control"> <span class="input-group-addon">.00</span></div>
-                                                <div class="input-group margin-b-20"><span class="input-group-addon">$</span> <input type="text" class="form-control"> <span class="input-group-addon">.00</span></div>
-                                                <div class="input-group margin-b-20"><span class="input-group-addon"> <span class="checkbox">
-                                                            <input type="checkbox" id="myCheckbox6" class="i-checks" name="myCheckbox6" value="myCheckbox">
-                                                            <label for="myCheckbox6"> </label>
-                                                        </span></span> <input type="text" class="form-control">
-                                                </div>
-                                                <div class="input-group margin-b-20"><span class="input-group-addon"> <span class="radoi">
-                                                            <input type="radio" id="radoi" class="i-checks" name="radoi" value="myCheckbox">
-                                                            <label for="radoi"> </label>
-                                                        </span></span> <input type="text" class="form-control">
-                                                </div>
-                                            </div><hr>
-                                            <div class="form-group">
-                                                <label>Button Addons</label>
-                                                <div class="input-group margin-b-20"><span class="input-group-btn">
-                                                        <button type="button" class="btn btn-primary">Go!</button> </span> <input type="text" class="form-control">
-                                                </div>
-                                                <div class="input-group"><input type="text" class="form-control"> <span class="input-group-btn"> <button type="button" class="btn btn-primary">Go!
-                                                        </button> </span></div>
-                                            </div><hr>
-                                            <div class="form-group">
-                                                <label>With dropdowns</label>
-                                                <div class="input-group margin-b-20">
-                                                    <div class="input-group-btn">
-                                                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">Action <span class="caret"></span></button>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a href="#">Action</a></li>
-                                                            <li><a href="#">Another action</a></li>
-                                                            <li><a href="#">Something else here</a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#">Separated link</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="input-group"><input type="text" class="form-control">
-
-                                                    <div class="input-group-btn">
-                                                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">Action <span class="caret"></span></button>
-                                                        <ul class="dropdown-menu pull-right">
-                                                            <li><a href="#">Action</a></li>
-                                                            <li><a href="#">Another action</a></li>
-                                                            <li><a href="#">Something else here</a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#">Separated link</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Segmented</label>
-                                                <div class="input-group margin-b-20">
-                                                    <div class="input-group-btn">
-                                                        <button tabindex="-1" class="btn btn-default" type="button">Action</button>
-                                                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button"><span class="caret"></span></button>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a href="#">Action</a></li>
-                                                            <li><a href="#">Another action</a></li>
-                                                            <li><a href="#">Something else here</a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#">Separated link</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                                <div class="input-group"><input type="text" class="form-control">
-
-                                                    <div class="input-group-btn">
-                                                        <button tabindex="-1" class="btn btn-default" type="button">Action</button>
-                                                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button"><span class="caret"></span></button>
-                                                        <ul class="dropdown-menu pull-right">
-                                                            <li><a href="#">Action</a></li>
-                                                            <li><a href="#">Another action</a></li>
-                                                            <li><a href="#">Something else here</a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#">Separated link</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                        <div id="world-map-markers" style="height: 400px"></div>
+                                    </div><!--end panel body-->
+                                </div><!--end panel-->
+                            </div><!--end col 6-->
+                        </div><!--row end-->
                     </div><!--end container-->
 
                     <!--footer start-->
@@ -694,49 +869,25 @@
 
 
         <!--Common plugins-->
-        <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/plugins/hoe-nav/hoe.js"></script>
-        <script src="assets/plugins/pace/pace.min.js"></script>
-        <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-        <script src="assets/js/app.js"></script>
-        <!-- iCheck -->
-        <script src="assets/plugins/iCheck/icheck.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('.i-checks').iCheck({
-                    checkboxClass: 'icheckbox_flat-blue',
-                    radioClass: 'iradio_flat-blue'
-                });
-            });
-        </script>
-        <script>
-        $(function() {
-            //모든 datepicker에 대한 공통 옵션 설정
-            $.datepicker.setDefaults({
-                dateFormat: 'yy-mm-dd' //Input Display Format 변경
-                ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-                ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
-                ,changeYear: true //콤보박스에서 년 선택 가능
-                ,changeMonth: true //콤보박스에서 월 선택 가능                
-                ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
-                ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
-                ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
-                ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
-                ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
-                ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
-                ,minDate: "-1M" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-                ,maxDate: "+1M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                    
-            });
- 
-            //input을 datepicker로 선언
-            $("#datepicker").datepicker();                    
-            $("#datepicker2").datepicker();
-            
-            //From의 초기값을 오늘 날짜로 설정
-            $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-            //To의 초기값을 내일로 설정
-            $('#datepicker2').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-        });
-    </script>
+        <script src="resources/plugins/jquery/dist/jquery.min.js"></script>
+        <script src="resources/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="resources/plugins/hoe-nav/hoe.js"></script>
+        <script src="resources/plugins/pace/pace.min.js"></script>
+        <script src="resources/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="resources/js/app.js"></script>
+        <!--page scripts-->
+        <!-- Flot chart js -->
+        <script src="resources/plugins/flot/jquery.flot.js"></script>
+        <script src="resources/plugins/flot/jquery.flot.tooltip.min.js"></script>
+        <script src="resources/plugins/flot/jquery.flot.resize.js"></script>
+        <script src="resources/plugins/flot/jquery.flot.pie.js"></script>
+        <script src="resources/plugins/flot/jquery.flot.time.js"></script>
+        <!--vector map-->
+        <script src="resources/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+        <script src="resources/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+        <!-- ChartJS-->
+        <script src="resources/plugins/chartJs/Chart.min.js"></script>
+        <!--dashboard custom script-->
+        <script src="resources/js/dashboard.js"></script>
     </body>
 </html>
