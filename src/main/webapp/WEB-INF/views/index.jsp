@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>임시 페이지입니다</title>
+        <title>Assan admin</title>
 
         <!-- Bootstrap -->
         <link href="resources/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,29 +28,6 @@
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <style>
-        	#main-content {
-        		margin-right: 230px;
-        	}
-        	.panel {
-	            align-items: center;
-	            justify-content: center; 
-        	}
-        	.panel-body {
-        		text-align: center;
-        		background-size:100% 100%;
-	            overflow:hidden;
-	            align-items: center;
-	            justify-content: center; 
-				height: 400px;
-        	}
-			.all-over-thumb-link {
-				display:block; 
-				height:100%; 
-				width:100%; 
-			}
-			
-        </style>
     </head>
     <body hoe-navigation-type="vertical" hoe-nav-placement="left" theme-layout="wide-layout">
 
@@ -58,7 +35,7 @@
         <div id="hoeapp-wrapper" class="hoe-hide-lpanel" hoe-device-type="desktop">
             <header id="hoe-header" hoe-lpanel-effect="shrink">
                 <div class="hoe-left-header">
-                    <a href="#"> A<span>SSA33N</span></a>
+                    <a href="#"> A<span>SSAN</span></a>
                     <span class="hoe-sidebar-toggle"><a href="#"></a></span>
                 </div>
 
@@ -73,8 +50,8 @@
                                 </form>
                             </div>
                         </li>
+
                     </ul>
-                    <a href="index" >index로</a><a href="main" >진짜home으로</a>
                     <ul class="right-navbar navbar-right">
                         <li class="dropdown">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle"> <i class="ion-ios-bell-outline"></i> <span class="label label-danger">4</span></a>
@@ -104,15 +81,15 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><img src="resources/images/us.png" alt=""> English</a>
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><img src="assets/images/us.png" alt=""> English</a>
                             <ul class="dropdown-menu dropdown-menu-scale lang-dropdown">
-                                <li><a href="#"><img src="resources/images/us.png" alt=""> English </a></li>
-                                <li><a href="#"><img src="resources/images/es.png" alt=""> Spanish </a></li>
-                                <li><a href="#"><img src="resources/images/tr.png" alt=""> Turkish </a></li>
+                                <li><a href="#"><img src="assets/images/us.png" alt=""> English </a></li>
+                                <li><a href="#"><img src="assets/images/es.png" alt=""> Spanish </a></li>
+                                <li><a href="#"><img src="assets/images/tr.png" alt=""> Turkish </a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><img src="resources/images/avtar.png" alt="" width="30" class="img-circle"> Emily Doe</a>
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><img src="assets/images/avtar.png" alt="" width="30" class="img-circle"> Emily Doe</a>
                             <ul class="dropdown-menu dropdown-menu-scale user-dropdown">
                                 <li><a href="#"><i class="ion-email-unread"></i> Inbox <span class="label label-warning">3</span></a></li>
                                 <li><a href="#"><i class="ion-person"></i> Profile </a></li>
@@ -126,34 +103,388 @@
                 </div>
             </header>
             <div id="hoeapp-container" hoe-color-type="lpanel-bg7" hoe-lpanel-effect="shrink">
+                <aside id="hoe-left-panel" hoe-position-type="absolute">
+
+                    <ul class="nav panel-list">
+
+                        <li class="active">
+                            <a href="index.html">
+                                <i class="fa fa-home"></i>
+                                <span class="menu-text">Dashboard</span>
+                                <span class="selected"></span>
+                            </a>
+                        </li>
+                        <li class="hoe-has-menu">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-envelope"></i>
+                                <span class="menu-text">Email</span>
+                                <span class="selected"></span>
+                            </a>
+                            <ul class="hoe-sub-menu">
+                                <li>
+                                    <a href="email-inbox.html">
+                                        <span class="menu-text">Inbox</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="email-compose.html">
+                                        <span class="menu-text">Compose</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="email-view.html">
+                                        <span class="menu-text">Email View</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="hoe-has-menu">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-bar-chart-o"></i>
+                                <span class="menu-text">Charts</span>
+                                <span class="selected"></span>
+                            </a>
+                            <ul class="hoe-sub-menu">
+                                <li>
+                                    <a href="chart-flot.html">
+                                        <span class="menu-text">Flot charts</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="chart-morris.html">
+                                        <span class="menu-text">Morris charts</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="chart-chartjs.html">
+                                        <span class="menu-text">Chartjs</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="chart-sparkline.html">
+                                        <span class="menu-text">Sparkline</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="hoe-has-menu">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-th-large"></i>
+                                <span class="menu-text">Forms</span>
+                                <span class="selected"></span>
+                            </a>
+                            <ul class="hoe-sub-menu">
+                                <li>
+                                    <a href="form-basic.html">
+                                        <span class="menu-text">Basic elements</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="form-file-upload.html">
+                                        <span class="menu-text">File upload</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="form-text-editor.html">
+                                        <span class="menu-text">Text editor</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="hoe-has-menu">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-table"></i>
+                                <span class="menu-text">Tables</span>
+                                <span class="selected"></span>
+                            </a>
+                            <ul class="hoe-sub-menu">
+                                <li>
+                                    <a href="table-static.html">
+                                        <span class="menu-text">Static tables</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="table-responsive.html">
+                                        <span class="menu-text">Responsive Tables</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="table-data.html">
+                                        <span class="menu-text">Data tables</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="calendar.html">
+                                <i class="fa fa-calendar"></i>
+                                <span class="menu-text">Calendar</span>
+                                <span class="selected"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="user-profile.html">
+                                <i class="fa fa-user"></i>
+                                <span class="menu-text">User Profile</span>
+                                <span class="selected"></span>
+                            </a>
+                        </li>
+                        <li class="hoe-has-menu">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-envelope"></i>
+                                <span class="menu-text">Pages</span>
+                                <span class="selected"></span>
+                            </a>
+                            <ul class="hoe-sub-menu">
+                                <li>
+                                    <a href="page-login.html">
+                                        <span class="menu-text">Login</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="page-register.html">
+                                        <span class="menu-text">Register</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="page-404.html">
+                                        <span class="menu-text">404</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="page-forget-password.html">
+                                        <span class="menu-text">Forget password</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="page-empty.html">
+                                        <span class="menu-text">Empty page</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="hoe-has-menu">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-cogs"></i>
+                                <span class="menu-text">UI elements</span>
+                                <span class="selected"></span>
+                            </a>
+                            <ul class="hoe-sub-menu">
+                                <li>
+                                    <a href="ui-buttons.html">
+                                        <span class="menu-text">Buttons</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="ui-typography.html">
+                                        <span class="menu-text">typography</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="ui-tabs.html">
+                                        <span class="menu-text">Tabs</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="ui-alerts.html">
+                                        <span class="menu-text">Alerts</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="ui-tooltip_popovers.html">
+                                        <span class="menu-text">Tooltips & popovers</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="hoe-has-menu">
+                            <a href="javascript:void(0)">
+                                <i class="fa fa-map-o"></i>
+                                <span class="menu-text">Maps</span>
+                                <span class="selected"></span>
+                            </a>
+                            <ul class="hoe-sub-menu">
+                                <li>
+                                    <a href="map-vector.html">
+                                        <span class="menu-text">Vector map</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="map-google.html">
+                                        <span class="menu-text">Google map</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="hoe-has-menu">
+                            <a href="javascript:void(0)">
+                                <i class="ion-ios-filing-outline"></i>
+                                <span class="menu-text">Menu Lavel 1</span>
+                                <span class="selected"></span>
+                            </a>
+                            <ul class="hoe-sub-menu">
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="menu-text">level 2</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="menu-text">level 2</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                </li>
+                                <li class="hoe-has-menu">
+                                    <a href="javascript:void(0)">
+                                        <span class="menu-text">level 2</span>
+                                        <span class="selected"></span>
+                                    </a>
+                                    <ul class="hoe-sub-menu">
+                                        <li class="hoe-has-menu">
+                                            <a href="javascript:void(0)">
+                                                <span class="menu-text">level 3</span>
+                                                <span class="selected"></span>
+                                            </a>
+                                            <ul class="hoe-sub-menu">
+                                                <li>
+                                                    <a href="javascript:void(0)">
+                                                        <span class="menu-text">level 4</span>
+                                                        <span class="selected"></span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)">
+                                                        <span class="menu-text">level 4</span>
+                                                        <span class="selected"></span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <span class="menu-text">level 3</span>
+                                                <span class="selected"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <span class="menu-text">level 3</span>
+                                                <span class="selected"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <span class="menu-text">level 3</span>
+                                                <span class="selected"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>  
+                            </ul>
+                        </li>
+                    </ul>
+                </aside><!--aside left menu end-->
+
+
                 <!--start main content-->
                 <section id="main-content">
                     <div class="space-30"></div>
                     <div class="container">
+                        <!--widget box row-->
+                        <div class="row">
+                            <div class="col-sm-6 col-md-3 margin-b-30">
+                                <div class="statistic-widget-box bg-primary">
+                                    <i class="fa fa-shopping-bag"></i>
+                                    <div class="content overflow-hidden">
+                                        <h1>7495</h1>
+                                        <p>New Orders</p>
+                                    </div>
+                                </div><!--statistic box end-->
+                            </div><!--col end-->
+                            <div class="col-sm-6 col-md-3 margin-b-30">
+                                <div class="statistic-widget-box bg-danger">
+                                    <i class="fa fa-usd"></i>
+                                    <div class="content overflow-hidden">
+                                        <h1>89M $</h1>
+                                        <p>Total Profit</p>
+                                    </div>
+                                </div><!--statistic box end-->
+                            </div><!--col end-->
+                            <div class="col-sm-6 col-md-3 margin-b-30">
+                                <div class="statistic-widget-box bg-success">
+                                    <i class="fa fa-users"></i>
+                                    <div class="content overflow-hidden">
+                                        <h1>270+</h1>
+                                        <p>New Users</p>
+                                    </div>
+                                </div><!--statistic box end-->
+                            </div><!--col end-->
+                            <div class="col-sm-6 col-md-3 margin-b-30">
+                                <div class="statistic-widget-box bg-info">
+                                    <i class="fa fa-bar-chart"></i>
+                                    <div class="content overflow-hidden">
+                                        <h1>19</h1>
+                                        <p>Pending Tasks</p>
+                                    </div>
+                                </div><!--statistic box end-->
+                            </div><!--col end-->
+                        </div>
+                        <!--widget box row-->
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="panel">
-                                	<header class="panel-heading">
-                                		<div class="panel-actions">
+                                    <header class="panel-heading">
+                                        <div class="panel-actions">
+                                            <a href="javascript:void(0)" class="panel-action panel-action-toggle" data-panel-toggle=""></a>
+                                            <a href="javascript:void(0)" class="panel-action action-link"><i class="ion-refresh"></i></a>
                                             <a href="javascript:void(0)" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
                                             <div class="dropdown pull-left">
                                                 <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="ion-more"></i></a>
                                                 <ul class="dropdown-menu dropdown-menu-scale">
-                                                    <li><a href="javascript:void(0)">다시 보지않기</a></li>
-                                                    <li><a href="javascript:void(0)">다시 보기</a></li>
-                                                    <li><a href="javascript:void(0)">그렇게 하기</a></li>
+                                                    <li><a href="javascript:void(0)">Action</a></li>
+                                                    <li><a href="javascript:void(0)">Just Action</a></li>
+                                                    <li><a href="javascript:void(0)">Action Now</a></li>
                                                 </ul>
                                             </div>
                                         </div>
-                                        <h2 class="panel-title"><a href="https://mypetlife.co.kr/54167/">자는 고양이</a><span class="helping-text">by 김개똥</span></h2>
+                                        <h2 class="panel-title">Site visits <span class="helping-text">last week</span></h2>
                                     </header>
-                                    <div class="panel-body" style="background-image:url(https://images.mypetlife.co.kr/content/uploads/2019/10/09234652/kate-stone-matheson-uy5t-CJuIK4-unsplash-780x470.jpg);">
-										<a href="https://mypetlife.co.kr/54167/" class="all-over-thumb-link">오늘 내 고양이가 잠을 잤다</a>
-									</div>
+                                    <div class="panel-body">
+                                        <div class="flot-chart">
+                                            <div class="flot-chart-data" id="flot-line-chart"></div>
+                                        </div>
+                                    </div><!--end panel body-->
                                 </div><!--end panel-->
-                            </div>
-                            <!--end col 6-->
-                            <div class="col-md-6">
+                            </div><!--end col 6-->
+                               <div class="col-md-6">
                                 <div class="panel">
                                     <header class="panel-heading">
                                         <div class="panel-actions">
@@ -179,7 +510,6 @@
                                 </div><!--end panel-->
                             </div><!--end col 6-->
                         </div><!--end row-->
-                        
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="panel">
@@ -460,7 +790,7 @@
                                                     <div class="media">
                                                         <div class="media-left">
                                                             <div class="avatar">
-                                                                <img src="resources/images/avtar-1.jpg" alt="" class="img-circle" width="40">
+                                                                <img src="assets/images/avtar-1.jpg" alt="" class="img-circle" width="40">
                                                             </div>
                                                         </div>
                                                         <div class="media-body">
@@ -474,7 +804,7 @@
                                                     <div class="media">
                                                         <div class="media-left">
                                                             <div class="avatar">
-                                                                <img src="resources/images/avtar-2.jpg" alt="" class="img-circle" width="40">
+                                                                <img src="assets/images/avtar-2.jpg" alt="" class="img-circle" width="40">
                                                             </div>
                                                         </div>
                                                         <div class="media-body">
@@ -488,7 +818,7 @@
                                                     <div class="media">
                                                         <div class="media-left">
                                                             <div class="avatar">
-                                                                <img src="resources/images/avtar-3.jpg" alt="" class="img-circle" width="40">
+                                                                <img src="assets/images/avtar-3.jpg" alt="" class="img-circle" width="40">
                                                             </div>
                                                         </div>
                                                         <div class="media-body">
@@ -502,7 +832,7 @@
                                                     <div class="media">
                                                         <div class="media-left">
                                                             <div class="avatar">
-                                                                <img src="resources/images/avtar-4.jpg" alt="" class="img-circle" width="40">
+                                                                <img src="assets/images/avtar-4.jpg" alt="" class="img-circle" width="40">
                                                             </div>
                                                         </div>
                                                         <div class="media-body">
@@ -516,7 +846,7 @@
                                                     <div class="media">
                                                         <div class="media-left">
                                                             <div class="avatar">
-                                                                <img src="resources/images/avtar-5.jpg" alt="" class="img-circle" width="40">
+                                                                <img src="assets/images/avtar-5.jpg" alt="" class="img-circle" width="40">
                                                             </div>
                                                         </div>
                                                         <div class="media-body">
