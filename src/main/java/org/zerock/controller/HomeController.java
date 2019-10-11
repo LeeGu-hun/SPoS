@@ -1,8 +1,12 @@
 package org.zerock.controller;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,5 +43,14 @@ public class HomeController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public void index(Locale locale, Model model) {
 		
+	}
+	
+	@RequestMapping(value = "/favicon.ico", method = RequestMethod.GET)
+	public void favicon(HttpServletRequest request, HttpServletResponse reponse) {
+		try {
+			reponse.sendRedirect("/resources/favicon.ico");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

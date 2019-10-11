@@ -55,30 +55,6 @@
 				width: 100%;
 			}
 		</style>
-	    <script>
-		    function getBoardList(cri) {
-				//var csrfHeaderName = "${_csrf.headerName}";
-				//var csrfTokenValue = "${_csrf.token}";
-				console.log(cri)
-				$.ajax({
-					url: '/getBoardList',
-					/* beforeSend: function(xhr) {
-						xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
-					}, */
-					data : JSON.stringify(cri),
-					type: 'POST',
-					dataType:'html',
-					contentType: 'application/json',
-					success: function(result){
-						$(".row").append(result);
-					}
-				}); // $.ajax
-			}
-		    $(document).ready(function(){
-		    	var cri =  {pageNum:2, amount:10};
-		    	getBoardList(cri);
-		    });
-	    </script>
     </head>
     <body hoe-navigation-type="vertical" hoe-nav-placement="left" theme-layout="wide-layout">
 
@@ -119,7 +95,7 @@
 	                                </div><!--end panel-->
 	                            </div>
 							</c:forEach>
-							
+							<button id="moreBtn" type="button" class="btn btn-primary btn-block btn-lg">More</button>
                         </div><!--end row-->
                     </div><!--end container-->
                 </section><!--end main content-->
@@ -160,20 +136,34 @@
         <script src="resources/plugins/slimscroll/jquery.slimscroll.min.js"></script>
         <script src="resources/js/app.js"></script>
         <!--page scripts-->
-        <!-- Flot chart js -->
-        <script src="resources/plugins/flot/jquery.flot.js"></script>
-        <script src="resources/plugins/flot/jquery.flot.tooltip.min.js"></script>
-        <script src="resources/plugins/flot/jquery.flot.resize.js"></script>
-        <script src="resources/plugins/flot/jquery.flot.pie.js"></script>
-        <script src="resources/plugins/flot/jquery.flot.time.js"></script>
-        <!--vector map-->
-        <script src="resources/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-        <script src="resources/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-        <!-- ChartJS-->
-        <script src="resources/plugins/chartJs/Chart.min.js"></script>
-        <!--dashboard custom script-->
-        <script src="resources/js/dashboard.js"></script>
-        <!--page script-->
         <script src="resources/plugins/lightbox2/dist/js/lightbox.min.js"></script>
+        
+        <script>
+		    function getBoardList(cri) {
+				var csrfHeaderName = "${_csrf.headerName}";
+				var csrfTokenValue = "${_csrf.token}";
+				console.log(cri)
+				$.ajax({
+					url: '/getBoardList',
+					beforeSend: function(xhr) {
+						xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+					}, 
+					data : JSON.stringify(cri),
+					type: 'POST',
+					dataType:'html',
+					contentType: 'application/json',
+					success: function(result){
+						$(".row").append(result);
+					}
+				}); // $.ajax
+			}
+		    $(document).ready(function(){
+		    	$("#moreBtn").on("click", function(e){
+			    	var cri =  {pageNum:2, amount:6};
+			    	getBoardList(cri);
+			    	$(this).remove();
+		    	});
+		    });
+	    </script>
     </body>
 </html>

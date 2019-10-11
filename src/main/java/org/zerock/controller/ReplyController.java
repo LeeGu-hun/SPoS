@@ -43,19 +43,19 @@ public class ReplyController {
 	}
 	
 	@GetMapping(value = "/{reply_index}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<ReplyVO> get(@PathVariable("reply_index") Long reply_index) {
+	public ResponseEntity<ReplyVO> getReply(@PathVariable("reply_index") Long reply_index) {
 		log.info("get reply: " + reply_index);
 		return new ResponseEntity<>(service.getReply(reply_index), HttpStatus.OK);
 	}
 
 	@DeleteMapping(value = "/{reply_index}")
-	public ResponseEntity<String> remove(@RequestBody ReplyVO vo, @PathVariable("reply_index") Long reply_index) {
+	public ResponseEntity<String> removeReply(@RequestBody ReplyVO vo, @PathVariable("reply_index") Long reply_index) {
 		log.info("remove reply: " + reply_index);
 		return service.removeReply(reply_index) == 1 ? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	@RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH}, value = "/{reply_index}", consumes = "application/json")
-	public ResponseEntity<String> modify(@RequestBody ReplyVO vo, @PathVariable("reply_index") Long reply_index) {
+	public ResponseEntity<String> modifyReply(@RequestBody ReplyVO vo, @PathVariable("reply_index") Long reply_index) {
 		vo.setBoard_index(reply_index);
 		log.info("rno: " + reply_index);
 		log.info("modify: " + vo);

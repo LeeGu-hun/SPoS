@@ -3,7 +3,21 @@
 <mapper namespace="org.zerock.mapper.BoardMapper">
 	<select id="getList" resultType="org.zerock.domain.BoardVO">
 		<![CDATA[
-			SELECT /*+ index_desc(SPOS_BOARD SPOS_BOARD_PK) */* FROM SPOS_BOARD WHERE rownum <10 
+			SELECT /*+ index_desc(SPOS_BOARD SPOS_BOARD_PK) */ 
+				BOARD_INDEX, USER_INDEX, to_char(BOARD_REGDATE, 'YYYY-MM-DD HH24:MI:SS') as BOARD_REGDATE, to_char(BOARD_UPDATEDATE, 'YYYY-MM-DD HH24:MI:SS') as BOARD_UPDATEDATE, 
+				BOARD_TITLE, BOARD_CONTENT, BOARD_SPECIAL 
+			FROM SPOS_BOARD WHERE rownum <=6 
+		]]>
+	</select>
+	
+	<select id="getMoreList" resultType="org.zerock.domain.BoardVO">
+		<![CDATA[
+			SELECT BOARD_INDEX, USER_INDEX, to_char(BOARD_REGDATE, 'YYYY-MM-DD HH24:MI:SS') as BOARD_REGDATE, to_char(BOARD_UPDATEDATE, 'YYYY-MM-DD HH24:MI:SS') as BOARD_UPDATEDATE, 
+				BOARD_TITLE, BOARD_CONTENT, BOARD_SPECIAL 
+			FROM ( 
+				select /*+ index_desc(SPOS_BOARD SPOS_BOARD_PK) */ rownum rn, BOARD_INDEX, USER_INDEX, BOARD_REGDATE, BOARD_UPDATEDATE, BOARD_TITLE, BOARD_CONTENT, BOARD_SPECIAL 
+				from SPOS_BOARD WHERE (rownum <= #{pageNum} * #{amount})
+				) WHERE rn > (#{pageNum} -1) * #{amount} 
 		]]>
 	</select>
 </mapper>

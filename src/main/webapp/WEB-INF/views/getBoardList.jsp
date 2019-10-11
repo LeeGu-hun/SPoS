@@ -2,7 +2,7 @@
 	contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:forEach items="${list }" var="board">
+<c:forEach items="${listMore }" var="boardMore">
 	<div class="col-md-6">
 		<div class="panel">
 			<header class="panel-heading">
@@ -20,8 +20,8 @@
 					</div>
 				</div>
 				<h2 class="panel-title">
-					<a href="https://mypetlife.co.kr/54167/">${board.board_title }</a><span
-						class="helping-text">by ${board.user_index }</span>
+					<a href="https://mypetlife.co.kr/54167/">${boardMore.board_title }</a><span
+						class="helping-text">by ${boardMore.user_index }</span>
 				</h2>
 			</header>
 			<div class="panle-body">
@@ -29,7 +29,7 @@
 					href="https://images.mypetlife.co.kr/content/uploads/2019/10/09234652/kate-stone-matheson-uy5t-CJuIK4-unsplash-780x470.jpg"
 					data-lightbox="gallery"> <img
 					src="https://images.mypetlife.co.kr/content/uploads/2019/10/09234652/kate-stone-matheson-uy5t-CJuIK4-unsplash-780x470.jpg"
-					alt="${board.board_content }" class="img-responsive">
+					alt="${boardMore.board_content }" class="img-responsive">
 					<div class="gallery-overlay">
 						<i class="ion-ios-eye-outline"></i>
 					</div>
@@ -39,3 +39,13 @@
 		<!--end panel-->
 	</div>
 </c:forEach>
+<button id="moreBtn" type="button" class="btn btn-primary btn-block btn-lg">More</button>
+<script>
+$(document).ready(function(){
+	$("#moreBtn").on("click", function(e){
+    	var cri =  {pageNum:"${pageMaker.pageNum}", amount:6};
+    	getBoardList(cri);
+    	$(this).remove();
+	});
+});
+</script>

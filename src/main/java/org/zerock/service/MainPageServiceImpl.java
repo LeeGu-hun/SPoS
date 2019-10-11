@@ -15,12 +15,13 @@ public class MainPageServiceImpl implements MainPageService {
 	@Setter(onMethod_ = @Autowired)
 	private BoardMapper boardMapper;
 	
+	@Override
 	public List<BoardVO> getList() {
 		return boardMapper.getList();
 	}
 
 	@Override
 	public List<BoardVO> getBoardMore(Criteria cri) {
-		return null;
+		return boardMapper.getMoreList(cri);
 	}
 }
