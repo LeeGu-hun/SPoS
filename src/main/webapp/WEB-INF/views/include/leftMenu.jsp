@@ -33,20 +33,12 @@
 				<span class="selected"></span>
 			</a>
 		</li>
-		<li class="hoe-has-menu">
+		<li>
 			<a href="#">
 				<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-				<span class="menu-text">반려동물 용품</span>
+				<span class="menu-text">반려동물 용품 구입</span>
 				<span class="selected"></span>
 			</a>
-			<ul class="hoe-sub-menu">
-				<li>
-					<a href="#">
-						<span class="menu-text">사료 구입</span>
-			 			<span class="selected"></span>
-			 		</a>
-			 	</li>
-			</ul>
 		</li>
 	</ul>
 </aside>

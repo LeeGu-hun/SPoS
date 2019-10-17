@@ -617,6 +617,12 @@ Top bar styles
 	right:1px;
 }
 
+.search-form-div form button {
+	position : relative;
+	margin-left : 5px;
+	background-color : #f2f2f2;
+}
+
 .top-search form {
   position: relative;
   width: 180px;

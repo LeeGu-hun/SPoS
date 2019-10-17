@@ -1,5 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"
 	contentType="text/html; charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 
 <html lang="kr">
@@ -77,18 +79,18 @@
                             <div class="search-form-div">
                                 <form id="searchForm" action="/include/header" method="get">
 									<select name="type" id="type" style="width: 72px; height: 32px;">
-										<option value=""
-											<c:out vlaue="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>제목</option>
-										<option value=""
-											<c:out vlaue="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>내용</option>
-										<option value=""
-											<c:out vlaue="${pageMaker.cri.type eq 'W'?'selected':'' }"/>>이름</option>
+										<option value='T'
+											<c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>제목</option>
+										<option value='C'
+											<c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>내용</option>
+										<option value='W'
+											<c:out value="${pageMaker.cri.type eq 'W'?'selected':'' }"/>>이름</option>
 									</select>
 									<input type="text" name="keyword" class="search-input"
 										placeholder="Search here" value="${pageMaker.cri.keyword}"
 										style="height:34px;">
 	                                   <i class="ion-search"></i>
-	                                <button class="btn btn-default" style="display:inline-block;">Search</button>
+	                                <button class="btn btn-default">Search</button>
                                 </form>
                             </div>
                         </li>
@@ -133,11 +135,6 @@
                             </ul>
                         </li>
 				</ul>
-				
-				<form id="actionForm" action="/include/header" method="get">
-					<input type="hidden" name="type" value="${pageMaker.cri.type}"/>
-					<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }"/>
-				</form>
                 </div>
                 
             </header>
@@ -148,13 +145,14 @@
             
 <script>
 	$(document).ready(function(){
-		var actionForm = $("#actionForm");
 		var searchForm = $("#searchForm");
 		$("#searchForm button").on("click", function(e){
 			if(!searchForm.find("input[name='keyword']").val()){
 				alert("키워드를 입력하세요");
 				return false;
 			}
+			e.preventDefault();
+			searchForm.submit();
 		});
 	});
 </script>
