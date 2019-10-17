@@ -54,6 +54,76 @@
 				height: 100%;
 				width: 100%;
 			}
+			.conText {
+				padding: 5px 10px;
+				text-align: center;
+				position: absolute;
+				top: 90%;
+				left: 50%;
+				transform: translate( -50%, -50% );
+			}
+			.modal-dialog{
+				width: fit-content;
+				margin-top: 5%;
+			}
+			.modal-header{
+				 height:10%;
+			}
+			.modal-footer{
+				padding:0px;
+			}
+			.content-img{
+				border: 1px solid #eaeaea;
+				width:70%;
+				height:100%;
+				float:left;
+			}
+			.modal-body{
+				width:30%;
+				height:100%;
+				float:right;
+				padding: 0px;
+			}
+			.content-body{
+			 	margin:1%;
+			}
+			.reply-container{
+			 	margin:1%;
+			}
+			.gallery-overlay i {
+				word-break: break-all;
+				text-align: center;
+				transform: translate( -50%, -50% );
+			}
+			.modal-footer{
+				text-align: unset;
+			}
+			.bottomDiv {
+				width: inherit;
+				position : fixed;
+				bottom: 0.01%;
+				padding-bottom: 2px;
+				border: 0px;
+				padding-right: 2px;
+			}
+			.addReply{
+				width: 80%;
+				float:left;
+				border: 0px;
+				border-top: 1px solid rgba(197, 214, 222, 0.7);
+			}
+			.addBtn{
+				width: 20%;
+				background-color: white;
+				border: 0px;
+				border-top: 1px solid rgba(197, 214, 222, 0.7);
+				border-left: 1px solid rgba(197, 214, 222, 0.7);
+				padding: 0px;
+				float:left;
+				color: rgba(var(--h5f,56,151,240),1);
+				font-weight : 600;
+		    	opacity : .3;
+			}
 		</style>
     </head>
     <body hoe-navigation-type="vertical" hoe-nav-placement="left" theme-layout="wide-layout">
@@ -82,13 +152,17 @@
 	                                                </ul>
 	                                            </div>
 	                                        </div>
-	                                        <h2 class="panel-title"><a href="https://mypetlife.co.kr/54167/">${board.board_title }</a><span class="helping-text">by ${board.user_index }</span></h2>
+	                                        <h2 class="panel-title">${board.board_title }<span class="helping-text">by ${board.user_index }</span></h2>
 	                                    </header>
 	                                    <div class="panle-body">
-											<a class="gallery-box" href="https://images.mypetlife.co.kr/content/uploads/2019/10/09234652/kate-stone-matheson-uy5t-CJuIK4-unsplash-780x470.jpg" data-lightbox="gallery">
-                              					<img src="https://images.mypetlife.co.kr/content/uploads/2019/10/09234652/kate-stone-matheson-uy5t-CJuIK4-unsplash-780x470.jpg"	alt="${board.board_content }" class="img-responsive">
+											<a class="gallery-box" href="https://images.mypetlife.co.kr/content/uploads/2019/10/09234652/kate-stone-matheson-uy5t-CJuIK4-unsplash-780x470.jpg">
+                              					<input type="hidden" value="${board.board_index }">
+                              					<img src="https://images.mypetlife.co.kr/content/uploads/2019/10/09234652/kate-stone-matheson-uy5t-CJuIK4-unsplash-780x470.jpg"	class="img-responsive">
                            						<div class="gallery-overlay">
-                           							<i class="ion-ios-eye-outline"></i>
+                           							<i>${board.board_title }</i>
+                           						</div>
+                           						<div class="conText">
+                           							<i style="font-size: 2em;">${board.board_content }</i>
                            						</div>
                            					</a>
 										</div>
@@ -102,68 +176,139 @@
             </div>
         </div><!--end wrapper-->
 
-	<!-- <div id="lightboxOverlay" class="lightboxOverlay"></div>
-	<div id="lightbox" class="lightbox">
-		<div class="lb-outerContainer">
-			<div class="lb-container">
-				<img class="lb-image"
-					src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />
-				<div class="lb-nav">
-					<a class="lb-prev" href=""></a><a class="lb-next" href=""></a>
+	<!-- Modal-->
+	<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h5 class='modal-title' id='modalLabel'>제목</h5>
 				</div>
-				<div class="lb-loader">
-					<a class="lb-cancel"></a>
+				<div class='modal-footer'>
+					<div class='content-img'>
+					</div>
+					<div class='modal-body' >
+						<div class="content-body"></div>
+						<div class="reply-container">
+							<ul class='reply-content'></ul>
+						</div>
+						<div class="bottomDiv">
+							<div class="bottomfrm">
+								<input class="addReply" aria-label="댓글 달기..." placeholder="댓글 달기..."autocomplete="off" autocorrect="off">
+								<button class="addBtn" disabled="disabled">게시</button>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="lb-dataContainer">
-			<div class="lb-data">
-				<div class="lb-details">
-					<span class="lb-caption"></span><span class="lb-number"></span>
-				</div>
-				<div class="lb-closeContainer">
-					<a class="lb-close"></a>
-				</div>
-			</div>
-		</div>
-	</div> -->
-
+	</div>
 	<!--Common plugins-->
-        <script src="resources/plugins/jquery/dist/jquery.min.js"></script>
-        <script src="resources/plugins/bootstrap/js/bootstrap.min.js"></script>
-        <script src="resources/plugins/hoe-nav/hoe.js"></script>
-        <script src="resources/plugins/pace/pace.min.js"></script>
-        <script src="resources/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-        <script src="resources/js/app.js"></script>
-        <!--page scripts-->
-        <script src="resources/plugins/lightbox2/dist/js/lightbox.min.js"></script>
-        
-        <script>
-		    function getBoardList(cri) {
-				var csrfHeaderName = "${_csrf.headerName}";
-				var csrfTokenValue = "${_csrf.token}";
-				console.log(cri)
-				$.ajax({
-					url: '/getBoardList',
-					beforeSend: function(xhr) {
-						xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
-					}, 
-					data : JSON.stringify(cri),
-					type: 'POST',
-					dataType:'html',
-					contentType: 'application/json',
-					success: function(result){
-						$(".row").append(result);
+	<script src="/resources/plugins/jquery/dist/jquery.min.js"></script>
+	<script src="/resources/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/resources/plugins/hoe-nav/hoe.js"></script>
+	<script src="/resources/plugins/pace/pace.min.js"></script>
+	<script src="/resources/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="/resources/js/app.js"></script>
+	<!--page scripts-->
+	<script src="/resources/plugins/lightbox2/dist/js/lightbox.js"></script>
+
+	<script src="/resources/js/reply.js"></script>
+	<script>
+		var csrfHeaderName = "${_csrf.headerName}";
+		var csrfTokenValue = "${_csrf.token}";
+	    function getBoardList(cri) {
+			console.log(cri)
+			$.ajax({
+				url: '/getBoardList',
+				beforeSend: function(xhr) {
+					xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+				}, 
+				data : JSON.stringify(cri),
+				type: 'POST',
+				dataType:'html',
+				contentType: 'application/json',
+				success: function(result){
+					$(".row").append(result);
+				}
+			}); // $.ajax
+		}
+		
+	    $(document).ready(function(){
+	    	var bidx;
+	    	$("#moreBtn").on("click", function(e){
+		    	var cri =  {pageNum:2, amount:6};
+		    	getBoardList(cri);
+		    	$(this).remove();
+	    	});
+	    	
+	    	$(".gallery-box").on("click", function(e){
+	    		bidx = $(this).find("input").val();
+	    		var btitle = $(this).find(".gallery-overlay i").text();
+	    		var bcontext = $(this).find(".conText").text();
+	    		console.log(bidx);
+	    		console.log(btitle);
+	    		console.log(bcontext);
+	    		e.preventDefault();
+	    		$("#modalLabel").text(btitle);
+	    		$("#confirmModal .content-img").html('<img src="https://images.mypetlife.co.kr/content/uploads/2019/10/15172658/shutterstock_165754496-1080x865-1024x820.jpg" class="img-responsive">');
+	    		$("#confirmModal .content-body").text(bcontext);
+	    		$("#confirmModal").modal("show");
+	    		replyService.getList({board_index:bidx, page:1}, function(replyCnt, replyList){
+					console.log("replyCnt: " + replyCnt);
+					console.log(replyList);
+					$("#confirmModal .content-reply").html("");
+					
+					var str="";
+					if(replyList==null||replyList.length==0){
+						return;
 					}
-				}); // $.ajax
-			}
-		    $(document).ready(function(){
-		    	$("#moreBtn").on("click", function(e){
-			    	var cri =  {pageNum:2, amount:6};
-			    	getBoardList(cri);
-			    	$(this).remove();
-		    	});
-		    });
-	    </script>
-    </body>
+					for(var i=0, len=replyList.length||0; i<len; i++){
+						str += "<li class='left' data-rno='"+replyList[i].reply_index+"'>";
+						str += "	<div><div class='header'><strong class='primary-font'>[" + replyList[i].reply_index + "] " + replyList[i].user_index + "</strong>";
+						str += "		<small class='pull-right text-muted'>" + replyService.displayTime(replyList[i].reply_regdate) + "</small></div>";
+						str += "			<p>" + replyList[i].reply_content + "</p></div></li>";
+					}
+
+					$("#confirmModal .reply-content").html(str);
+					//console.log(str);
+	    		});
+	    	});
+	    	
+	    	$(".addReply").on("keydown keyup keypress", function(e){
+	    		$(".addBtn").attr("disabled", false);
+	    		var inputVal = $(".addReply").val();
+	    		if(inputVal == ''){
+		    		$(".addBtn").attr("disabled", true);
+		    		$(".addBtn").css("opacity", ".3");
+	    		}
+	    		else{
+		    		$(".addBtn").css("opacity", "1");
+	    		}
+			});
+	    	
+    		$(".addBtn").on("click", function(e){
+	    		var inputVal = $(".addReply");
+	    		if(inputVal.val() == ''){
+	    			$(".addReply").focus();
+	    		} else{
+	    			var reply = {
+	    					board_index: bidx,
+	    					user_index: '1',
+	    					reply_content: inputVal.val()
+	    			};
+	    			console.log(reply);
+	    			replyService.add(reply, function(result){
+	    				alert(result);
+	    				inputVal.val("");
+			    		$(".addBtn").attr("disabled", true);
+			    		$(".addBtn").css("opacity", ".3");
+	    			});
+	    		}
+    		});
+	    });
+    </script>
+</body>
 </html>

@@ -1,7 +1,5 @@
 package org.zerock.controller;
 
-import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,21 +9,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.ReplyPageDTO;
 import org.zerock.domain.ReplyVO;
 import org.zerock.service.ReplyService;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @RequestMapping("/replies/")
 @RestController
 @Log4j
+@AllArgsConstructor
 public class ReplyController {
 	
 	private ReplyService service;
 
+	//@PreAuthorize("isAuthenticated()")
 	@PostMapping(value = "/new", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
 	public ResponseEntity<String> registReply(@RequestBody ReplyVO vo) {
 		log.info("ReplyVO: " + vo);
@@ -35,11 +36,11 @@ public class ReplyController {
 	}
 	
 	@GetMapping(value = "/pages/{board_index}/{page}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<ReplyVO>> getReplyList(@PathVariable("page") int page, @PathVariable("board_index") Long board_index) {
+	public ResponseEntity<ReplyPageDTO> getReplyList(@PathVariable("page") int page, @PathVariable("board_index") Long board_index) {
 		Criteria cri = new Criteria(page, 4);
 		log.info("get Reply List board_index: " + board_index);
 		log.info("cri: " + cri);
-		return new ResponseEntity<>(service.getReplyList(cri, board_index), HttpStatus.OK);
+		return new ResponseEntity<>(service.getListPage(cri, board_index), HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/{reply_index}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
@@ -47,18 +48,12 @@ public class ReplyController {
 		log.info("get reply: " + reply_index);
 		return new ResponseEntity<>(service.getReply(reply_index), HttpStatus.OK);
 	}
-
+	
+	//@PreAuthorize("isAuthenticated()")
 	@DeleteMapping(value = "/{reply_index}")
 	public ResponseEntity<String> removeReply(@RequestBody ReplyVO vo, @PathVariable("reply_index") Long reply_index) {
 		log.info("remove reply: " + reply_index);
-		return service.removeReply(reply_index) == 1 ? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		return service.removeReply(vo) == 1 ? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
-	@RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH}, value = "/{reply_index}", consumes = "application/json")
-	public ResponseEntity<String> modifyReply(@RequestBody ReplyVO vo, @PathVariable("reply_index") Long reply_index) {
-		vo.setBoard_index(reply_index);
-		log.info("rno: " + reply_index);
-		log.info("modify: " + vo);
-		return service.modifyReply(vo) == 1 ? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-	}
+
 }

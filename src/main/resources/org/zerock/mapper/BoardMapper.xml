@@ -20,4 +20,8 @@
 				) WHERE rn > (#{pageNum} -1) * #{amount} 
 		]]>
 	</select>
+	
+	<update id="updateReplyCnt">
+		update SPOS_BOARD set replyCnt = replyCnt + #{amount} where board_index = #{board_index}  
+	</update>
 </mapper>

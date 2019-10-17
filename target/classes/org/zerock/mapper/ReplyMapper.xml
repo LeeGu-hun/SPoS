@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.ReplyMapper">
+	<insert id="insert">
+		insert into spos_reply (reply_index, board_index, user_index, reply_content, reply_special)
+		values (seq_reply.nextval, #{board_index}, #{user_index}, #{reply_content}, #{reply_special})
+	</insert>
+
+	<select id="read" resultType="org.zerock.domain.ReplyVO">
+		select * from spos_reply where reply_index=#{reply_index}
+	</select>
+
+	<delete id="delete">
+		delete from spos_reply where reply_index=#{reply_index}
+	</delete>
+
+	<select id="getListWithPaging" resultType="org.zerock.domain.ReplyVO">
+		<![CDATA[
+			SELECT reply_index, board_index, user_index, to_char(reply_regdate, 'YYYY-MM-DD HH24:MI:SS') as reply_regdate, reply_content, reply_special 
+				FROM (
+					select /*+ index_desc(spos_reply spos_reply_pk) */ rownum rn, reply_index, board_index, user_index, reply_regdate, reply_content, reply_special 
+						from spos_reply 
+						where 
+							board_index = #{board_index} 
+							and rownum <= #{cri.pageNum} * #{cri.amount}
+				) WHERE rn > (#{cri.pageNum} -1) * #{cri.amount} 
+		]]>
+	</select>
+	
+	<select id="getCountByBidx" resultType="int">
+		<![CDATA[
+			select count(reply_index) from spos_reply where board_index = #{board_index}
+		]]>
+	</select>
+</mapper>

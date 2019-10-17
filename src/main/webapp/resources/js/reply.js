@@ -8,45 +8,13 @@ var replyService = (function() {
 			type : 'post',
 			url : '/replies/new',
 			data : JSON.stringify(reply),
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			}, 
 			contentType : "application/json; charset=utf-8",
 			success : function(result, status, xhr) {
 				if (callback) {
 					callback(result);
-				}
-			},
-			error : function(xhr, status, er) {
-				if (error) {
-					error(er);
-				}
-			}
-		})
-	}
-
-	function getList(param, callback, error) {
-		var board_index = param.board_index;
-		var page = param.page || 1;
-		$.getJSON("/replies/pages/" + board_index + "/" + page + ".json",
-				function(data) {
-					if (callback) {
-//						callback(data);
-						callback(data.replyCnt, data.list);
-					}
-				}).fail(function(xhr, status, err) {
-					if (error) {
-						error();
-					}
-				});
-	}
-
-	function remove(reply_index, replyer, callback, error) {
-		$.ajax({
-			type : 'delete',
-			url : '/replies/' + reply_index,
-			data : JSON.stringify({reply_index:reply_index, replyer:replyer}),
-			contentType : "application/json; charset=utf-8",
-			success : function(deleteResult, status, xhr) {
-				if (callback) {
-					callback(deleteResult);
 				}
 			},
 			error : function(xhr, status, er) {
@@ -57,17 +25,30 @@ var replyService = (function() {
 		});
 	}
 
-	function update(reply, callback, error) {
-		console.log("reply_index: " + reply.reply_index);
+	function getList(param, callback, error) {
+		var board_index = param.board_index;
+		var page = param.page || 1;
+		$.getJSON("/replies/pages/" + board_index + "/" + page + ".json",
+				function(data) {
+					if (callback) {
+						callback(data.replyCnt, data.replyList);
+					}
+				}).fail(function(xhr, status, err) {
+					if (error) {
+						error();
+					}
+				});
+	}
 
+	function remove(reply_index, user_index, callback, error) {
 		$.ajax({
-			type : 'put',
-			url : '/replies/' + reply.reply_index,
-			data : JSON.stringify(reply),
+			type : 'delete',
+			url : '/replies/' + reply_index,
+			data : JSON.stringify({reply_index:reply_index, user_index:user_index}),
 			contentType : "application/json; charset=utf-8",
-			success : function(result, status, xhr) {
+			success : function(deleteResult, status, xhr) {
 				if (callback) {
-					callback(result);
+					callback(deleteResult);
 				}
 			},
 			error : function(xhr, status, er) {
@@ -117,7 +98,6 @@ var replyService = (function() {
 		add : add,
 		getList : getList,
 		remove : remove,
-		update : update,
 		get : get,
 		displayTime : displayTime
 	};
