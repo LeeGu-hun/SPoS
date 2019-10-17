@@ -25,6 +25,42 @@ body, #hoeapp-wrapper {
   background-color: #fbfcfd;
 }
 
+#headline-top{
+	-webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  border-radius: 0px;
+  border-bottom: 0px;
+  padding: 15px;
+  position: relative;
+}
+
+#headline-top img{
+	position:relative;
+	width:140px;
+	height:140px;
+	border-radius: 70px;
+	-moz-border-radius : 70px;
+	-khtml-border-radius : 70px;
+	-webkit-border-radius : 70px;
+	margin-left : 10px;
+}
+
+#headline-top ul{
+	text-align:center;
+}
+
+#headline-top ul li{
+	display : inline-block;
+	border-left:3px solid #999;
+	font:bold 20px Dotum;
+	padding : 0 10px;
+}
+
+#headline-top ul li:first-child{
+	border-left:none;
+}
+
 a {
   color: #36c6d3;
 }
@@ -557,13 +593,38 @@ Button style
 /*
 Top bar styles
 */
+
+.search-form-div form {
+	position : relative;
+	margin-left:30px;
+	height : 20px;
+}
+
+.search-form-div form select {
+	border : 1px solid rgba(197, 214, 222, 0.7);
+}
+
+.search-input {
+	border : 1px solid rgba(197, 214, 222, 0.7);
+	position : relative;  
+	margin-left : 10px;
+	background-color: #fff;
+}
+
+.search-form-div form i {
+	position : absolute;
+	top: 5%;
+	right:1px;
+}
+
 .top-search form {
   position: relative;
   width: 180px;
-  margin-left: 10px;
+  margin-left: 50px;
 }
 .top-search form .form-control {
   border: 0px;
+  position: relative;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   -ms-border-radius: 0px;
@@ -575,11 +636,13 @@ Top bar styles
   height: 50px;
   line-height: 50px;
   background-color: #fff;
+  margin-left: 50px;
+  margin-top:0px;
 }
 .top-search form i {
   position: absolute;
   top: 5%;
-  right: 10px;
+  right: 30px;
 }
 
 .hoe-right-header ul > li {
@@ -858,18 +921,28 @@ body #hoe-left-panel .panel-list > li.hoe-has-menu > ul.hoe-sub-menu, body #hoe-
   font-size: 6px;
 }
 
+#hoe-left-panel-imt .panel-list > li.hoe-has-menew span.menu-text:before{
+	content: "\f111";
+  font-size: 6px;
+}
+
+#panel-img {
+	text-transform: capitalize;
+}
+
 .hoe-left-header {
   background-color: #36c6d3;
 }
 
 #hoe-left-panel .panel-list ul.hoe-sub-menu li > a {
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 
 #hoe-left-panel .panel-list > li > a {
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   font-weight: 600;
   font-size: 14px;
+  overflow: hidden;
 }
 
 /*
