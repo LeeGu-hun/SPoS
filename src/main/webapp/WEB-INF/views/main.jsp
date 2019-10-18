@@ -90,6 +90,27 @@
 			.reply-container{
 			 	margin:1%;
 			}
+			.col-sm-6{
+				width: 100%;
+				padding: 0px;
+			}
+			.user-card {
+			    padding: 10px;
+			}
+			.user_img{
+				height: 40px;
+				width: 40px;
+				margin-right : 10px;
+			}
+			.replyTxt{
+			    float: left;
+			    word-break: break-all;
+			    width: 80%;
+			}
+			.reply-content{
+				list-style-type: none;
+				padding-left: 10px;
+			}
 			.gallery-overlay i {
 				word-break: break-all;
 				text-align: center;
@@ -106,7 +127,7 @@
 				border: 0px;
 				padding-right: 2px;
 			}
-			.addReply{
+			.form-control{
 				width: 80%;
 				float:left;
 				border: 0px;
@@ -196,7 +217,7 @@
 						</div>
 						<div class="bottomDiv">
 							<div class="bottomfrm">
-								<input class="addReply" aria-label="댓글 달기..." placeholder="댓글 달기..."autocomplete="off" autocorrect="off">
+								<input class="form-control" aria-label="댓글 달기..." placeholder="댓글 달기..."autocomplete="off" autocorrect="off">
 								<button class="addBtn" disabled="disabled">게시</button>
 							</div>
 						</div>
@@ -205,6 +226,7 @@
 			</div>
 		</div>
 	</div>
+
 	<!--Common plugins-->
 	<script src="/resources/plugins/jquery/dist/jquery.min.js"></script>
 	<script src="/resources/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -219,8 +241,8 @@
 	<script>
 		var csrfHeaderName = "${_csrf.headerName}";
 		var csrfTokenValue = "${_csrf.token}";
+    	var bidx;
 	    function getBoardList(cri) {
-			console.log(cri)
 			$.ajax({
 				url: '/getBoardList',
 				beforeSend: function(xhr) {
@@ -235,9 +257,27 @@
 				}
 			}); // $.ajax
 		}
+	    function showList(page, option){
+	    	replyService.getList({board_index:bidx, page:1}, function(replyCnt, replyList){
+				var str="";
+				if(replyList==null||replyList.length==0){
+					return;
+				}
+				for(var i=0, len=replyList.length||0; i<len; i++){
+					str += "<li class='col-sm-6 margin-b-10' data-rno='"+replyList[i].reply_index+"'>";
+					str += "	<div class='user-card clearfix'>";
+					str += "		<img class='user_img' src='resources/images/avtar-1.jpg' alt='' width='90'>";
+					str += "		<div class='user-card-content'>";
+					str += "			<h4 class='replyTxt'>"+replyList[i].reply_content+"</h4>";
+					str += "		<small class='pull-right text-muted'>" + replyService.displayTime(replyList[i].reply_regdate) + "</small>";
+					str += "		</div></div></li>";
+				}
+
+				$("#confirmModal .reply-content").html(str);
+    		});
+		} // end showList
 		
 	    $(document).ready(function(){
-	    	var bidx;
 	    	$("#moreBtn").on("click", function(e){
 		    	var cri =  {pageNum:2, amount:6};
 		    	getBoardList(cri);
@@ -248,38 +288,18 @@
 	    		bidx = $(this).find("input").val();
 	    		var btitle = $(this).find(".gallery-overlay i").text();
 	    		var bcontext = $(this).find(".conText").text();
-	    		console.log(bidx);
-	    		console.log(btitle);
-	    		console.log(bcontext);
 	    		e.preventDefault();
 	    		$("#modalLabel").text(btitle);
 	    		$("#confirmModal .content-img").html('<img src="https://images.mypetlife.co.kr/content/uploads/2019/10/15172658/shutterstock_165754496-1080x865-1024x820.jpg" class="img-responsive">');
 	    		$("#confirmModal .content-body").text(bcontext);
 	    		$("#confirmModal").modal("show");
-	    		replyService.getList({board_index:bidx, page:1}, function(replyCnt, replyList){
-					console.log("replyCnt: " + replyCnt);
-					console.log(replyList);
-					$("#confirmModal .content-reply").html("");
-					
-					var str="";
-					if(replyList==null||replyList.length==0){
-						return;
-					}
-					for(var i=0, len=replyList.length||0; i<len; i++){
-						str += "<li class='left' data-rno='"+replyList[i].reply_index+"'>";
-						str += "	<div><div class='header'><strong class='primary-font'>[" + replyList[i].reply_index + "] " + replyList[i].user_index + "</strong>";
-						str += "		<small class='pull-right text-muted'>" + replyService.displayTime(replyList[i].reply_regdate) + "</small></div>";
-						str += "			<p>" + replyList[i].reply_content + "</p></div></li>";
-					}
-
-					$("#confirmModal .reply-content").html(str);
-					//console.log(str);
-	    		});
+	    		
+	    		showList(1);
 	    	});
 	    	
-	    	$(".addReply").on("keydown keyup keypress", function(e){
+	    	$(".form-control").on("keydown keyup keypress", function(e){
 	    		$(".addBtn").attr("disabled", false);
-	    		var inputVal = $(".addReply").val();
+	    		var inputVal = $(".form-control").val();
 	    		if(inputVal == ''){
 		    		$(".addBtn").attr("disabled", true);
 		    		$(".addBtn").css("opacity", ".3");
@@ -290,21 +310,20 @@
 			});
 	    	
     		$(".addBtn").on("click", function(e){
-	    		var inputVal = $(".addReply");
+	    		var inputVal = $(".form-control");
 	    		if(inputVal.val() == ''){
-	    			$(".addReply").focus();
+	    			$(".form-control").focus();
 	    		} else{
 	    			var reply = {
 	    					board_index: bidx,
 	    					user_index: '1',
 	    					reply_content: inputVal.val()
 	    			};
-	    			console.log(reply);
 	    			replyService.add(reply, function(result){
-	    				alert(result);
 	    				inputVal.val("");
 			    		$(".addBtn").attr("disabled", true);
 			    		$(".addBtn").css("opacity", ".3");
+			    		showList(1);
 	    			});
 	    		}
     		});
