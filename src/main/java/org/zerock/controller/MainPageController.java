@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
-import org.zerock.service.MainPageService;
+import org.zerock.service.BoardService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -18,12 +18,14 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 @Log4j
 public class MainPageController {
-	private MainPageService service;
+	private BoardService service;
 	
 	@GetMapping("/main")
 	public String main(Model model) {
-		model.addAttribute("list", service.getList());
-		log.info(service.getList());
+		List<BoardVO> tempVO = service.getList();
+		tempVO.forEach(e -> e.setAttachList(service.getAttachList(e.getBoard_index())));
+		log.info("List : " + tempVO);
+		model.addAttribute("list", tempVO);
 		return "main";
 	}
 	
@@ -40,4 +42,11 @@ public class MainPageController {
 		model.addAttribute("listMore", moreList);
 		model.addAttribute("pageMaker", cri);
 	}
+	
+//	@GetMapping(value = "/getAttachList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+//	@ResponseBody
+//	public ResponseEntity<List<BoardAttachVO>> getAttachList(Long board_index) {
+//		log.info("getAttachList : " + board_index);
+//		return new ResponseEntity<>(service.getAttachList(board_index), HttpStatus.OK);
+//	}
 }

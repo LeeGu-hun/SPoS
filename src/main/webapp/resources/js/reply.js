@@ -27,8 +27,8 @@ var replyService = (function() {
 
 	function getList(param, callback, error) {
 		var board_index = param.board_index;
-		var page = param.page || 1;
-		$.getJSON("/replies/pages/" + board_index + "/" + page + ".json",
+		var amount = param.amount || 1;
+		$.getJSON("/replies/amount/" + board_index + "/" + amount + ".json",
 				function(data) {
 					if (callback) {
 						callback(data.replyCnt, data.replyList);
@@ -45,6 +45,9 @@ var replyService = (function() {
 			type : 'delete',
 			url : '/replies/' + reply_index,
 			data : JSON.stringify({reply_index:reply_index, user_index:user_index}),
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			}, 
 			contentType : "application/json; charset=utf-8",
 			success : function(deleteResult, status, xhr) {
 				if (callback) {

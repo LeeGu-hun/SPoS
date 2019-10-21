@@ -25,13 +25,15 @@
 				</h2>
 			</header>
 			<div class="panle-body">
-				<a class="gallery-box"
-					href="https://images.mypetlife.co.kr/content/uploads/2019/10/09234652/kate-stone-matheson-uy5t-CJuIK4-unsplash-780x470.jpg"
-					data-lightbox="gallery"> <img
-					src="https://images.mypetlife.co.kr/content/uploads/2019/10/09234652/kate-stone-matheson-uy5t-CJuIK4-unsplash-780x470.jpg"
-					alt="${boardMore.board_content }" class="img-responsive">
+				<a class="gallery-box" href="https://images.mypetlife.co.kr/content/uploads/2019/10/09234652/kate-stone-matheson-uy5t-CJuIK4-unsplash-780x470.jpg"> 
+					<input class="bidx" type="hidden" value="${boardMore.board_index }">
+					<input class="bdate" type="hidden" value="${boardMore.board_updatedate }">
+					<img src="https://images.mypetlife.co.kr/content/uploads/2019/10/09234652/kate-stone-matheson-uy5t-CJuIK4-unsplash-780x470.jpg" class="img-responsive">
 					<div class="gallery-overlay">
-						<i class="ion-ios-eye-outline"></i>
+						<i>${board.board_title }</i>
+					</div>
+					<div class="conText">
+						<i style="font-size: 2em;">${boardMore.board_content }</i>
 					</div>
 				</a>
 			</div>

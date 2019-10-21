@@ -63,7 +63,7 @@
 				transform: translate( -50%, -50% );
 			}
 			.modal-dialog{
-				width: fit-content;
+				width: 90%;
 				margin-top: 5%;
 			}
 			.modal-header{
@@ -78,6 +78,10 @@
 				height:100%;
 				float:left;
 			}
+			.content-img img{
+				width:100%;
+				height:100%;
+			}
 			.modal-body{
 				width:30%;
 				height:100%;
@@ -86,8 +90,15 @@
 			}
 			.content-body{
 			 	margin:1%;
+			    overflow: hidden;
+			    text-overflow: ellipsis;
+			    padding-left: 10px;
+			    padding-top: 10px;
 			}
-			.reply-container{
+			.content-body .user-card{
+			    background-color: floralwhite;
+			}
+			.reply-body{
 			 	margin:1%;
 			}
 			.col-sm-6{
@@ -96,6 +107,7 @@
 			}
 			.user-card {
 			    padding: 10px;
+			    border-width: 0px;
 			}
 			.user_img{
 				height: 40px;
@@ -105,11 +117,13 @@
 			.replyTxt{
 			    float: left;
 			    word-break: break-all;
-			    width: 80%;
+			    width: 70%;
 			}
 			.reply-content{
 				list-style-type: none;
 				padding-left: 10px;
+				height:35em;
+			    overflow-y: auto;
 			}
 			.gallery-overlay i {
 				word-break: break-all;
@@ -122,7 +136,7 @@
 			.bottomDiv {
 				width: inherit;
 				position : fixed;
-				bottom: 0.01%;
+				bottom: -0.10%;
 				padding-bottom: 2px;
 				border: 0px;
 				padding-right: 2px;
@@ -142,6 +156,8 @@
 				padding: 0px;
 				float:left;
 				color: rgba(var(--h5f,56,151,240),1);
+			}
+			.addBtn span{
 				font-weight : 600;
 		    	opacity : .3;
 			}
@@ -176,9 +192,10 @@
 	                                        <h2 class="panel-title">${board.board_title }<span class="helping-text">by ${board.user_index }</span></h2>
 	                                    </header>
 	                                    <div class="panle-body">
-											<a class="gallery-box" href="https://images.mypetlife.co.kr/content/uploads/2019/10/09234652/kate-stone-matheson-uy5t-CJuIK4-unsplash-780x470.jpg">
-                              					<input type="hidden" value="${board.board_index }">
-                              					<img src="https://images.mypetlife.co.kr/content/uploads/2019/10/09234652/kate-stone-matheson-uy5t-CJuIK4-unsplash-780x470.jpg"	class="img-responsive">
+											<a class="gallery-box" href="#">
+                              					<input class="bidx" type="hidden" value="${board.board_index }">
+                              					<input class="bdate" type="hidden" value="${board.board_updatedate }">
+                              					<img src="display?fileName=${board.attachList[0].picture_path }/${board.attachList[0].picture_uuid }_${board.attachList[0].picture_name }"	class="img-responsive">
                            						<div class="gallery-overlay">
                            							<i>${board.board_title }</i>
                            						</div>
@@ -212,13 +229,13 @@
 					</div>
 					<div class='modal-body' >
 						<div class="content-body"></div>
-						<div class="reply-container">
+						<div class="reply-body">
 							<ul class='reply-content'></ul>
 						</div>
 						<div class="bottomDiv">
 							<div class="bottomfrm">
 								<input class="form-control" aria-label="댓글 달기..." placeholder="댓글 달기..."autocomplete="off" autocorrect="off">
-								<button class="addBtn" disabled="disabled">게시</button>
+								<button class="addBtn" disabled="disabled"><span>게시</span></button>
 							</div>
 						</div>
 					</div>
@@ -242,6 +259,8 @@
 		var csrfHeaderName = "${_csrf.headerName}";
 		var csrfTokenValue = "${_csrf.token}";
     	var bidx;
+    	var replyLen;
+    	
 	    function getBoardList(cri) {
 			$.ajax({
 				url: '/getBoardList',
@@ -257,23 +276,26 @@
 				}
 			}); // $.ajax
 		}
-	    function showList(page, option){
-	    	replyService.getList({board_index:bidx, page:1}, function(replyCnt, replyList){
+	    function showList(amount){
+	    	replyService.getList({board_index:bidx, amount:amount}, function(replyCnt, replyList){
 				var str="";
-				if(replyList==null||replyList.length==0){
+				replyLen = replyList.length;
+				if(replyList==null||replyLen==0){
+					$("#confirmModal .reply-content").html(str);
 					return;
 				}
-				for(var i=0, len=replyList.length||0; i<len; i++){
+				for(var i=0, len=replyLen||0; i<len; i++){
 					str += "<li class='col-sm-6 margin-b-10' data-rno='"+replyList[i].reply_index+"'>";
 					str += "	<div class='user-card clearfix'>";
 					str += "		<img class='user_img' src='resources/images/avtar-1.jpg' alt='' width='90'>";
 					str += "		<div class='user-card-content'>";
 					str += "			<h4 class='replyTxt'>"+replyList[i].reply_content+"</h4>";
-					str += "		<small class='pull-right text-muted'>" + replyService.displayTime(replyList[i].reply_regdate) + "</small>";
+					str += "		<small class='pull-right text-muted'>" + replyService.displayTime(replyList[i].reply_regdate) + "&nbsp&nbsp<a href='#' class='panel-action panel-action-dismiss reply-dismiss' data-panel-dismiss=''></a></small>";
 					str += "		</div></div></li>";
 				}
-
+				str += "<button class='btn btn-primary btn-block btn-lg' style='width: 100%;'>more</button>"
 				$("#confirmModal .reply-content").html(str);
+				//$('#confirmModal .reply-content').animate({scrollTop: $('#confirmModal .reply-content').prop("scrollHeight")}, 500);
     		});
 		} // end showList
 		
@@ -284,17 +306,33 @@
 		    	$(this).remove();
 	    	});
 	    	
-	    	$(".gallery-box").on("click", function(e){
-	    		bidx = $(this).find("input").val();
+	    	$("#main-content .row").on("click", ".gallery-box", function(e){
+	    		e.preventDefault();
+	    		bidx = $(this).find(".bidx").val();
 	    		var btitle = $(this).find(".gallery-overlay i").text();
 	    		var bcontext = $(this).find(".conText").text();
-	    		e.preventDefault();
+	    		var bpic = $(this).find("img").clone();
+	    		
+	    		var tempStr = $(this).find(".bdate").val().split('KST');
+	    		var bdate = new Date(tempStr[0]+tempStr[1]);
+	    		
 	    		$("#modalLabel").text(btitle);
-	    		$("#confirmModal .content-img").html('<img src="https://images.mypetlife.co.kr/content/uploads/2019/10/15172658/shutterstock_165754496-1080x865-1024x820.jpg" class="img-responsive">');
-	    		$("#confirmModal .content-body").text(bcontext);
+	    					
+	    		$("#confirmModal .content-img").html(bpic);
+	    		
+	    		var str = "";
+	    		str += "<div class='col-sm-6 margin-b-10'>";
+				str += "	<div class='user-card clearfix'>";
+				str += "		<img class='user_img' src='resources/images/avtar-1.jpg' alt='' width='90'>";
+				str += "		<div class='user-card-content'>";
+				str += "			<h4 class='replyTxt'>"+bcontext+"</h4>";
+				str += "		<small class='pull-right text-muted'>" + replyService.displayTime(bdate) + "</small>";
+				str += "		</div></div></div>";
+				
+	    		$("#confirmModal .content-body").html(str);
 	    		$("#confirmModal").modal("show");
 	    		
-	    		showList(1);
+	    		showList(4);
 	    	});
 	    	
 	    	$(".form-control").on("keydown keyup keypress", function(e){
@@ -302,10 +340,10 @@
 	    		var inputVal = $(".form-control").val();
 	    		if(inputVal == ''){
 		    		$(".addBtn").attr("disabled", true);
-		    		$(".addBtn").css("opacity", ".3");
+		    		$(".addBtn span").css("opacity", ".3");
 	    		}
 	    		else{
-		    		$(".addBtn").css("opacity", "1");
+		    		$(".addBtn span").css("opacity", "1");
 	    		}
 			});
 	    	
@@ -323,9 +361,24 @@
 	    				inputVal.val("");
 			    		$(".addBtn").attr("disabled", true);
 			    		$(".addBtn").css("opacity", ".3");
-			    		showList(1);
+			    		replyLen = replyLen + 1;
+			    		showList(replyLen);
 	    			});
 	    		}
+    		});
+
+    		$(".reply-content").on("click", ".panel-action", function(e){
+	    		e.preventDefault();
+	    		var ridx = $(this).parent().parent().parent().parent().attr("data-rno");
+		    	replyService.remove(ridx, "1", function(result){
+		    		showList(replyLen);
+		    	});
+    		});
+    		
+    		$(".reply-content").on("click", ".btn", function(e){
+	    		e.preventDefault();
+	    		replyLen = replyLen + 4;
+	    		showList(replyLen);
     		});
 	    });
     </script>

@@ -35,9 +35,9 @@ public class ReplyController {
 		return insertCount == 1 ? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@GetMapping(value = "/pages/{board_index}/{page}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<ReplyPageDTO> getReplyList(@PathVariable("page") int page, @PathVariable("board_index") Long board_index) {
-		Criteria cri = new Criteria(page, 4);
+	@GetMapping(value = "/amount/{board_index}/{amount}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<ReplyPageDTO> getReplyList(@PathVariable("amount") int amount, @PathVariable("board_index") Long board_index) {
+		Criteria cri = new Criteria(1, amount);
 		log.info("get Reply List board_index: " + board_index);
 		log.info("cri: " + cri);
 		return new ResponseEntity<>(service.getListPage(cri, board_index), HttpStatus.OK);
