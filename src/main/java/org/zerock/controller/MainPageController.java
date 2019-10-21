@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
 import org.zerock.service.BoardService;
@@ -41,6 +42,25 @@ public class MainPageController {
 		}
 		model.addAttribute("listMore", moreList);
 		model.addAttribute("pageMaker", cri);
+	}
+	
+	@PostMapping("/register")
+	public String register(BoardVO board) {
+	//public String register(BoardVO board, RedirectAttributes rttr) {
+//		new BoardRegisterValidator().validate(board, errors);
+//		if(errors.hasErrors()) {
+//			log.info(errors.getAllErrors());
+//			return "/board/register";
+//		}
+		log.info("==================================");
+		log.info("register: " + board);
+		
+//		if(board.getAttachList()!=null) {
+//			board.getAttachList().forEach(attach -> log.info(attach));
+//		}
+		log.info("==================================");
+		service.register(board);
+		return "redirect:/";
 	}
 	
 //	@GetMapping(value = "/getAttachList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)

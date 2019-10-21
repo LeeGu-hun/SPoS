@@ -24,4 +24,12 @@
 	<update id="updateReplyCnt">
 		update SPOS_BOARD set replyCnt = replyCnt + #{amount} where board_index = #{board_index}  
 	</update>
+	
+	<insert id="insertSelectKey">
+		<selectKey keyProperty="board_index" order="BEFORE" resultType="long">
+			select seq_spos_board.nextval from dual
+		</selectKey>
+		insert into spos_board(board_index, user_index, board_title, board_content)
+		values(#{board_index}, #{user_index}, #{board_title}, #{board_content})
+	</insert>
 </mapper>

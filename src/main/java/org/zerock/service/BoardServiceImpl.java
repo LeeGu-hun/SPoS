@@ -11,8 +11,10 @@ import org.zerock.mapper.BoardAttachMapper;
 import org.zerock.mapper.BoardMapper;
 
 import lombok.Setter;
+import lombok.extern.log4j.Log4j;
 
 @Service
+@Log4j
 public class BoardServiceImpl implements BoardService {
 	@Setter(onMethod_ = @Autowired)
 	private BoardMapper boardMapper;
@@ -33,5 +35,19 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardAttachVO> getAttachList(Long board_index) {
 		return boardAttachMapper.findByBno(board_index);
+	}
+
+	@Override
+	public void register(BoardVO board) {
+		log.info("regist..................." + board);
+		boardMapper.insertSelectKey(board);
+		
+		if(board.getAttachList() == null || board.getAttachList().size() <= 0)
+			return;
+		
+		board.getAttachList().forEach(attach -> {
+			attach.setBoard_index(board.getBoard_index());
+			boardAttachMapper.insert(attach);
+		});
 	}
 }

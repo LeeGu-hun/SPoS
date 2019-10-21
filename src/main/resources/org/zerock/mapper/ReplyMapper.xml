@@ -3,7 +3,7 @@
 <mapper namespace="org.zerock.mapper.ReplyMapper">
 	<insert id="insert">
 		insert into spos_reply (reply_index, board_index, user_index, reply_content, reply_special)
-		values (seq_reply.nextval, #{board_index}, #{user_index}, #{reply_content}, #{reply_special})
+		values (seq_spos_reply.nextval, #{board_index}, #{user_index}, #{reply_content}, #{reply_special})
 	</insert>
 
 	<select id="read" resultType="org.zerock.domain.ReplyVO">

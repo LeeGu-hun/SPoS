@@ -1,597 +1,256 @@
 <%@ page language="java" pageEncoding="UTF-8"
 	contentType="text/html; charset=UTF-8"%>
-<!DOCTYPE html>
-<html lang="kr">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>임시 페이지입니다</title>
+<%@include file="/WEB-INF/views/include/header.jsp"%>
+<!--start main content-->
+	<link href="resources/css/home.css" rel="stylesheet">
 
-        <!-- Bootstrap -->
-        <link href="resources/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <!--side menu plugin-->
-        <link href="resources/plugins/hoe-nav/hoe.css" rel="stylesheet">
-        <!-- icons-->
-        <link href="resources/plugins/ionicons/css/ionicons.min.css" rel="stylesheet">
-        <link href="resources/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <link href="resources/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
-        <link href="resources/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
-        <!--template custom css file-->
-        <link href="resources/css/style.css" rel="stylesheet">
-
-        <script src="resources/js/modernizr.js"></script>
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-        <style>
-        	#main-content {
-        		margin-right: 230px;
-        	}
-        	.panel {
-	            align-items: center;
-	            justify-content: center; 
-        	}
-        	.panel-body {
-        		text-align: center;
-        		background-size:100% 100%;
-	            overflow:hidden;
-	            align-items: center;
-	            justify-content: center; 
-				height: 400px;
-        	}
-			.all-over-thumb-link {
-				display:block; 
-				height:100%; 
-				width:100%; 
-			}
+	<div class="space-30"></div>
+		<div class="container">
+			<div id="headline-top">
+				<img alt="asdwd" src="resources/images/avtar-1.jpg"> <span
+					class="menu-text">김개똥</span>
+				<ul>
+					<li><a href="#"><i class="fa fa-home"></i>&nbsp;타임라인</a></li>
+					<li><a href="#"><i class="fa fa-paw"></i>&nbsp;내 반려동물</a></li>
+					<li><a href="#"><i class="fa fa-user"></i>&nbsp;친구</a></li>
+					<li><a href="#"><i class="fa fa-info"></i>&nbsp;내 정보</a></li>
+				</ul>
+			</div>
 			
-        </style>
-    </head>
-    <body hoe-navigation-type="vertical" hoe-nav-placement="left" theme-layout="wide-layout">
-
-        <!--side navigation start-->
-        <div id="hoeapp-wrapper" class="hoe-hide-lpanel" hoe-device-type="desktop">
-            <header id="hoe-header" hoe-lpanel-effect="shrink">
-                <div class="hoe-left-header">
-                    <a href="#"> A<span>SSA33N</span></a>
-                    <span class="hoe-sidebar-toggle"><a href="#"></a></span>
-                </div>
-
-                <div class="hoe-right-header" hoe-position-type="relative">
-                    <span class="hoe-sidebar-toggle"><a href="#"></a></span>
-                    <ul class="left-navbar">
-                        <li>
-                            <div class="top-search hidden-xs">
-                                <form>
-                                    <input type="text" class="form-control" placeholder="Search here">
-                                    <i class="ion-search"></i>
-                                </form>
-                            </div>
-                        </li>
-                    </ul>
-                    <a href="index" >index로</a><a href="main" >진짜home으로</a>
-                    <ul class="right-navbar navbar-right">
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"> <i class="ion-ios-bell-outline"></i> <span class="label label-danger">4</span></a>
-                            <ul class="dropdown-menu dropdown-menu-scale lg-dropdown notifications">
-                                <li> <p>You have 3 new notifications <a href="#"> Mark all Read</a></p></li>
-                                <li class="unread-notifications">
-                                    <a href="#">
-                                        <i class="ion-ios-email-outline pull-right"></i>
-                                        <span class="line">You have 8 Messages</span>
-                                        <span class="small-line">3 Minutes ago</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="ion-social-twitter-outline pull-right"></i>
-                                        <span class="line">You have 3 new followers</span>
-                                        <span class="small-line">8 Minutes ago</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="ion-ios-download-outline pull-right"></i>
-                                        <span class="line">Download Complete</span>
-                                        <span class="small-line">6 Minutes ago</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><img src="resources/images/us.png" alt=""> English</a>
-                            <ul class="dropdown-menu dropdown-menu-scale lang-dropdown">
-                                <li><a href="#"><img src="resources/images/us.png" alt=""> English </a></li>
-                                <li><a href="#"><img src="resources/images/es.png" alt=""> Spanish </a></li>
-                                <li><a href="#"><img src="resources/images/tr.png" alt=""> Turkish </a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><img src="resources/images/avtar.png" alt="" width="30" class="img-circle"> Emily Doe</a>
-                            <ul class="dropdown-menu dropdown-menu-scale user-dropdown">
-                                <li><a href="#"><i class="ion-email-unread"></i> Inbox <span class="label label-warning">3</span></a></li>
-                                <li><a href="#"><i class="ion-person"></i> Profile </a></li>
-                                <li><a href="#"><i class="ion-settings"></i> Settings <span class="label label-primary">3/9</span></a></li>
-                                <li><a href="#"><i class="ion-calendar"></i> Calendar </a></li>
-                                <li><a href="#"><i class="ion-ios-compose"></i> Tasks </a></li>
-                                <li><a href="#"><i class="ion-log-out"></i> Logout </a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </header>
-            <div id="hoeapp-container" hoe-color-type="lpanel-bg7" hoe-lpanel-effect="shrink">
-                <!--start main content-->
-                <section id="main-content">
-                    <div class="space-30"></div>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="panel">
-                                	<header class="panel-heading">
-                                		<div class="panel-actions">
-                                            <a href="javascript:void(0)" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
-                                            <div class="dropdown pull-left">
-                                                <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="ion-more"></i></a>
-                                                <ul class="dropdown-menu dropdown-menu-scale">
-                                                    <li><a href="javascript:void(0)">다시 보지않기</a></li>
-                                                    <li><a href="javascript:void(0)">다시 보기</a></li>
-                                                    <li><a href="javascript:void(0)">그렇게 하기</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <h2 class="panel-title"><a href="https://mypetlife.co.kr/54167/">자는 고양이</a><span class="helping-text">by 김개똥</span></h2>
-                                    </header>
-                                    <div class="panel-body" style="background-image:url(https://images.mypetlife.co.kr/content/uploads/2019/10/09234652/kate-stone-matheson-uy5t-CJuIK4-unsplash-780x470.jpg);">
-										<a href="https://mypetlife.co.kr/54167/" class="all-over-thumb-link">오늘 내 고양이가 잠을 잤다</a>
+			<div class="row" style="margin:0;">
+				<div class="col-md-6" style="padding:0px;width:100%;">
+					<div class="panel">
+						<header class="panel-heading">
+							<h2 class="panel-title"><span class="helping-text">오늘은 어떤 일이 있었나요?</span></h2>
+						</header>
+						<form id="submitFrm" action="/register" method="post">
+							<div class="panle-body" style="height: 100px;">
+								<div style="float:left"><img alt="asdwd" src="resources/images/avtar-1.jpg" style="width:60px;height:60px;margin:10px;-webkit-border-radius:70px;"></div>
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+								<input name="user_index" type="hidden" value="1">
+								<input name="board_title" type="hidden" value="테스트 제목"> 
+								<textarea class="addArea" name="board_content" placeholder="알려주세요" style="resize:none;float:left;width:80%;margin-top: 10px;"></textarea>
+							</div>
+						</form>
+						<div>
+							<hr style="margin:0px;border-top: 1px solid #eee;">
+							<button class="addBtn_board" type="button">작성</button>
+						</div>
+					</div>
+					<!--end panel-->
+				</div>
+			</div>
+			
+			<div class="row">
+				<c:forEach items="${list }" var="board">
+					<div class="col-md-6">
+						<div class="panel">
+							<header class="panel-heading">
+								<div class="panel-actions">
+									<a href="javascript:void(0)"
+										class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
+									<div class="dropdown pull-left">
+										<a href="" data-toggle="dropdown" class="dropdown-toggle"><i
+											class="ion-more"></i></a>
+										<ul class="dropdown-menu dropdown-menu-scale">
+											<li><a href="javascript:void(0)">다시 보지않기</a></li>
+											<li><a href="javascript:void(0)">다시 보기</a></li>
+											<li><a href="javascript:void(0)">그렇게 하기</a></li>
+										</ul>
 									</div>
-                                </div><!--end panel-->
-                            </div>
-                            <!--end col 6-->
-                            <div class="col-md-6">
-                                <div class="panel">
-                                    <header class="panel-heading">
-                                        <div class="panel-actions">
-                                            <a href="javascript:void(0)" class="panel-action panel-action-toggle" data-panel-toggle=""></a>
-                                            <a href="javascript:void(0)" class="panel-action action-link"><i class="ion-refresh"></i></a>
-                                            <a href="javascript:void(0)" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
-                                            <div class="dropdown pull-left">
-                                                <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="ion-more"></i></a>
-                                                <ul class="dropdown-menu dropdown-menu-scale">
-                                                    <li><a href="javascript:void(0)">Action</a></li>
-                                                    <li><a href="javascript:void(0)">Just Action</a></li>
-                                                    <li><a href="javascript:void(0)">Action Now</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <h2 class="panel-title">Analytics</h2>
-                                    </header>
-                                    <div class="panel-body">
-                                        <div class="chartjs-data">
-                                            <canvas id="barChart" height="145"></canvas>
-                                        </div>
-                                    </div><!--end panel body-->
-                                </div><!--end panel-->
-                            </div><!--end col 6-->
-                        </div><!--end row-->
-                        
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="panel">
-                                    <header class="panel-heading">
-                                        <div class="panel-actions">
-                                            <a href="javascript:void(0)" class="panel-action panel-action-toggle" data-panel-toggle=""></a>                                   
-                                            <a href="javascript:void(0)" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
-                                            <div class="dropdown pull-left">
-                                                <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="ion-more"></i></a>
-                                                <ul class="dropdown-menu dropdown-menu-scale">
-                                                    <li><a href="javascript:void(0)">Action</a></li>
-                                                    <li><a href="javascript:void(0)">Just Action</a></li>
-                                                    <li><a href="javascript:void(0)">Action Now</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <h2 class="panel-title">Recent orders</h2>
-                                    </header>
-                                    <div class="panel-body">
-                                        <div class="scrollDiv">
-                                            <table class="table table-striped">
-                                                <tbody><tr>
-                                                        <th><div>Status</div></th>
-                                                <th><div>Clients</div></th>
-                                                <th align="center"><div>Orders#</div></th>
-                                                <th align="center"><div>Date</div></th>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="label label-primary">Paid</span>
-                                                        <span class="label label-success">Active</span>
-                                                    </td>
-                                                    <td>John Doe</td>
-                                                    <td align="center">7556588</td>
-                                                    <td class="color-blue-grey" nowrap="" align="center"><span class="semibold">Today</span> 8:30</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="label label-primary">Paid</span>
-                                                        <span class="label label-success">Active</span>
-                                                    </td>
-                                                    <td>Thomas Bayer</td>
-                                                    <td align="center">7556588</td>
-                                                    <td class="color-blue-grey" nowrap="" align="center"><span class="semibold">Today</span> 16:30</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="label label-primary">Paid</span>
-                                                        <span class="label label-default">Inactive</span>
-                                                    </td>
-                                                    <td>Nicolas Karabat</td>
-                                                    <td align="center">7556588</td>
-                                                    <td class="color-blue-grey" nowrap="" align="center"><span class="semibold">Yesterday</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="label label-default">Unpaid</span>
-                                                        <span class="label label-default">Inactive</span>
-                                                    </td>
-                                                    <td>Alexandre Pome</td>
-                                                    <td align="center">7556588</td>
-                                                    <td class="color-blue-grey" nowrap="" align="center">23th May</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="label label-primary">Paid</span>
-                                                        <span class="label label-success">Active</span>
-                                                    </td>
-                                                    <td>John Doe</td>
-                                                    <td align="center">7556588</td>
-                                                    <td class="color-blue-grey" nowrap="" align="center"><span class="semibold">Today</span> 8:30</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="label label-primary">Paid</span>
-                                                        <span class="label label-success">Active</span>
-                                                    </td>
-                                                    <td>Thomas Bayer</td>
-                                                    <td align="center">7556588</td>
-                                                    <td class="color-blue-grey" nowrap="" align="center"><span class="semibold">Today</span> 16:30</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="label label-primary">Paid</span>
-                                                        <span class="label label-default">Inactive</span>
-                                                    </td>
-                                                    <td>Nicolas Karabat</td>
-                                                    <td align="center">7556588</td>
-                                                    <td class="color-blue-grey" nowrap="" align="center"><span class="semibold">Yesterday</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="label label-default">Unpaid</span>
-                                                        <span class="label label-default">Inactive</span>
-                                                    </td>
-                                                    <td>Alexandre Pome</td>
-                                                    <td align="center">7556588</td>
-                                                    <td class="color-blue-grey" nowrap="" align="center">23th May</td>
-                                                </tr>
-                                                </tbody></table>
-                                        </div>
-                                    </div><!--end panel body-->
-                                </div><!--end panel-->
-                            </div><!--end col 6-->
-                            <div class="col-md-6">
-                                <div class="panel">
-                                    <header class="panel-heading">
-                                        <div class="panel-actions">
-                                            <a href="javascript:void(0)" class="panel-action panel-action-toggle" data-panel-toggle=""></a>                                   
-                                            <a href="javascript:void(0)" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
-                                            <div class="dropdown pull-left">
-                                                <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="ion-more"></i></a>
-                                                <ul class="dropdown-menu dropdown-menu-scale">
-                                                    <li><a href="javascript:void(0)">Action</a></li>
-                                                    <li><a href="javascript:void(0)">Just Action</a></li>
-                                                    <li><a href="javascript:void(0)">Action Now</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <h2 class="panel-title">Recent Tickets</h2>
-                                    </header>
-                                    <div class="panel-body">
-                                        <div class="scrollDiv">
-                                            <table class="table table-striped">
-                                                <tbody>
-                                                    <tr>
-                                                        <th><div>Status</div></th>
-                                                <th><div>Subject</div></th>
-                                                <th align="center"><div>Department</div></th>
-                                                <th align="center"><div>Date</div></th>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="label label-success">Open</span>
-                                                    </td>
-                                                    <td>Website time load</td>
-                                                    <td align="center">Support</td>
-                                                    <td nowrap="" align="center"><span class="semibold">Today</span> 8:30</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="label label-success">Open</span>
-                                                    </td>
-                                                    <td>Database table format</td>
-                                                    <td align="center">Support</td>
-                                                    <td nowrap="" align="center"><span class="semibold">Today</span> 16:30</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="label label-warning">Progress</span>
-                                                    </td>
-                                                    <td>Loosing control on server</td>
-                                                    <td align="center">Support</td>
-                                                    <td nowrap="" align="center"><span class="semibold">Yesterday</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="label label-danger">Closed</span>
-                                                    </td>
-                                                    <td>Authorizations keys</td>
-                                                    <td align="center">Support</td>
-                                                    <td nowrap="" align="center">23th May</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="label label-success">Open</span>
-                                                    </td>
-                                                    <td>Website down for one week</td>
-                                                    <td align="center">Support</td>
-                                                    <td nowrap="" align="center"><span class="semibold">Today</span> 8:30</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="label label-success">Open</span>
-                                                    </td>
-                                                    <td>Restoring default settings</td>
-                                                    <td align="center">Support</td>
-                                                    <td nowrap="" align="center"><span class="semibold">Today</span> 16:30</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="label label-warning">Progress</span>
-                                                    </td>
-                                                    <td>Loosing control on server</td>
-                                                    <td align="center">Support</td>
-                                                    <td nowrap="" align="center"><span class="semibold">Yesterday</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span class="label label-danger">Closed</span>
-                                                    </td>
-                                                    <td>Authorizations keys</td>
-                                                    <td align="center">Support</td>
-                                                    <td nowrap="" align="center">23th May</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div><!--end panel body-->
-                                </div><!--end panel-->
-                            </div><!--end col 6-->
-                        </div><!--end row-->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="panel">
-                                    <header class="panel-heading">
-                                        <div class="panel-actions">
-                                            <a href="javascript:void(0)" class="panel-action panel-action-toggle" data-panel-toggle=""></a>                                   
-                                            <a href="javascript:void(0)" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
-                                            <div class="dropdown pull-left">
-                                                <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="ion-more"></i></a>
-                                                <ul class="dropdown-menu dropdown-menu-scale">
-                                                    <li><a href="javascript:void(0)">Action</a></li>
-                                                    <li><a href="javascript:void(0)">Just Action</a></li>
-                                                    <li><a href="javascript:void(0)">Action Now</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <h2 class="panel-title">Recent Activities</h2>
-                                    </header>
-                                    <div class="panel-body">
-                                        <div class="scrollDiv">
-                                            <div class="streamline">
-                                                <div class="stream-item stream-primary">
-                                                    <div class="stream-content">
-                                                        <small class="text-muted">34 mins ago</small>
-                                                        <p>Rakesh has just started working on the restaurant project</p>
-                                                    </div>
-                                                </div><!-- .stream-item -->
+								</div>
+								<h2 class="panel-title">${board.board_title }<span class="helping-text">by ${board.user_index }</span>
+								</h2>
+							</header>
+							<div class="panle-body">
+								<a class="gallery-box" href="#"> 
+									<input class="bidx" type="hidden" value="${board.board_index }"> 
+									<input class="bdate" type="hidden" value="${board.board_updatedate }">
+									<img src="display?fileName=${board.attachList[0].picture_path }/${board.attachList[0].picture_uuid }_${board.attachList[0].picture_name }" class="img-responsive">
+									<div class="gallery-overlay">
+										<i>${board.board_title }</i>
+									</div>
+									<div class="conText">
+										<i style="font-size: 2em;">${board.board_content }</i>
+									</div>
+								</a>
+							</div>
+						</div>
+						<!--end panel-->
+					</div>
+				</c:forEach>
+				<button id="moreBtn" type="button" class="btn btn-primary btn-block btn-lg">More</button>
+			</div>
+			<!--end row-->
+		</div><!--end container-->
+	
+	<!-- Modal-->
+	<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h5 class='modal-title' id='modalLabel'>제목</h5>
+				</div>
+				<div class='modal-footer'>
+					<div class='content-img'>
+					</div>
+					<div class='modal-body' >
+						<div class="content-body"></div>
+						<div class="reply-body">
+							<ul class='reply-content'></ul>
+						</div>
+						<div class="bottomDiv">
+							<div class="bottomfrm">
+								<input class="form-control" aria-label="댓글 달기..." placeholder="댓글 달기..."autocomplete="off" autocorrect="off">
+								<button class="addBtn_reply" disabled="disabled"><span>게시</span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-                                                <div class="stream-item stream-danger">
-                                                    <div class="stream-content">
-                                                        <small class="text-muted">39 mins ago</small>
-                                                        <p>Nine theme sent you collaboration request</p>
-                                                    </div>
-                                                </div><!-- .stream-item -->
+	<script>
+		var csrfHeaderName = "${_csrf.headerName}";
+		var csrfTokenValue = "${_csrf.token}";
+    	var bidx;
+    	var replyLen;
+    	
+	    function getBoardList(cri) {
+			$.ajax({
+				url: '/getBoardList',
+				beforeSend: function(xhr) {
+					xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+				}, 
+				data : JSON.stringify(cri),
+				type: 'POST',
+				dataType:'html',
+				contentType: 'application/json',
+				success: function(result){
+					$(".row").append(result);
+				}
+			}); // $.ajax
+		}
+	    function showList(amount){
+	    	replyService.getList({board_index:bidx, amount:amount}, function(replyCnt, replyList){
+				var str="";
+				replyLen = replyList.length;
+				if(replyList==null||replyLen==0){
+					$("#confirmModal .reply-content").html(str);
+					return;
+				}
+				for(var i=0, len=replyLen||0; i<len; i++){
+					str += "<li class='col-sm-6 margin-b-10' data-rno='"+replyList[i].reply_index+"'>";
+					str += "	<div class='user-card clearfix'>";
+					str += "		<img class='user_img' src='resources/images/avtar-1.jpg' alt='' width='90'>";
+					str += "		<div class='user-card-content'>";
+					str += "			<h4 class='replyTxt'>"+replyList[i].reply_content+"</h4>";
+					str += "		<small class='pull-right text-muted'>" + replyService.displayTime(replyList[i].reply_regdate) + "&nbsp&nbsp<a href='#' class='panel-action panel-action-dismiss reply-dismiss' data-panel-dismiss=''></a></small>";
+					str += "		</div></div></li>";
+				}
+				str += "<button class='btn btn-primary btn-block btn-lg' style='width: 100%;'>more</button>"
+				$("#confirmModal .reply-content").html(str);
+				//$('#confirmModal .reply-content').animate({scrollTop: $('#confirmModal .reply-content').prop("scrollHeight")}, 500);
+    		});
+		} // end showList
+		
+	    $(document).ready(function(){
+	    	$("#moreBtn").on("click", function(e){
+		    	var cri =  {pageNum:2, amount:6};
+		    	getBoardList(cri);
+		    	$(this).remove();
+	    	});
+	    	
+	    	$("#main-content .row").on("click", ".gallery-box", function(e){
+	    		e.preventDefault();
+	    		bidx = $(this).find(".bidx").val();
+	    		var btitle = $(this).find(".gallery-overlay i").text();
+	    		var bcontext = $(this).find(".conText").text();
+	    		var bpic = $(this).find("img").clone();
+	    		
+	    		var tempStr = $(this).find(".bdate").val().split('KST');
+	    		var bdate = new Date(tempStr[0]+tempStr[1]);
+	    		
+	    		$("#modalLabel").text(btitle);
+	    					
+	    		$("#confirmModal .content-img").html(bpic);
+	    		
+	    		var str = "";
+	    		str += "<div class='col-sm-6 margin-b-10'>";
+				str += "	<div class='user-card clearfix'>";
+				str += "		<img class='user_img' src='resources/images/avtar-1.jpg' alt='' width='90'>";
+				str += "		<div class='user-card-content'>";
+				str += "			<h4 class='replyTxt'>"+bcontext+"</h4>";
+				str += "		<small class='pull-right text-muted'>" + replyService.displayTime(bdate) + "</small>";
+				str += "		</div></div></div>";
+				
+	    		$("#confirmModal .content-body").html(str);
+	    		$("#confirmModal").modal("show");
+	    		
+	    		showList(4);
+	    	});
+	    	
+	    	$(".form-control").on("keydown keyup keypress", function(e){
+	    		$(".addBtn_reply").attr("disabled", false);
+	    		var inputVal = $(".form-control").val();
+	    		if(inputVal == ''){
+		    		$(".addBtn_reply").attr("disabled", true);
+		    		$(".addBtn_reply span").css("opacity", ".3");
+	    		}
+	    		else{
+		    		$(".addBtn_reply span").css("opacity", "1");
+	    		}
+			});
+	    	
+    		$("addBtn_reply").on("click", function(e){
+	    		var inputVal = $(".form-control");
+	    		if(inputVal.val() == ''){
+	    			$(".form-control").focus();
+	    		} else{
+	    			var reply = {
+	    					board_index: bidx,
+	    					user_index: '1',
+	    					reply_content: inputVal.val()
+	    			};
+	    			replyService.add(reply, function(result){
+	    				inputVal.val("");
+			    		$(".addBtn_reply").attr("disabled", true);
+			    		$(".addBtn_reply").css("opacity", ".3");
+			    		replyLen = replyLen + 1;
+			    		showList(replyLen);
+	    			});
+	    		}
+    		});
 
-                                                <div class="stream-item stream-success">
-                                                    <div class="stream-content">
-                                                        <small class="text-muted">1 hour ago</small>
-                                                        <p>Emily added you to her group</p>
-                                                    </div>
-                                                </div><!-- .stream-item -->
+    		$(".reply-content").on("click", ".panel-action", function(e){
+	    		e.preventDefault();
+	    		var ridx = $(this).parent().parent().parent().parent().attr("data-rno");
+		    	replyService.remove(ridx, "1", function(result){
+		    		showList(replyLen);
+		    	});
+    		});
+    		
+    		$(".reply-content").on("click", ".btn", function(e){
+	    		e.preventDefault();
+	    		replyLen = replyLen + 4;
+	    		showList(replyLen);
+    		});
 
-                                                <div class="stream-item stream-warning">
-                                                    <div class="stream-content">
-                                                        <small class="text-muted">4 hour ago</small>
-                                                        <p>Rakesh has finished her task</p>
-                                                    </div>
-                                                </div><!-- .stream-item -->
-                                            </div>
-                                        </div>
-                                    </div><!--end panel body-->
-                                </div><!--end panel-->
-                            </div><!--end col 6-->
-                            <div class="col-md-6">
-                                <div class="panel">
-                                    <header class="panel-heading">
-                                        <div class="panel-actions">
-                                            <a href="javascript:void(0)" class="panel-action panel-action-toggle" data-panel-toggle=""></a>                                   
-                                            <a href="javascript:void(0)" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
-                                            <div class="dropdown pull-left">
-                                                <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="ion-more"></i></a>
-                                                <ul class="dropdown-menu dropdown-menu-scale">
-                                                    <li><a href="javascript:void(0)">Action</a></li>
-                                                    <li><a href="javascript:void(0)">Just Action</a></li>
-                                                    <li><a href="javascript:void(0)">Action Now</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <h2 class="panel-title">Feeds</h2>
-                                    </header>
-                                    <div class="panel-body">
-                                        <div class="scrollDiv">
-                                            <div class="media-group feeds-group">
-
-                                                <div class="media-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <div class="avatar">
-                                                                <img src="resources/images/avtar-1.jpg" alt="" class="img-circle" width="40">
-                                                            </div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h5><a href="javascript:void(0)" class="text-color">Some of the fantastic things people have had to say about Ooooh</a></h5>
-                                                            <small class="text-muted">2 days ago</small>
-                                                        </div>
-                                                    </div>
-                                                </div><!-- .media-group-item -->
-
-                                                <div class="media-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <div class="avatar">
-                                                                <img src="resources/images/avtar-2.jpg" alt="" class="img-circle" width="40">
-                                                            </div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h5><a href="javascript:void(0)" class="text-color">Here are just some of the magazine reviews we have had</a></h5>
-                                                            <small class="text-muted">1 day ago</small>
-                                                        </div>
-                                                    </div>
-                                                </div><!-- .media-group-item -->
-
-                                                <div class="media-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <div class="avatar">
-                                                                <img src="resources/images/avtar-3.jpg" alt="" class="img-circle" width="40">
-                                                            </div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h5><a href="javascript:void(0)" class="text-color">Lorem ipsum dolor amet, consectetur adipisicing elit.</a></h5>
-                                                            <small class="text-muted">2 days ago</small>
-                                                        </div>
-                                                    </div>
-                                                </div><!-- .media-group-item -->
-
-                                                <div class="media-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <div class="avatar">
-                                                                <img src="resources/images/avtar-4.jpg" alt="" class="img-circle" width="40">
-                                                            </div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h5><a href="javascript:void(0)" class="text-color">“It’s just brilliant. I will recommend it to everyone!”</a></h5>
-                                                            <small class="text-muted">2 mins ago</small>
-                                                        </div>
-                                                    </div>
-                                                </div><!-- .media-group-item -->
-
-                                                <div class="media-group-item">
-                                                    <div class="media">
-                                                        <div class="media-left">
-                                                            <div class="avatar">
-                                                                <img src="resources/images/avtar-5.jpg" alt="" class="img-circle" width="40">
-                                                            </div>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <h5><a href="javascript:void(0)" class="text-color">John has just started working on the project</a></h5>
-                                                            <small class="text-muted">right now</small>
-                                                        </div>
-                                                    </div>
-                                                </div><!-- .media-group-item -->
-                                            </div>
-                                        </div>
-                                    </div><!--end panel body-->
-                                </div><!--end panel-->
-                            </div><!--end col 6-->
-                        </div><!--end row-->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel">
-                                    <header class="panel-heading">
-                                        <div class="panel-actions">
-                                            <a href="javascript:void(0)" class="panel-action panel-action-toggle" data-panel-toggle=""></a>                                   
-                                            <a href="javascript:void(0)" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
-                                            <div class="dropdown pull-left">
-                                                <a href="" data-toggle="dropdown" class="dropdown-toggle"><i class="ion-more"></i></a>
-                                                <ul class="dropdown-menu dropdown-menu-scale">
-                                                    <li><a href="javascript:void(0)">Action</a></li>
-                                                    <li><a href="javascript:void(0)">Just Action</a></li>
-                                                    <li><a href="javascript:void(0)">Action Now</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <h2 class="panel-title">World Map</h2>
-                                    </header>
-                                    <div class="panel-body">
-                                        <div id="world-map-markers" style="height: 400px"></div>
-                                    </div><!--end panel body-->
-                                </div><!--end panel-->
-                            </div><!--end col 6-->
-                        </div><!--row end-->
-                    </div><!--end container-->
-
-                    <!--footer start-->
-                    <div class="footer">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <span>&copy; Copyright 2016. Assan</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--footer end-->
-                </section><!--end main content-->
-            </div>
-        </div><!--end wrapper-->
-
-
-
-        <!--Common plugins-->
-        <script src="resources/plugins/jquery/dist/jquery.min.js"></script>
-        <script src="resources/plugins/bootstrap/js/bootstrap.min.js"></script>
-        <script src="resources/plugins/hoe-nav/hoe.js"></script>
-        <script src="resources/plugins/pace/pace.min.js"></script>
-        <script src="resources/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-        <script src="resources/js/app.js"></script>
-        <!--page scripts-->
-        <!-- Flot chart js -->
-        <script src="resources/plugins/flot/jquery.flot.js"></script>
-        <script src="resources/plugins/flot/jquery.flot.tooltip.min.js"></script>
-        <script src="resources/plugins/flot/jquery.flot.resize.js"></script>
-        <script src="resources/plugins/flot/jquery.flot.pie.js"></script>
-        <script src="resources/plugins/flot/jquery.flot.time.js"></script>
-        <!--vector map-->
-        <script src="resources/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-        <script src="resources/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-        <!-- ChartJS-->
-        <script src="resources/plugins/chartJs/Chart.min.js"></script>
-        <!--dashboard custom script-->
-        <script src="resources/js/dashboard.js"></script>
-    </body>
-</html>
+    		$(".addBtn_board").on("click", function(e){
+	    		e.preventDefault();
+	    		var content = $(".addArea").val();
+	    		if(content == '' || content==null){
+		    		alert("내용을 적어주세요");
+		    		$(".addArea").focus();
+	    		} else {
+		    		alert("등록");
+		    		$("#submitFrm").submit();
+	    		}
+    		});
+	    });
+    </script>
+<%@include file="/WEB-INF/views/include/footer.jsp" %>

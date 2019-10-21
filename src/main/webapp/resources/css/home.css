@@ -1,0 +1,191 @@
+#headline-top {
+	padding: 15px;
+	position: relative;
+	background-color: aliceblue;
+	margin-bottom: 15px;
+}
+
+#headline-top img {
+	position: relative;
+	width: 140px;
+	height: 140px;
+	margin-left: 10px;
+	-webkit-border-radius: 70px;
+}
+
+#headline-top .menu-text {
+	margin-left: 10px;
+	font-size: 40px;
+}
+
+#headline-top ul {
+	text-align: center;
+}
+
+#headline-top ul li {
+	display: inline-block;
+	border-left: 3px solid #999;
+	font: bold 20px Dotum;
+	padding: 0 10px;
+}
+
+#headline-top ul li:first-child {
+	border-left: none;
+}
+
+#main-content {
+	margin-right: 4%;
+	padding-bottom: 50px;
+}
+
+.panel {
+	align-items: center;
+	justify-content: center;
+}
+
+.panel-body {
+	text-align: center;
+	background-size: 100% 100%;
+	overflow: hidden;
+	align-items: center;
+	justify-content: center;
+	height: 400px;
+}
+
+.all-over-thumb-link {
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
+.conText {
+	padding: 5px 10px;
+	text-align: center;
+	position: absolute;
+	top: 90%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.gallery-box img {
+	width: 100%;
+}
+
+.modal-dialog {
+	width: 90%;
+	margin-top: 5%;
+}
+
+.modal-header {
+	height: 10%;
+}
+
+.modal-footer {
+	padding: 0px;
+}
+
+.content-img {
+	border: 1px solid #eaeaea;
+	width: 70%;
+	height: 100%;
+	float: left;
+}
+
+.content-img img {
+	width: 100%;
+	height: 100%;
+}
+
+.modal-body {
+	width: 30%;
+	height: 100%;
+	float: right;
+	padding: 0px;
+}
+
+.content-body {
+	margin: 1%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+.content-body .user-card {
+	background-color: floralwhite;
+}
+
+.reply-body {
+	margin: 1%;
+}
+
+.col-sm-6 {
+	width: 100%;
+	padding: 0px;
+}
+
+.user-card {
+	padding: 10px;
+	border-width: 0px;
+}
+
+.user_img {
+	height: 40px;
+	width: 40px;
+	margin-right: 10px;
+}
+
+.replyTxt {
+	float: left;
+	word-break: break-all;
+	width: 70%;
+}
+
+.reply-content {
+	list-style-type: none;
+	padding-left: 10px;
+	height: 35em;
+	overflow-y: auto;
+}
+
+.gallery-overlay i {
+	word-break: break-all;
+	text-align: center;
+	transform: translate(-50%, -50%);
+}
+
+.modal-footer {
+	text-align: unset;
+}
+
+.bottomDiv {
+	width: inherit;
+	position: fixed;
+	bottom: -0.10%;
+	padding-bottom: 2px;
+	border: 0px;
+	padding-right: 2px;
+}
+
+.form-control {
+	width: 80%;
+	float: left;
+	border: 0px;
+	border-top: 1px solid rgba(197, 214, 222, 0.7);
+}
+
+.addBtn {
+	width: 20%;
+	background-color: white;
+	border: 0px;
+	border-top: 1px solid rgba(197, 214, 222, 0.7);
+	border-left: 1px solid rgba(197, 214, 222, 0.7);
+	padding: 0px;
+	float: left;
+	color: rgba(var(- -h5f, 56, 151, 240), 1);
+}
+
+.addBtn span {
+	font-weight: 600;
+	opacity: .3;
+}

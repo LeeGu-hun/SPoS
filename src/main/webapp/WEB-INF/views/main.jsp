@@ -1,175 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"
 	contentType="text/html; charset=UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html lang="kr">
-    <head>
-	    <meta charset="utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	    <title>Assan admin</title>
-	
-	    <!-- Bootstrap -->
-	    <link href="resources/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	    <!--side menu plugin-->
-	    <link href="resources/plugins/hoe-nav/hoe.css" rel="stylesheet">
-	    <!-- icons-->
-	    <link href="resources/plugins/ionicons/css/ionicons.min.css" rel="stylesheet">
-	    <link href="resources/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	    <link href="resources/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
-	    <link href="resources/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
-	    <link href="resources/plugins/lightbox2/dist/css/lightbox.css" rel="stylesheet">
-	    <!--template custom css file-->
-	    <link href="resources/css/style.css" rel="stylesheet">
-	
-	    <script src="resources/js/modernizr.js"></script>
-	    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	    <!--[if lt IE 9]>
-	      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	    <![endif]-->
-	    <style>
-			#main-content {
-				margin-right: 230px;
-			}
-			
-			.panel {
-				align-items: center;
-				justify-content: center;
-			}
-			
-			.panel-body {
-				text-align: center;
-				background-size: 100% 100%;
-				overflow: hidden;
-				align-items: center;
-				justify-content: center;
-				height: 400px;
-			}
-			
-			.all-over-thumb-link {
-				display: block;
-				height: 100%;
-				width: 100%;
-			}
-			.conText {
-				padding: 5px 10px;
-				text-align: center;
-				position: absolute;
-				top: 90%;
-				left: 50%;
-				transform: translate( -50%, -50% );
-			}
-			.modal-dialog{
-				width: 90%;
-				margin-top: 5%;
-			}
-			.modal-header{
-				 height:10%;
-			}
-			.modal-footer{
-				padding:0px;
-			}
-			.content-img{
-				border: 1px solid #eaeaea;
-				width:70%;
-				height:100%;
-				float:left;
-			}
-			.content-img img{
-				width:100%;
-				height:100%;
-			}
-			.modal-body{
-				width:30%;
-				height:100%;
-				float:right;
-				padding: 0px;
-			}
-			.content-body{
-			 	margin:1%;
-			    overflow: hidden;
-			    text-overflow: ellipsis;
-			    padding-left: 10px;
-			    padding-top: 10px;
-			}
-			.content-body .user-card{
-			    background-color: floralwhite;
-			}
-			.reply-body{
-			 	margin:1%;
-			}
-			.col-sm-6{
-				width: 100%;
-				padding: 0px;
-			}
-			.user-card {
-			    padding: 10px;
-			    border-width: 0px;
-			}
-			.user_img{
-				height: 40px;
-				width: 40px;
-				margin-right : 10px;
-			}
-			.replyTxt{
-			    float: left;
-			    word-break: break-all;
-			    width: 70%;
-			}
-			.reply-content{
-				list-style-type: none;
-				padding-left: 10px;
-				height:35em;
-			    overflow-y: auto;
-			}
-			.gallery-overlay i {
-				word-break: break-all;
-				text-align: center;
-				transform: translate( -50%, -50% );
-			}
-			.modal-footer{
-				text-align: unset;
-			}
-			.bottomDiv {
-				width: inherit;
-				position : fixed;
-				bottom: -0.10%;
-				padding-bottom: 2px;
-				border: 0px;
-				padding-right: 2px;
-			}
-			.form-control{
-				width: 80%;
-				float:left;
-				border: 0px;
-				border-top: 1px solid rgba(197, 214, 222, 0.7);
-			}
-			.addBtn{
-				width: 20%;
-				background-color: white;
-				border: 0px;
-				border-top: 1px solid rgba(197, 214, 222, 0.7);
-				border-left: 1px solid rgba(197, 214, 222, 0.7);
-				padding: 0px;
-				float:left;
-				color: rgba(var(--h5f,56,151,240),1);
-			}
-			.addBtn span{
-				font-weight : 600;
-		    	opacity : .3;
-			}
-		</style>
-    </head>
-    <body hoe-navigation-type="vertical" hoe-nav-placement="left" theme-layout="wide-layout">
-
-        <!--side navigation start-->
-        <div id="hoeapp-wrapper" class="hoe-hide-lpanel" hoe-device-type="desktop">
-            <div id="hoeapp-container" hoe-color-type="lpanel-bg7" hoe-lpanel-effect="shrink">
-                <!--start main content-->
-                <section id="main-content">
+<%@include file="/WEB-INF/views/include/header.jsp"%>
+<link href="resources/css/home.css" rel="stylesheet">
                     <div class="space-30"></div>
                     <div class="container">
                         <div class="row">
@@ -210,9 +42,6 @@
 							<button id="moreBtn" type="button" class="btn btn-primary btn-block btn-lg">More</button>
                         </div><!--end row-->
                     </div><!--end container-->
-                </section><!--end main content-->
-            </div>
-        </div><!--end wrapper-->
 
 	<!-- Modal-->
 	<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
@@ -244,17 +73,6 @@
 		</div>
 	</div>
 
-	<!--Common plugins-->
-	<script src="/resources/plugins/jquery/dist/jquery.min.js"></script>
-	<script src="/resources/plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script src="/resources/plugins/hoe-nav/hoe.js"></script>
-	<script src="/resources/plugins/pace/pace.min.js"></script>
-	<script src="/resources/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-	<script src="/resources/js/app.js"></script>
-	<!--page scripts-->
-	<script src="/resources/plugins/lightbox2/dist/js/lightbox.js"></script>
-
-	<script src="/resources/js/reply.js"></script>
 	<script>
 		var csrfHeaderName = "${_csrf.headerName}";
 		var csrfTokenValue = "${_csrf.token}";
@@ -382,5 +200,4 @@
     		});
 	    });
     </script>
-</body>
-</html>
+<%@include file="/WEB-INF/views/include/footer.jsp" %>

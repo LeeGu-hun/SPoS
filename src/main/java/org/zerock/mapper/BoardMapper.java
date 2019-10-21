@@ -13,4 +13,6 @@ public interface BoardMapper {
 	public List<BoardVO> getMoreList(Criteria cri);
 	
 	public void updateReplyCnt(@Param("board_index") Long board_index, @Param("amount") int amount);
+
+	public void insertSelectKey(BoardVO board);
 }
