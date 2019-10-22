@@ -17,12 +17,13 @@
 		<!-- register만 비로그인 상태에서 접근 가능하니 intercept로 처리(exception이랑 충돌 방지) -->
 		<!-- <security:intercept-url pattern="/board/register" access="isAuthenticated()"/> -->
 		
-		<security:access-denied-handler ref="customAccessDenied"/>
+		<!-- <security:access-denied-handler ref="customAccessDenied"/>
 		
 		<security:form-login login-page="/customLogin"/>
 		
 		<security:logout logout-url="/customLogout" invalidate-session="true" delete-cookies="remember-me, JSESSION_ID"/>
-		<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800"/>
+		 -->
+		<!-- <security:remember-me data-source-ref="dataSource" token-validity-seconds="604800"/> -->
 		
 	</security:http>
 	
