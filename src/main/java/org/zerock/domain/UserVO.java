@@ -11,6 +11,7 @@ public class UserVO {
 	private String user_name;
 	private String user_email;
 	private int user_phonenum;
+	private int user_index;
 
 	private List<AuthVO> authList;
 }

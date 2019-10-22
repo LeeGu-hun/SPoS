@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.MemberMapper">
+
+<!-- 아이디 중복 검사 -->
+	<select id="check_id" >
+		select count(*) from spos_user_info where user_id = #{user_id}
+	</select>
+	
+	<!-- 회원가입 -->
+  <insert id="join_member">
+  	insert into spos_user_info(user_index,user_id,user_pw,user_name,user_email,user_phonenum)
+  	values(seq_spos_user.nextval,#{user_id},#{user_pw},#{user_name},#{user_email},#{user_phonenum})
+  
+  </insert>
+  
+  <!--  로그인 -->
+  <resultMap type="org.zerock.domain.MemberVO" id="userMap">
+    <id property="user_id" column="user_id"/>
+    <result property="user_index" column="user_index"/>
+    <result property="user_pw" column="user_pw"/>
+    <result property="user_name" column="user_name"/>
+    <result property="user_email" column="user_email"/>
+    <result property="user_phonenum" column="user_phonenum"/>
+    <collection property="authList" resultMap="authMap">
+    </collection> 
+  </resultMap>
+  
+  <resultMap type="org.zerock.domain.AuthVO" id="authMap">
+    <result property="user_index" column="user_index"/>
+    <result property="auth" column="auth"/>
+  </resultMap>
+  <select id="checkLogin" resultMap="userMap">
+ select
+     u.user_index, user_id, user_pw, user_name, user_email, user_phonenum, auth
+ from
+     spos_user_info u left outer join spos_user_auth a
+     on u.user_index = a.user_index
+ where u.user_id = #{user_id}
+    
+</select>
+  
+  <!-- 회원정보 수정 -->
+  <update id ="updateMember">
+  update spos_user_info
+  set
+  	user_pw = #{user_pw},
+  	user_email = #{user_email},
+  	user_phonenum = #{user_phonenum}
+  where
+  	user_id = #{user_id}
+</update>
+  
+</mapper>

@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class AuthVO {
-	private int user_id;
+	private int user_index;
 	private String auth;
 }

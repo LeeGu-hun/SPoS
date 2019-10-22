@@ -32,7 +32,7 @@ public class HomeController {
 		log.info("List : " + tempVO);
 		model.addAttribute("list", tempVO);
 		
-		return "home";
+		return "customLogin";
 	}
 	
 	@RequestMapping(value = "/favicon.ico", method = RequestMethod.GET)
