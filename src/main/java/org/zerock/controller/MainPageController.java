@@ -21,11 +21,12 @@ public class MainPageController {
 	private BoardService service;
 	
 	@GetMapping("/main")
-	public String main(Model model) {
+	public String main(Model model, Criteria cri) {
 		List<BoardVO> tempVO = service.getList();
 		tempVO.forEach(e -> e.setAttachList(service.getAttachList(e.getBoard_index())));
 		log.info("List : " + tempVO);
 		model.addAttribute("list", tempVO);
+		log.info("cri : " + cri);
 		return "main";
 	}
 	

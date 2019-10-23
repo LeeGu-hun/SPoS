@@ -77,7 +77,7 @@
 										style="height:34px;">
 	                                   <i class="ion-search"></i>
 	                                <button class="btn btn-default">Search</button>
-	                                <a href="/">홈으로</a>&nbsp
+	                                <a href="/home">홈으로</a>&nbsp
 	                                <a href="/main">임시</a>
                                 </form>
                             </div>

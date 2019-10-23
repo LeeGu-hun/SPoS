@@ -2,13 +2,13 @@
 	contentType="text/html; charset=UTF-8"%>
 <aside id="hoe-left-panel" hoe-position-type="absolute">
 	<ul class="nav panel-list">
-		<li class="hoe-has-menu">
+		<li class="hoe-has-menu opened">
 			<a href="#">
 				<i class="fa fa-cutlery" aria-hidden="true"></i>
 				<span class="menu-text"> 오늘 먹은 사료량</span>
 			</a>
 			<ul class="hoe-sub-menu">
-				<li>
+				<li class="hoe-sub-menu">
 					<div id="sub-menu-text">
 						<a href="#">
 							<span class="menu-text">[150 g] / [150 g]<br>[750 kcal] / [750 kcal] <br><br>

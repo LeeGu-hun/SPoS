@@ -13,9 +13,9 @@
 	<!-- controller의 요청과 함께 해당하는 url에 보안을 적용 -->
 	<security:http use-expressions="true" auto-config="true">
 	
-		<!-- <security:access-denied-handler ref="customAccessDenied"/> -->
+		<security:access-denied-handler ref="customAccessDenied"/>
 		<security:intercept-url pattern="/home" access="isAuthenticated()"/>
-		<security:intercept-url pattern="/main" access="isAuthenticated()"/>
+		<!-- <security:intercept-url pattern="/main" access="isAuthenticated()"/> -->
 		
 		<security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess"/>
 				

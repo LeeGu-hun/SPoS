@@ -26,13 +26,18 @@ public class HomeController {
 	private BoardService service;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String home() {
+		return "customLogin";
+	}
+	
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		List<BoardVO> tempVO = service.getList();
 		tempVO.forEach(e -> e.setAttachList(service.getAttachList(e.getBoard_index())));
 		log.info("List : " + tempVO);
 		model.addAttribute("list", tempVO);
 		
-		return "customLogin";
+		return "/home";
 	}
 	
 	@RequestMapping(value = "/favicon.ico", method = RequestMethod.GET)
