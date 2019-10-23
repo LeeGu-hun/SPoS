@@ -49,7 +49,7 @@
 	<!-- 관리자 세션체크 bean -->
 	<beans:bean id="adminInterceptor" class="com.example.spring02.interceptor.AdminInterceptor"/>
 	<!-- 인터셉터 매핑정보 -->
-	<interceptors>
+	<!-- <interceptors>
 		<!-- 관리자 세션체크 매핑-->
 		<interceptor>
 			<mapping path="/shop/product/write.do"/>
@@ -76,5 +76,5 @@
 			<!-- 적용될 인터셉터 클래스 지정 -->
 			<beans:ref bean="sampleInterceptor"/>
 		</interceptor>
-	</interceptors>
+	</interceptors> -->
 </beans>
