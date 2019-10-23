@@ -23,8 +23,8 @@ public class BoardServiceImpl implements BoardService {
 	private BoardAttachMapper boardAttachMapper;
 	
 	@Override
-	public List<BoardVO> getList() {
-		return boardMapper.getList();
+	public List<BoardVO> getList(Criteria cri) {
+		return boardMapper.getList(cri);
 	}
 
 	@Override

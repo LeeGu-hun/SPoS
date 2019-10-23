@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
 import org.zerock.service.BoardService;
 
 import lombok.AllArgsConstructor;
@@ -26,12 +27,11 @@ public class HomeController {
 	private BoardService service;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		List<BoardVO> tempVO = service.getList();
+	public String home(Locale locale, Model model, Criteria cri) {
+		List<BoardVO> tempVO = service.getList(cri);
 		tempVO.forEach(e -> e.setAttachList(service.getAttachList(e.getBoard_index())));
 		log.info("List : " + tempVO);
 		model.addAttribute("list", tempVO);
-		
 		return "home";
 	}
 	

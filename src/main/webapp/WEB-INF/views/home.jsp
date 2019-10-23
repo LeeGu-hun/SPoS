@@ -10,7 +10,7 @@
 				<img alt="asdwd" src="resources/images/avtar-1.jpg"> <span
 					class="menu-text">김개똥</span>
 				<ul>
-					<li><a href="#"><i class="fa fa-home"></i>&nbsp;타임라인</a></li>
+					<li><a href="/"><i class="fa fa-home"></i>&nbsp;타임라인</a></li>
 					<li><a href="#"><i class="fa fa-paw"></i>&nbsp;내 반려동물</a></li>
 					<li><a href="#"><i class="fa fa-user"></i>&nbsp;친구</a></li>
 					<li><a href="#"><i class="fa fa-info"></i>&nbsp;내 정보</a></li>
@@ -159,8 +159,10 @@
 		} // end showList
 		
 	    $(document).ready(function(){
+	    	var thisPage = 1; 
 	    	$("#moreBtn").on("click", function(e){
-		    	var cri =  {pageNum:2, amount:6};
+	    		thisPage = thisPage+1;
+		    	var cri =  {pageNum:thisPage, amount:6};
 		    	getBoardList(cri);
 		    	$(this).remove();
 	    	});

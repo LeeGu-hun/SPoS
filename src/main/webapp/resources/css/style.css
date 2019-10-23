@@ -557,10 +557,27 @@ Button style
 /*
 Top bar styles
 */
-.top-search form {
-  position: relative;
-  width: 180px;
-  margin-left: 10px;
+.search-form-div form {
+	position : relative;
+	margin-left:15px;
+	height : 20px;
+}
+
+.search-form-div form select {
+	border : 1px solid rgba(197, 214, 222, 0.7);
+}
+
+.search-input {
+	border : 1px solid rgba(197, 214, 222, 0.7);
+	position : relative;  
+	margin-left : 10px;
+	background-color: #fff;
+}
+
+.search-form-div form button {
+	position : relative;
+	margin-left : 5px;
+	background-color : #f2f2f2;
 }
 .top-search form .form-control {
   border: 0px;

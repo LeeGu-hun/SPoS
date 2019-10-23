@@ -22,17 +22,18 @@ public class MainPageController {
 	private BoardService service;
 	
 	@GetMapping("/main")
-	public String main(Model model) {
-		List<BoardVO> tempVO = service.getList();
+	public String main(Model model, Criteria cri) {
+		List<BoardVO> tempVO = service.getList(cri);
 		tempVO.forEach(e -> e.setAttachList(service.getAttachList(e.getBoard_index())));
 		log.info("List : " + tempVO);
 		model.addAttribute("list", tempVO);
+		model.addAttribute("pageMaker", cri);
 		return "main";
 	}
 	
-	@PostMapping("/getBoardList")
-	public void getBoardList(@RequestBody Criteria cri, Model model) {
-		log.info("getBoardList with cri : " + cri);
+	@PostMapping("/getList")
+	public void getList(@RequestBody Criteria cri, Model model) {
+		log.info("getList with cri : " + cri);
 		List<BoardVO> moreList = service.getBoardMore(cri);
 		if(moreList.isEmpty()) {
 			model.addAttribute("isEmpty", true);
