@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.mapper.ProductsMapper">
+
+	<!-- 01. 상품 전체 리스트 -->
+	<select id="listProduct" resultType="org.zerock.domain.ProdVO">
+		SELECT  
+			PROD_INFO_INDEX AS prodId
+			, prod_cate AS prodCate
+			, detail_cate AS detailCate
+			, prod_name AS prodName 
+			, prod_price AS prodPrice 
+			, prod_desc AS prodDesc
+			, prod_kcal AS prodKcal
+			, prod_manufact AS prodManufact
+			, prod_url AS prodUrl
+		FROM spos_products_info
+	</select>
+	
+	<!-- 02. 상품 상세보기 -->
+	<select id="detailProduct" resultType="org.zerock.domain.ProdVO">
+		SELECT
+			PROD_INFO_INDEX AS prodId 
+			, prod_name AS prodName
+			, prod_price AS prodPrice 
+			, prod_kcal AS prodKcal
+			, prod_manufact AS prodManufact
+			, prod_desc AS prodDesc 
+			, prod_url AS prodUrl
+		FROM spos_products_info 
+		WHERE prod_id = #{prodId}
+	</select>
+	
+	<!-- 03. 상품 추가하기 -->
+	<insert id="insertProduct">
+		INSERT INTO spos_products_info 
+		VALUES (
+			SEQ_SPOS_FOOD_INFO.NEXTVAL
+			, #{prodRegdate}
+			, #{prodCate}
+			, #{detailCate}
+			, #{prodName}
+			, #{prodPrice}
+			, #{prodKcal}
+			, #{prodManufact}
+			, #{prodDesc}
+			, #{prodUrl}
+		)
+	</insert>
+	
+	<!-- 04. 상품 수정/편집하기 -->
+	<update id="updateProduct">
+		UPDATE spos_products_info
+		SET   prod_update = #{prodUpdate}
+			, prod_cate = #{prodCate}
+			, detail_cate = #{detailCate}
+			, prod_name = #{prodName}
+			, prod_manufact = #{prodManufact}
+			, prod_kcal = #{prodKcal}
+			, prod_desc = #{prodDesc}
+			, prod_url = #{prodUrl}
+		WHERE
+			PROD_INFO_INDEX = #{PROD_INFO_INDEX}
+	</update>
+	
+	<!-- 05. 상품 레코드 삭제처리 -->
+	<delete id="deleteProduct">
+		DELETE FROM spos_products_info
+		WHERE PROD_INFO_INDEX = #{prodId}
+	</delete>
+	
+	<!-- 06. 삭제를 위한 상품 이미지 파일이름 select -->
+	<select id="fileInfo" resultType="String">
+		SELECT 	prod_url AS prodUrl
+		FROM spos_products_info
+		WHERE PROD_INFO_INDEX = #{prodId}
+	</select>
+	<!-- // 07. cate고리전체 -->
+	<select id="getCateAll" resultType="org.zerock.domain.CateVO">
+		select distinct prod_cate, detail_cate from spos_products_info 
+	</select>
+	<!-- // 08. 전체 상품리스트 -->
+	<select id="getProdAll" resultType="org.zerock.domain.ProdVO">
+			SELECT  
+			PROD_INFO_INDEX AS prodId
+			, prod_cate AS prodCate
+			, detail_cate AS detailCate
+			, prod_name AS prodName 
+			, prod_price AS prodPrice 
+			, prod_desc AS prodDesc
+			, prod_kcal AS prodKcal
+			, prod_manufact AS prodManufact
+			, prod_url AS prodUrl
+		FROM spos_products_info
+	</select>
+	<!-- // 09. prod_cate -->
+	<select id="getProdCate" resultType="org.zerock.domain.CateVO">
+		select distinct prod_cate from spos_products_info 
+	</select>
+	<!-- // 10. 카테2불러오기 카테1선택후 -->
+	<select id="getDetailCate" resultType="org.zerock.domain.CateVO">
+		select distinct detail_cate from spos_products_info where prod_cate = #{prod_cate} 
+	</select>
+	<!-- // 11. 카테2에 따른 제품 리스트 불러오기 -->
+	<select id="getProdList" resultType="org.zerock.domain.ProdVO">
+		select PROD_INFO_INDEX AS prodId
+			, prod_cate AS prodCate
+			, detail_cate AS detailCate
+			, prod_name AS prodName 
+			, prod_price AS prodPrice 
+			, prod_desc AS prodDesc
+			, prod_kcal AS prodKcal
+			, prod_manufact AS prodManufact
+			, prod_url AS prodUrl
+			 from spos_products_info
+			  where detail_cate = #{detail_cate} 
+	</select>
+</mapper>
