@@ -7,9 +7,7 @@ import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
 
 public interface BoardService {
-	public List<BoardVO> getList();
-
-	public List<BoardVO> getBoardMore(Criteria cri);
+	public List<BoardVO> getList(Criteria cri);
 	
 	public List<BoardAttachVO> getAttachList(Long board_index);
 

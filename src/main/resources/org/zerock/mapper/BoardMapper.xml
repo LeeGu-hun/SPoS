@@ -1,23 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.BoardMapper">
+
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+			<foreach item="type" collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type== 'T'.toString()">
+							board_title like '%'||#{keyword}||'%'
+						</when>
+						<when test="type== 'C'.toString()">
+							board_content like '%'||#{keyword}||'%'
+						</when>
+						<when test="type== 'W'.toString()">
+							user_id like '%'||#{keyword}||'%'
+						</when>
+						<when test="type== 'N'.toString()">
+							user_name like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+	
 	<select id="getList" resultType="org.zerock.domain.BoardVO">
 		<![CDATA[
-			SELECT /*+ index_desc(SPOS_BOARD SPOS_BOARD_PK) */ 
-				BOARD_INDEX, USER_INDEX, to_char(BOARD_REGDATE, 'YYYY-MM-DD HH24:MI:SS') as BOARD_REGDATE, to_char(BOARD_UPDATEDATE, 'YYYY-MM-DD HH24:MI:SS') as BOARD_UPDATEDATE, 
-				BOARD_TITLE, BOARD_CONTENT, BOARD_SPECIAL 
-			FROM SPOS_BOARD WHERE rownum <=6 
+			SELECT /*+ LEADING(u) */ rownum rn, BOARD_INDEX, b.USER_INDEX as USER_INDEX, to_char(BOARD_REGDATE, 'YYYY-MM-DD HH24:MI:SS') as BOARD_REGDATE, 
+									 to_char(BOARD_UPDATEDATE, 'YYYY-MM-DD HH24:MI:SS') as BOARD_UPDATEDATE, BOARD_TITLE, BOARD_CONTENT, BOARD_SPECIAL, USER_ID, USER_NAME 
+			FROM (SELECT /*+ index_desc(SPOS_BOARD SPOS_BOARD_PK) */ rownum rn, BOARD_INDEX, USER_INDEX, BOARD_REGDATE, BOARD_UPDATEDATE, BOARD_TITLE, 
+																	 BOARD_CONTENT, BOARD_SPECIAL from SPOS_BOARD where (rownum <= #{pageNum} * #{amount})) b, SPOS_USER_INFO u 
+			WHERE b.user_index = u.user_index and 
 		]]>
-	</select>
-	
-	<select id="getMoreList" resultType="org.zerock.domain.BoardVO">
-		<![CDATA[
-			SELECT BOARD_INDEX, USER_INDEX, to_char(BOARD_REGDATE, 'YYYY-MM-DD HH24:MI:SS') as BOARD_REGDATE, to_char(BOARD_UPDATEDATE, 'YYYY-MM-DD HH24:MI:SS') as BOARD_UPDATEDATE, 
-				BOARD_TITLE, BOARD_CONTENT, BOARD_SPECIAL 
-			FROM ( 
-				select /*+ index_desc(SPOS_BOARD SPOS_BOARD_PK) */ rownum rn, BOARD_INDEX, USER_INDEX, BOARD_REGDATE, BOARD_UPDATEDATE, BOARD_TITLE, BOARD_CONTENT, BOARD_SPECIAL 
-				from SPOS_BOARD WHERE (rownum <= #{pageNum} * #{amount})
-				) WHERE rn > (#{pageNum} -1) * #{amount} 
+		<include refid="criteria"/>
+		<![CDATA[		
+				rn > (#{pageNum} -1) * #{amount} 
 		]]>
 	</select>
 	

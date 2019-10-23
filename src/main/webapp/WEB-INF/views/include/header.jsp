@@ -1,6 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"
 	contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 
 <html lang="kr">
@@ -23,6 +24,7 @@
 	    <link href="resources/plugins/lightbox2/dist/css/lightbox.css" rel="stylesheet">
 	    <!--template custom css file-->
 	    <link href="resources/css/style.css" rel="stylesheet">
+		<link href="resources/css/home.css" rel="stylesheet">
 	
 	    <script src="resources/js/modernizr.js"></script>
 	    <!--Common plugins-->
@@ -54,7 +56,7 @@
         <div id="hoeapp-wrapper" class="hoe-hide-lpanel" hoe-device-type="desktop">
             <header id="hoe-header" hoe-lpanel-effect="shrink">
 			<div class="hoe-left-header">
-                    <a href="#"> A<span>SSAN</span></a>
+                    <a href="#"> P<span>ET</span></a>
                     <span class="hoe-sidebar-toggle"><a href="#"></a></span>
                 </div>
 
@@ -63,22 +65,21 @@
                     <ul class="left-navbar">
                         <li>
                             <div class="search-form-div">
-                                <form id="searchForm" action="/include/header" method="get">
+                               <form id="searchForm" action="/home" method="get">
 									<select name="type" id="type" style="width: 72px; height: 32px;">
 										<option value='T'
-											<c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>제목</option>
+											<c:out value="${pageMaker.type eq 'T'?'selected':'' }"/>>제목</option>
 										<option value='C'
-											<c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>내용</option>
+											<c:out value="${pageMaker.type eq 'C'?'selected':'' }"/>>내용</option>
 										<option value='W'
-											<c:out value="${pageMaker.cri.type eq 'W'?'selected':'' }"/>>이름</option>
+											<c:out value="${pageMaker.type eq 'W'?'selected':'' }"/>>아이디</option>
+										<option value='N'
+											<c:out value="${pageMaker.type eq 'N'?'selected':'' }"/>>이름</option>
 									</select>
 									<input type="text" name="keyword" class="search-input"
-										placeholder="Search here" value="${pageMaker.cri.keyword}"
+										placeholder="Search here" value="${pageMaker.keyword}"
 										style="height:34px;">
-	                                   <i class="ion-search"></i>
 	                                <button class="btn btn-default">Search</button>
-	                                <a href="/home">홈으로</a>&nbsp
-	                                <a href="/main">임시</a>
                                 </form>
                             </div>
                         </li>
@@ -112,7 +113,12 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><img src="resources/images/avtar.png" alt="" width="30" class="img-circle"> 김개똥</a>
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><img src="resources/images/avtar.png" alt="" width="30" class="img-circle">
+                            	<sec:authorize access="isAuthenticated()">
+									<sec:authentication	property="principal.username" /> 님 환영합니다
+								</sec:authorize>
+								<sec:authorize access="isAnonymous()">로그인 하세요</sec:authorize>
+                            </a>
                             <ul class="dropdown-menu dropdown-menu-scale user-dropdown">
                                 <li><a href="#"><i class="ion-email-unread"></i> Inbox <span class="label label-warning">3</span></a></li>
                                 <li><a href="#"><i class="ion-person"></i> Profile </a></li>
@@ -124,13 +130,10 @@
                         </li>
 				</ul>
                 </div>
-                
+                <sec:authorize access="isAuthenticated()">
+					<sec:authentication	property="principal.username" /> 님 환영합니다
+				</sec:authorize>
             </header>
-            <div id="hoeapp-container" hoe-color-type="lpanel-bg7" hoe-lpanel-effect="shrink">
-            <%@include file="/WEB-INF/views/include/leftMenu.jsp"%>
-            <section id="main-content">
-            
-            
 <script>
 	$(document).ready(function(){
 		var searchForm = $("#searchForm");

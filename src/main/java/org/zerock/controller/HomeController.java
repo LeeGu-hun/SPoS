@@ -2,7 +2,6 @@ package org.zerock.controller;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
 import org.zerock.service.BoardService;
 
 import lombok.AllArgsConstructor;
@@ -31,11 +31,12 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		List<BoardVO> tempVO = service.getList();
-		tempVO.forEach(e -> e.setAttachList(service.getAttachList(e.getBoard_index())));
-		log.info("List : " + tempVO);
-		model.addAttribute("list", tempVO);
+	public String home(Model model, Criteria cri) {
+		List<BoardVO> vo = service.getList(cri);
+		vo.forEach(e -> e.setAttachList(service.getAttachList(e.getBoard_index())));
+		log.info("List : " + vo);
+		model.addAttribute("list", vo);
+		model.addAttribute("pageMaker", cri);
 		
 		return "/home";
 	}

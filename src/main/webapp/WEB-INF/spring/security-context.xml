@@ -14,7 +14,7 @@
 	<security:http use-expressions="true" auto-config="true">
 	
 		<security:access-denied-handler ref="customAccessDenied"/>
-		<security:intercept-url pattern="/home" access="isAuthenticated()"/>
+		<!-- <security:intercept-url pattern="/home" access="isAuthenticated()"/> -->
 		<!-- <security:intercept-url pattern="/main" access="isAuthenticated()"/> -->
 		
 		<security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess"/>
