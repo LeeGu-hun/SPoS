@@ -41,22 +41,15 @@
 		<!-- constructor-arg : 생성자 매개변수 -->
 		<beans:constructor-arg value="C:\\Users\\doubles\\Desktop\\workspace\\gitSpring\\spring02\\src\\main\\resources\\upload"/>
 	</beans:bean>
-	<!-- 인터셉터 bean 설정 -->
-	<!-- 테스트 bean -->
-	<beans:bean id="sampleInterceptor" class="com.example.spring02.interceptor.SampleInterceptor"/>
-	<!-- 사용자 세션체크 bean -->
-	<beans:bean id="loginInterceptor" class="com.example.spring02.interceptor.LoginInterceptor"/>
-	<!-- 관리자 세션체크 bean -->
-	<beans:bean id="adminInterceptor" class="com.example.spring02.interceptor.AdminInterceptor"/>
-	<!-- 인터셉터 매핑정보 -->
-	<!-- <interceptors>
-		<!-- 관리자 세션체크 매핑-->
+	<!-- <!-- 인터셉터 매핑정보 -->
+	<interceptors>
+		관리자 세션체크 매핑
 		<interceptor>
 			<mapping path="/shop/product/write.do"/>
 			<mapping path="/shop/product/insert.do"/>
 			<beans:ref bean="adminInterceptor"/>
 		</interceptor>
-		<!-- 사용자 세션체크 매핑 -->
+		사용자 세션체크 매핑
 		<interceptor>
 			<mapping path="/board/write.do"/>
 			<mapping path="/board/insert.do"/>
@@ -67,13 +60,13 @@
 			<mapping path="/shop/cart/list.do"/>
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
-		<!-- 테스트 매핑-->
+		테스트 매핑
 		<interceptor>
 			<mapping path="/doA"/>
 			<mapping path="/doB"/>
-			<!-- board 하위 url에 인터셉터 적용 -->
+			board 하위 url에 인터셉터 적용
 			<mapping path="/board/**"/>
-			<!-- 적용될 인터셉터 클래스 지정 -->
+			적용될 인터셉터 클래스 지정
 			<beans:ref bean="sampleInterceptor"/>
 		</interceptor>
 	</interceptors> -->
