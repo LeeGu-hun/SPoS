@@ -47,7 +47,9 @@
 											<img src="resources/images/noimg.png" class="img-responsive">
 										</c:if>
 										<c:if test="${board.attachList[0].picture_path ne null}">
-											<img src="display?fileName=${board.attachList[0].picture_path }/${board.attachList[0].picture_uuid }_${board.attachList[0].picture_name }" class="img-responsive">
+											<c:forEach items="${board.attachList }" var="attach" varStatus="status">
+												<img src="display?fileName=${attach.picture_path }/${attach.picture_uuid }_${attach.picture_name }" class="img-responsive" style="z-index:${status.index };<c:if test='${status.index ne 0}'>display: none;</c:if>">
+											</c:forEach>
 										</c:if>
 										<div class="gallery-overlay">
 											<i>${board.board_title }</i>
@@ -75,7 +77,8 @@
 							<button class="close" type="button" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">×</span>
 							</button>
-							<h5 class='modal-title' id='modalLabel'>제목</h5>
+							<h5 class='modal-title' id='modalLabel' style="float:left;">제목</h5>
+							<div style="float:left;margin-left:50px"><button class="left">&lt;</button><button class="right">&gt;</button></div>
 						</div>
 						<div class='modal-footer'>
 							<div class='content-img'></div>
@@ -165,7 +168,8 @@
 	    		var bdate = new Date(tempStr[0]+tempStr[1]);
 	    		
 	    		$("#modalLabel").text(btitle);
-	    					
+	    		
+				//bpic.find("style")	    					
 	    		$("#confirmModal .content-img").html(bpic);
 	    		
 	    		var str = "";
@@ -252,16 +256,13 @@
     			var str = "";
     			
     			$(uploadResultArr).each(function(i, obj){
-    				if(obj.image) {
-    					var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
-    					str += "<li data-path='"+obj.uploadPath+"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'>";
-    					str += "<div><span>"+obj.fileName+"</span>";
-    					str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
-    					str += "<img src='/display?fileName="+fileCallPath+"'></div></li>";
-    				} else {
-    					return;
-    				}
+   					var fileCallPath = encodeURIComponent(obj.picture_path + "/s_" + obj.picture_uuid + "_" + obj.picture_name);
+   					str += "<li data-picture_path='"+obj.picture_path+"' data-picture_uuid='"+obj.picture_uuid+"' data-picture_name='"+obj.picture_name+"' data-type='image' style='float:left;'>";
+   					str += "<div><span>"+obj.picture_name+"</span>";
+   					str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+   					str += "<img src='/display?fileName="+fileCallPath+"'></div></li>";
     			});
+    			console.log(str);
     			uploadUL.append(str);
     		} // showUploadResult function
     		
@@ -291,8 +292,9 @@
     				type: 'POST',
     				dataType:'json',
     				success: function(result){
+    					console.log("result");
     					console.log(result);
-    					//showUploadResult(result);
+    					showUploadResult(result);
     				}
     			}); // $.ajax
     		}); // .uploadFile change
@@ -318,7 +320,7 @@
     			$(this).closest("li").remove();
     		});
     		
-    		/* $(".addBtn_board").on("click", function(e){
+    		$(".addBtn_board").on("click", function(e){
 	    		e.preventDefault();
 	    		var content = $(".addArea").val();
 	    		
@@ -332,16 +334,20 @@
 		    		alert("내용을 적어주세요");
 		    		$(".addArea").focus();
 	    		} else {
-		    		alert("등록");
 
-		    		if(files = ''){
-		    			
-		    		} else {
-		    			
-		    		}
-		    		//$("#submitFrm").submit();
+		    		var str="";
+					$(".uploadResult ul li").each(function(i, obj){
+						var jobj = $(obj);
+						console.dir(jobj);
+						
+						str += "<input type='hidden' name='attachList["+i+"].picture_name' value='"+jobj.data("picture_name")+"'>";
+						str += "<input type='hidden' name='attachList["+i+"].picture_uuid' value='"+jobj.data("picture_uuid")+"'>";
+						str += "<input type='hidden' name='attachList["+i+"].picture_path' value='"+jobj.data("picture_path")+"'>";
+					});
+		    		$("#submitFrm").append(str).submit();
+		    		alert("등록되었습니다.");
 	    		}
-    		}); */
+    		});
 	    });
     </script>
 <%@include file="/WEB-INF/views/include/footer.jsp" %>

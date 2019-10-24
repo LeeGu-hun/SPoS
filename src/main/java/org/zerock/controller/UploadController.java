@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,8 +12,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,10 +21,9 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.zerock.domain.AttachFileDTO;
+import org.zerock.domain.BoardAttachVO;
 
 import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnailator;
@@ -85,8 +81,8 @@ public class UploadController {
 	//@PreAuthorize("isAuthenticated()")
 	@PostMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
-	public ResponseEntity<List<AttachFileDTO>> uploadAjaxPost(MultipartFile[] uploadFile) {
-		List<AttachFileDTO> list = new ArrayList<>();
+	public ResponseEntity<List<BoardAttachVO>> uploadAjaxPost(MultipartFile[] uploadFile) {
+		List<BoardAttachVO> list = new ArrayList<>();
 		log.info("update ajax post");
 		String uploadFolder = "D:\\upload";
 		
@@ -100,7 +96,7 @@ public class UploadController {
 		} // make yyyy/MM/dd folder
 		
 		for(MultipartFile multipartFile : uploadFile) {
-			AttachFileDTO attachDTO = new AttachFileDTO();
+			BoardAttachVO attachDTO = new BoardAttachVO();
 			log.info("----------------------------------------");
 			log.info("Upload File Name: " + multipartFile.getOriginalFilename());
 			log.info("Upload File Size: " + multipartFile.getSize());
@@ -110,7 +106,7 @@ public class UploadController {
 			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\")+1);
 			log.info("only file name: " + uploadFileName);
 			
-			attachDTO.setFileName(uploadFileName);
+			attachDTO.setPicture_name(uploadFileName);
 			
 			UUID uuid = UUID.randomUUID();
 			uploadFileName = uuid.toString() + "_" + uploadFileName;
@@ -120,10 +116,9 @@ public class UploadController {
 			try {
 				File saveFile = new File(uploadPath, uploadFileName);
 				multipartFile.transferTo(saveFile);
-				attachDTO.setUuid(uuid.toString());
-				attachDTO.setUploadPath(uploadFolderPath);
+				attachDTO.setPicture_uuid(uuid.toString());
+				attachDTO.setPicture_path(uploadFolderPath);
 				if(checkImageType(saveFile)) {
-					attachDTO.setImage(true);
 					FileOutputStream thumbnail = new FileOutputStream(new File(uploadPath, "s_" + uploadFileName));
 					Thumbnailator.createThumbnail(multipartFile.getInputStream(), thumbnail, 100, 100);
 					thumbnail.close();
@@ -153,36 +148,36 @@ public class UploadController {
 		return result;
 	}
 	
-	@GetMapping(value = "/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	@ResponseBody
-	public ResponseEntity<Resource> downloadFile(@RequestHeader("User-Agent") String userAgent, String fileName){
-		log.info("download file: " + fileName);
-		Resource resource = new FileSystemResource("d:\\upload\\" + fileName);
-		if(resource.exists()==false) {
-			return new ResponseEntity<Resource>(HttpStatus.NOT_FOUND);
-		}
-		log.info("resource: " + resource);
-		String resourceName = resource.getFilename();
-		String resourceOriginalName = resourceName.substring(resourceName.indexOf("_")+1);
-		HttpHeaders headers = new HttpHeaders();
-		try {
-			String downloadName = null;
-			if(userAgent.contains("Trident")) {
-				log.info("IE browser");
-				downloadName = URLEncoder.encode(resourceOriginalName, "UTF-8").replaceAll("\\+", " ");
-			} else if(userAgent.contains("Edge")) {
-				log.info("Edge browser");
-				downloadName = URLEncoder.encode(resourceOriginalName, "UTF-8");
-			} else {
-				log.info("Chrome browser");
-				downloadName = new String(resourceOriginalName.getBytes("UTF-8"), "ISO-8859-1");
-			}
-			headers.add("Content-Disposition", "attachment; filename=" + downloadName);
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
-	}
+//	@GetMapping(value = "/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+//	@ResponseBody
+//	public ResponseEntity<Resource> downloadFile(@RequestHeader("User-Agent") String userAgent, String fileName){
+//		log.info("download file: " + fileName);
+//		Resource resource = new FileSystemResource("d:\\upload\\" + fileName);
+//		if(resource.exists()==false) {
+//			return new ResponseEntity<Resource>(HttpStatus.NOT_FOUND);
+//		}
+//		log.info("resource: " + resource);
+//		String resourceName = resource.getFilename();
+//		String resourceOriginalName = resourceName.substring(resourceName.indexOf("_")+1);
+//		HttpHeaders headers = new HttpHeaders();
+//		try {
+//			String downloadName = null;
+//			if(userAgent.contains("Trident")) {
+//				log.info("IE browser");
+//				downloadName = URLEncoder.encode(resourceOriginalName, "UTF-8").replaceAll("\\+", " ");
+//			} else if(userAgent.contains("Edge")) {
+//				log.info("Edge browser");
+//				downloadName = URLEncoder.encode(resourceOriginalName, "UTF-8");
+//			} else {
+//				log.info("Chrome browser");
+//				downloadName = new String(resourceOriginalName.getBytes("UTF-8"), "ISO-8859-1");
+//			}
+//			headers.add("Content-Disposition", "attachment; filename=" + downloadName);
+//		} catch (UnsupportedEncodingException e) {
+//			e.printStackTrace();
+//		}
+//		return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
+//	}
 
 	//@PreAuthorize("isAuthenticated()")
 	@PostMapping("/deleteFile")

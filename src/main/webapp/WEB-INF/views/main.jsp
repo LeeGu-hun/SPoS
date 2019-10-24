@@ -36,12 +36,12 @@
 							<div class="panel-heading">사진 첨부</div>
 							<!-- /.panel-heading -->
 
-							<div class="panel-body">
+							<div class="panel-body" style="height: 200px;">
 								<div class="form-group uploadDiv">
 									<input type="file" class='uploadFile' multiple>
 								</div>
 								<div class='uploadResult'>
-									<ul>
+									<ul style="list-style-type: none;">
 
 									</ul>
 								</div>

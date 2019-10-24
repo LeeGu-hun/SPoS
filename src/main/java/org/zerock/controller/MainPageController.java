@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
 import org.zerock.service.BoardService;
@@ -29,8 +30,7 @@ public class MainPageController {
 	}
 	
 	@PostMapping("/register")
-	public String register(BoardVO board) {
-	//public String register(BoardVO board, RedirectAttributes rttr) {
+	public String register(BoardVO board, RedirectAttributes rttr) {
 //		new BoardRegisterValidator().validate(board, errors);
 //		if(errors.hasErrors()) {
 //			log.info(errors.getAllErrors());
@@ -39,18 +39,12 @@ public class MainPageController {
 		log.info("==================================");
 		log.info("register: " + board);
 		
-//		if(board.getAttachList()!=null) {
-//			board.getAttachList().forEach(attach -> log.info(attach));
-//		}
+		if(board.getAttachList()!=null) {
+			board.getAttachList().forEach(attach -> attach.setPicture_path(attach.getPicture_path().replace("\\", "/")));
+			board.getAttachList().forEach(attach -> log.info(attach));
+		}
 		log.info("==================================");
 		service.register(board);
-		return "redirect:/";
+		return "redirect:/home";
 	}
-	
-//	@GetMapping(value = "/getAttachList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-//	@ResponseBody
-//	public ResponseEntity<List<BoardAttachVO>> getAttachList(Long board_index) {
-//		log.info("getAttachList : " + board_index);
-//		return new ResponseEntity<>(service.getAttachList(board_index), HttpStatus.OK);
-//	}
 }

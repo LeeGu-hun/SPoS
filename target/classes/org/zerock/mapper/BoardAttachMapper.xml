@@ -5,8 +5,8 @@
 <mapper namespace="org.zerock.mapper.BoardAttachMapper">
 
 	<insert id="insert">
-		insert into SPOS_BOARD_PICTURE (PICTURE_UUID, BOARD_INDEX, PICTURE_PATH, PICTURE_NAME)
-		values (#{PICTURE_UUID}, #{BOARD_INDEX}, #{PICTURE_PATH}, #{PICTURE_NAME})
+		insert into spos_board_picture (picture_uuid, board_index, picture_path, picture_name)
+		values (#{picture_uuid}, #{board_index}, #{picture_path}, #{picture_name})
 	</insert>
 
 	<delete id="delete">
