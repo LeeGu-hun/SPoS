@@ -189,7 +189,7 @@
 	border-top: 1px solid rgba(197, 214, 222, 0.7);
 }
 
-.addBtn {
+.addBtn_reply {
 	width: 20%;
 	background-color: white;
 	border: 0px;
@@ -200,7 +200,7 @@
 	color: rgba(var(- -h5f, 56, 151, 240), 1);
 }
 
-.addBtn span {
+.addBtn_reply span {
 	font-weight: 600;
 	opacity: .3;
 }

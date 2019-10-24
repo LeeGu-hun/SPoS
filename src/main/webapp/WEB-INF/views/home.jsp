@@ -43,7 +43,12 @@
 									<a class="gallery-box" href="#"> 
 										<input class="bidx" type="hidden" value="${board.board_index }"> 
 										<input class="bdate" type="hidden" value="${board.board_updatedate }">
-										<img src="display?fileName=${board.attachList[0].picture_path }/${board.attachList[0].picture_uuid }_${board.attachList[0].picture_name }" class="img-responsive">
+										<c:if test="${board.attachList[0].picture_path eq null}">
+											<img src="resources/images/noimg.png" class="img-responsive">
+										</c:if>
+										<c:if test="${board.attachList[0].picture_path ne null}">
+											<img src="display?fileName=${board.attachList[0].picture_path }/${board.attachList[0].picture_uuid }_${board.attachList[0].picture_name }" class="img-responsive">
+										</c:if>
 										<div class="gallery-overlay">
 											<i>${board.board_title }</i>
 										</div>
@@ -223,17 +228,105 @@
 	    		replyLen = replyLen + 4;
 	    		showList(replyLen);
     		});
+    		
+    		// *--Start uploadfile--*
+    		var regex = new RegExp("(.*?)\.(jpg|png|gif|bmp)$");
+    		var maxSize = 5242880; //5MB
+    		
+    		function checkExtension(fileName, fileSize) {
+    			if(fileSize >= maxSize) {
+    				alert("파일 사이즈 초과!");
+    				return false;
+    			}
+    			if(!regex.test(fileName)) {
+    				alert("그림 파일만 업로드 할 수 있습니다(jpg, png, gif, bmp).");
+    				return false
+    			}
+    			return true;
+    		} // checkExtension
+    		
+    		function showUploadResult(uploadResultArr) {
+    			if(!uploadResultArr || uploadResultArr.length == 0) {return;}
+    			
+    			var uploadUL = $(".uploadResult ul");
+    			var str = "";
+    			
+    			$(uploadResultArr).each(function(i, obj){
+    				if(obj.image) {
+    					var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
+    					str += "<li data-path='"+obj.uploadPath+"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'>";
+    					str += "<div><span>"+obj.fileName+"</span>";
+    					str += "<button type='button' data-file=\'"+fileCallPath+"\' data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
+    					str += "<img src='/display?fileName="+fileCallPath+"'></div></li>";
+    				} else {
+    					return;
+    				}
+    			});
+    			uploadUL.append(str);
+    		} // showUploadResult function
+    		
+    		$(".uploadFile").change(function(e){
+    			var formData = new FormData();
+	    		var inputFile = $(".uploadFile");
+    			var files = inputFile[0].files;
+    			
+    			//add filedata to formdata
+    			for(var i=0; i<files.length; i++) {
+    				if(!checkExtension(files[i].name, files[i].size)) {
+    					return false;
+    				}
+    				formData.append("uploadFile", files[i]);
+    			}
 
-    		$(".addBtn_board").on("click", function(e){
+    			console.log(files);
+    			
+    			$.ajax({
+    				url: '/uploadAjaxAction',
+    				processData: false,
+    				contentType: false,
+    				beforeSend: function(xhr) {
+    					xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+    				},
+    				data: formData,
+    				type: 'POST',
+    				dataType:'json',
+    				success: function(result){
+    					console.log(result);
+    					//showUploadResult(result);
+    				}
+    			}); // $.ajax
+    		}); // .uploadFile change
+    		
+    		$(".uploadResult").on("click", "button", function(e){
+    			console.log("delete file..");
+    			var targetFile = $(this).data("file");
+    			var type = $(this).data("type");
+    			console.log(targetFile);
+    			
+    			$.ajax({
+    				url : '/deleteFile',
+    				data : {fileName:targetFile, type:type},
+    				beforeSend: function(xhr) {
+    					xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+    				},
+    				dataType : 'text',
+    				type : 'POST',
+    				success : function(result){
+    					alert(result);
+    				}
+    			});
+    			$(this).closest("li").remove();
+    		});
+    		
+    		/* $(".addBtn_board").on("click", function(e){
 	    		e.preventDefault();
 	    		var content = $(".addArea").val();
-	    		var img = $(".uploadFile").val();
-	    		console.log(img);
 	    		
-	    		/* var img = $(".gallery-box .img-responsive").attr("src");
-	    		if(img == "display?fileName=/_"){
-	    			img.attr("src", "resources/images/avtar-9.jpg");
-	    		} */
+	    		var formData = new FormData();
+	    		var inputFile = $(".uploadFile");
+	    		var files = inputFile[0].files;
+	    		
+	    		console.log(files);
 	    		
 	    		if(content == '' || content==null){
 		    		alert("내용을 적어주세요");
@@ -241,14 +334,14 @@
 	    		} else {
 		    		alert("등록");
 
-		    		if(img = ''){
+		    		if(files = ''){
 		    			
 		    		} else {
 		    			
 		    		}
 		    		//$("#submitFrm").submit();
 	    		}
-    		});
+    		}); */
 	    });
     </script>
 <%@include file="/WEB-INF/views/include/footer.jsp" %>

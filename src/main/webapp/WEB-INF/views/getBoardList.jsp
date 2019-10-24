@@ -31,7 +31,12 @@
 				<a class="gallery-box" href="#"> 
 					<input class="bidx" type="hidden" value="${board.board_index }"> 
 					<input class="bdate" type="hidden" value="${board.board_updatedate }">
-					<img src="display?fileName=${board.attachList[0].picture_path }/${board.attachList[0].picture_uuid }_${board.attachList[0].picture_name }" class="img-responsive">
+					<c:if test="${board.attachList[0].picture_path eq null}">
+						<img src="resources/images/noimg.png" class="img-responsive">
+					</c:if>
+					<c:if test="${board.attachList[0].picture_path ne null}">
+						<img src="display?fileName=${board.attachList[0].picture_path }/${board.attachList[0].picture_uuid }_${board.attachList[0].picture_name }" class="img-responsive">
+					</c:if>
 					<div class="gallery-overlay">
 						<i>${board.board_title }</i>
 					</div>
