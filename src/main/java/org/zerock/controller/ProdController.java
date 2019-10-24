@@ -65,13 +65,14 @@ public class ProdController {
 		
 		
 	}
-	// 2. 상품 상세보기
-		@RequestMapping("detail/{prodId}")
-		public ModelAndView detail(@PathVariable("prodId") int prodId, ModelAndView mav){
-			mav.setViewName("/shop/prodDetail");
-			mav.addObject("vo", prodSvc.detailProd(prodId));
-			return mav;
-		}
+	/*
+	 * // 2. 상품 상세보기
+	 * 
+	 * @RequestMapping("detail/{prodId}") public ModelAndView
+	 * detail(@PathVariable("prodId") int prodId, ModelAndView mav){
+	 * mav.setViewName("/shop/prodDetail"); mav.addObject("vo",
+	 * prodSvc.detailProd(prodId)); return mav; }
+	 */
 	
 	@GetMapping("/prodEdit")
 	public void prodEdit(Model model) {
