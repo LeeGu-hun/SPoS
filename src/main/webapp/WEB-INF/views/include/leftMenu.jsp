@@ -11,9 +11,9 @@
 				<li class="hoe-sub-menu">
 					<div id="sub-menu-text">
 						<a href="#">
-							<span class="menu-text">[150 g] / [150 g]<br>[750 kcal] / [750 kcal] <br><br>
-							현재 사료 량<br>[150 g]
-							</span>
+							<h5>[${food.food_amount } g]<br>
+							    [${food.food_k } kcal]
+							</h5>
 						</a>
 					</div>
 				</li>

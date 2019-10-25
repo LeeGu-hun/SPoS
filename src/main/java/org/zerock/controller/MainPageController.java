@@ -28,6 +28,7 @@ public class MainPageController {
 		model.addAttribute("list", vo);
 	}
 	
+	
 	@PostMapping("/register")
 	public String register(BoardVO board) {
 	//public String register(BoardVO board, RedirectAttributes rttr) {

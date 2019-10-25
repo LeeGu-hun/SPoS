@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.FoodMapper">
+	<select id="getFood" resultType="org.zerock.domain.FoodHistoryVO">
+		<![CDATA[
+			select food_amount, (food_amount * food_kcal) as food_k
+			from spos_food_history NATURAL join spos_food_info
+			where 
+			user_index = #{user_index}
+			and
+			TO_CHAR(food_date,'YYYYMMDD') = TO_CHAR(SYSDATE,'YYYYMMDD') 
+		]]>
+	</select>
+</mapper>

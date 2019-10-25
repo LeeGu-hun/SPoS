@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.FoodHistoryVO;
 import org.zerock.service.BoardService;
+import org.zerock.service.FoodService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -24,6 +26,7 @@ import lombok.extern.log4j.Log4j;
 public class HomeController {
 	
 	private BoardService service;
+	private FoodService fService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
@@ -37,9 +40,11 @@ public class HomeController {
 		log.info("List : " + vo);
 		model.addAttribute("list", vo);
 		model.addAttribute("pageMaker", cri);
+		model.addAttribute("food", fService.getFood(1));
 		
 		return "/home";
 	}
+	
 	
 	@RequestMapping(value = "/favicon.ico", method = RequestMethod.GET)
 	public void favicon(HttpServletRequest request, HttpServletResponse reponse) {
