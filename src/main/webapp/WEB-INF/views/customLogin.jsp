@@ -53,10 +53,11 @@
                             <p><a href="#">Reset Password</a></p>
                         </div>
                     </div>
-                    <a href="index.html" id="alogin" class="btn btn-success rounded btn-lg">로그인</a>
+                    <a href="customLogin" id="alogin" class="btn btn-success rounded btn-lg">로그인</a>
                     <hr>
                      <a href="membership">회원가입</a>
-                     <a href="modify">개인정보수정</a>
+                     <br>
+                     <a href="home">메인화면으로</a>
                      <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
                 </form>
             </div><!--page center in-->

@@ -27,7 +27,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
-		return "customLogin";
+		return "/home";
 	}
 	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)

@@ -1,6 +1,8 @@
 package org.zerock.mapper;
 
+
 import org.zerock.domain.MemberVO;
+import org.zerock.domain.UserVO;
 
 
 public interface MemberMapper {
@@ -12,7 +14,7 @@ public interface MemberMapper {
 	public MemberVO checkLogin(String id);
 	
 	//modify
-	public int updateMember(MemberVO vo);
+	public int updateMember(MemberVO v);
 	
 	
 }

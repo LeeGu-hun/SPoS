@@ -25,6 +25,7 @@
 	    <!--template custom css file-->
 	    <link href="resources/css/style.css" rel="stylesheet">
 		<link href="resources/css/home.css" rel="stylesheet">
+		
 	
 	    <script src="resources/js/modernizr.js"></script>
 	    <!--Common plugins-->
@@ -121,11 +122,16 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-scale user-dropdown">
                                 <li><a href="#"><i class="ion-email-unread"></i> Inbox <span class="label label-warning">3</span></a></li>
-                                <li><a href="#"><i class="ion-person"></i> Profile </a></li>
+                                <li><a href="modify"><i class="ion-person"></i> Profile </a></li>
                                 <li><a href="#"><i class="ion-settings"></i> Settings <span class="label label-primary">3/9</span></a></li>
                                 <li><a href="#"><i class="ion-calendar"></i> Calendar </a></li>
                                 <li><a href="#"><i class="ion-ios-compose"></i> Tasks </a></li>
-                                <li><a href="#"><i class="ion-log-out"></i> Logout </a></li>
+                                <sec:authorize access = "isAuthenticated()">
+                                <li><a data-toggle="modal" data-target="#logoutModal"><i class="ion-log-out"></i> Logout </a></li>
+                                </sec:authorize>
+                                <sec:authorize access = "isAnonymous()">
+                                <li><a href="/customLogin"><i class="ion-log-in"></i> Login </a></li>
+                                </sec:authorize>
                             </ul>
                         </li>
 				</ul>
@@ -134,6 +140,26 @@
 					<sec:authentication	property="principal.username" /> 님 환영합니다
 				</sec:authorize>
             </header>
+          
+              <!-- Logout Modal-->
+  <div class="modal fade" style="position:absolute; left:50%; width: 30%; top:30%;
+    transform:translateX(-50%);" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" style="margin-bottom:0;line-height:1.5;"id="exampleModalLabel">로그아웃 하시겠습니까? </h5>
+          
+        </div>
+        
+        <div class="modal-footer"style="margin-left:60%;">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="/customLogout">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+            
+            
 <script>
 	$(document).ready(function(){
 		var searchForm = $("#searchForm");
@@ -145,5 +171,6 @@
 			e.preventDefault();
 			searchForm.submit();
 		});
+				
 	});
 </script>

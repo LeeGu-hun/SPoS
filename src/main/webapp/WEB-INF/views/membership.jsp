@@ -12,20 +12,20 @@
 <title>spos - join membership</title>
 
 <!-- Bootstrap -->
-<link href="assets/plugins/bootstrap/css/bootstrap.min.css"
+<link href="resources/plugins/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <!--side menu plugin-->
-<link href="assets/plugins/hoe-nav/hoe.css" rel="stylesheet">
+<link href="resources/plugins/hoe-nav/hoe.css" rel="stylesheet">
 <!-- icons-->
-<link href="assets/plugins/ionicons/css/ionicons.min.css"
+<link href="resources/plugins/ionicons/css/ionicons.min.css"
 	rel="stylesheet">
-<link href="assets/plugins/font-awesome/css/font-awesome.min.css"
+<link href="resources/plugins/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet">
-<link href="assets/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="resources/plugins/iCheck/custom.css" rel="stylesheet">
 <!--template custom css file-->
-<link href="assets/css/style.css" rel="stylesheet">
+<link href="resources/css/style.css" rel="stylesheet">
 
-<script src="assets/js/modernizr.js"></script>
+<script src="resources/js/modernizr.js"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -39,46 +39,46 @@
 		<div class="page-center-in">
 			<form class="sign-box" id="joinForm" role="form" action="/membership" method="post">
 				<div class="sign-avatar">
-					<img src="assets/images/avtar-9.png" alt="" class="img-circle">
+					<img src="resources/images/avtar-9.png" alt="" class="img-circle">
 				</div>
 				<header class="sign-title">회원가입</header>
 
 				<div class="form-group-lg">
-					<input type="text" class="form-control-ml-5" id="USER_ID" name="USER_ID"
+					<input type="text" class="form-control-ml-5" id="USER_ID" name="user_id"
 						placeholder="ID">
 				
 				</div>
 				<div class="form-group">
-					<input type="password" class="form-control" id="USER_PW" name="USER_PW"
+					<input type="password" class="form-control" id="USER_PW" name="user_pw"
 						placeholder="Password">
-
+					
 				</div>
 				<div class="form-group">
-					<input type="password" class="form-control" id="USER_REPW" name="USER_REPW"
+					<input type="password" class="form-control" id="USER_REPW" name="user_repw"
 						placeholder="RepeatPassword">
 
 				</div>
 
 				<div class="form-group">
-					<input type="text" class="form-control" id="USER_NAME" name="USER_NAME"
+					<input type="text" class="form-control" id="USER_NAME" name="user_name"
 						placeholder="Name">
 
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" id="USER_EMAIL" name="USER_EMAIL"
+					<input type="text" class="form-control" id="USER_EMAIL" name="user_email"
 						placeholder="E-Mail">
 				</div>
 
 				<div class="form-group">
-					<input type="text" class="form-control" id="USER_PHONENUM" name="USER_PHONENUM"
+					<input type="text" class="form-control" id="USER_PHONENUM" name="user_phonenum"
 						placeholder="Phone">
 				</div>
 
 				<button type="button" id="joinBtn" class="btn btn-success rounded btn-lg">가입완료</button>
 				<button type="button" onclick="history.go(-1);" class="btn btn-danger rounded btn-lg">취소</button>
 				
-
 				<hr>
+				<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
 			</form>
 
 		</div>
@@ -87,14 +87,14 @@
 	<!--page center-->
 
 	<!--Common plugins-->
-	<script src="assets/plugins/jquery/dist/jquery.min.js"></script>
-	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/plugins/hoe-nav/hoe.js"></script>
-	<script src="assets/plugins/pace/pace.min.js"></script>
-	<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-	<script src="assets/js/app.js"></script>
+	<script src="resources/plugins/jquery/dist/jquery.min.js"></script>
+	<script src="resources/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="resources/plugins/hoe-nav/hoe.js"></script>
+	<script src="resources/plugins/pace/pace.min.js"></script>
+	<script src="resources/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="resources/js/app.js"></script>
 	<!-- iCheck -->
-	<script src="assets/plugins/iCheck/icheck.min.js"></script>
+	<script src="resources/plugins/iCheck/icheck.min.js"></script>
 	<script>
 
 	$(document).ready(function(e){
@@ -107,8 +107,8 @@
 				$("#USER_PW").val("").focus();
 				$("#USER_REPW").val("");
 				return false;
-			} else if ($("#USER_PW").val().length < 2) {
-				alert("비밀번호는 8자 이상으로 설정해야 합니다.");
+			} else if ($("#USER_PW").val().length < 5) {
+				alert("비밀번호는 5자 이상으로 설정해야 합니다.");
 				$("#USER_PW").val("").focus();
 				return false;
 			} else if ($("#USER_NAME").val() == 0 || $("USER_NAME").val() == '') {

@@ -47,6 +47,7 @@
   update spos_user_info
   set
   	user_pw = #{user_pw},
+  	user_name = #{user_name},
   	user_email = #{user_email},
   	user_phonenum = #{user_phonenum}
   where

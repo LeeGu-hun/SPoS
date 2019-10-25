@@ -12,21 +12,21 @@
 <title>Assan admin</title>
 
 <!-- Bootstrap -->
-<link href="assets/plugins/bootstrap/css/bootstrap.min.css"
+<link href="resources/plugins/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <!--side menu plugin-->
-<link href="assets/plugins/hoe-nav/hoe.css" rel="stylesheet">
+<link href="resources/plugins/hoe-nav/hoe.css" rel="stylesheet">
 <!-- icons-->
-<link href="assets/plugins/ionicons/css/ionicons.min.css"
+<link href="resources/plugins/ionicons/css/ionicons.min.css"
 	rel="stylesheet">
-<link href="assets/plugins/font-awesome/css/font-awesome.min.css"
+<link href="resources/plugins/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet">
-<link href="assets/plugins/lightbox2/dist/css/lightbox.css"
+<link href="resources/plugins/lightbox2/dist/css/lightbox.css"
 	rel="stylesheet">
 <!--template custom css file-->
-<link href="assets/css/style.css" rel="stylesheet">
+<link href="resources/css/style.css" rel="stylesheet">
 
-<script src="assets/js/modernizr.js"></script>
+<script src="resources/js/modernizr.js"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -73,7 +73,7 @@
 																<label for="id" class="col-sm-3 control-label">아이디</label>
 																<div class="col-sm-7">
 																	<input type="text" class="form-control" id="USER_ID"
-																		name="USER_ID">
+																		name="user_id">
 																</div>
 															</div>
 
@@ -82,7 +82,7 @@
 																	할 비밀번호</label>
 																<div class="col-sm-7">
 																	<input type="password" class="form-control"
-																		id="USER_PW" name="USER_PW">
+																		id="USER_PW" name="user_pw">
 																</div>
 															</div>
 
@@ -91,7 +91,7 @@
 																	번호 확인</label>
 																<div class="col-sm-7">
 																	<input type="password" class="form-control"
-																		id="USER_REPW" name="USER_REPW">
+																		id="USER_REPW" name="user_repw">
 																</div>
 															</div>
 
@@ -99,7 +99,7 @@
 																<label for="name" class="col-sm-3 control-label">이름</label>
 																<div class="col-sm-7">
 																	<input type="text" class="form-control" id="USER_NAME"
-																		name="USER_NAME">
+																		name="user_name">
 																</div>
 															</div>
 
@@ -107,7 +107,7 @@
 																<label for="email" class="col-sm-3 control-label">이메일</label>
 																<div class="col-sm-7">
 																	<input type="text" class="form-control" id="USER_EMAIL"
-																		name="USER_EMAIL">
+																		name="user_email">
 																</div>
 															</div>
 
@@ -115,7 +115,7 @@
 																<label for="phone" class="col-sm-3 control-label">전화번호</label>
 																<div class="col-sm-7">
 																	<input type="number" class="form-control"
-																		id="USER_PHONENUM" name="USER_PHONENUM">
+																		id="USER_PHONENUM" name="user_phonenum">
 																</div>
 															</div>
 
@@ -124,7 +124,7 @@
 
 																<label for="skills" class="col-sm-3 control-label">사진</label>
 																<div class="col-sm-7">
-																	<img src="assets/images/avtar-1.jpg" alt="" width="80">
+																	<img src="resources/images/avtar-1.jpg" alt="" width="80">
 																	<div class="space-20"></div>
 																	<input type="file" class="form-control" id="avtar">
 																	<p class="help-block">JPEG/PNG 80x80px</p>
@@ -138,6 +138,7 @@
 																		class="btn btn-lg btn-warning rounded">취소</button>
 																</div>
 															</div>
+															<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
 														</form>
 													</div>
 												</div>
@@ -157,14 +158,14 @@
 	<!--end wrapper-->
 
 	<!--Common plugins-->
-	<script src="assets/plugins/jquery/dist/jquery.min.js"></script>
-	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/plugins/hoe-nav/hoe.js"></script>
-	<script src="assets/plugins/pace/pace.min.js"></script>
-	<script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-	<script src="assets/js/app.js"></script>
+	<script src="resources/plugins/jquery/dist/jquery.min.js"></script>
+	<script src="resources/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="resources/plugins/hoe-nav/hoe.js"></script>
+	<script src="resources/plugins/pace/pace.min.js"></script>
+	<script src="resources/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="resources/js/app.js"></script>
 	<!--page script-->
-	<script src="assets/plugins/lightbox2/dist/js/lightbox.min.js"></script>
+	<script src="resources/plugins/lightbox2/dist/js/lightbox.min.js"></script>
 
 	<script>
         $(document).ready(function(e){
