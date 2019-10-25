@@ -15,4 +15,6 @@ public interface BoardMapper {
 	public void updateReplyCnt(@Param("board_index") Long board_index, @Param("amount") int amount);
 
 	public void insertSelectKey(BoardVO board);
+
+	public boolean delete(Long board_index);
 }

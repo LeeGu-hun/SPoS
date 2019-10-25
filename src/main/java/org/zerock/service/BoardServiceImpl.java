@@ -45,4 +45,12 @@ public class BoardServiceImpl implements BoardService {
 			boardAttachMapper.insert(attach);
 		});
 	}
+
+	@Override
+	public boolean remove(Long board_index) {
+		log.info("remove..................." + board_index);
+		boardAttachMapper.deleteAll(board_index);
+		return boardMapper.delete(board_index);
+	}
+	
 }

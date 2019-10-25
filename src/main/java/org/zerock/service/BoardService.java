@@ -12,4 +12,6 @@ public interface BoardService {
 	public List<BoardAttachVO> getAttachList(Long board_index);
 
 	public void register(BoardVO board);
+
+	public boolean remove(Long board_index);
 }

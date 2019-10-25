@@ -28,7 +28,7 @@
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					<input name="user_index" type="hidden" value="1">
 					<input name="board_title" placeholder="제목"> 
-					<textarea class="addArea" name="board_content" placeholder="알려주세요" style="resize:none;float:left;width:80%;margin-top: 10px;"></textarea>
+					<textarea class="addArea" name="board_content" placeholder="알려주세요" style="resize:none;float:left;width:90%;margin-top: 10px;"></textarea>
 				</div>
 				<div>
 					<div class="col-lg-12">
@@ -36,9 +36,10 @@
 							<div class="panel-heading">사진 첨부</div>
 							<!-- /.panel-heading -->
 
-							<div class="panel-body" style="height: 200px;">
+							<div class="panel-body" style="height: 150px;">
 								<div class="form-group uploadDiv">
-									<input type="file" class='uploadFile' multiple>
+									<input type="file" class='uploadFile' multiple style="float:left;">
+									<button class="addBtn_board" type="button" style="float:left;margin-left:10px;">작성</button>
 								</div>
 								<div class='uploadResult'>
 									<ul style="list-style-type: none;">
@@ -51,8 +52,6 @@
 						<!-- end panel-body -->
 					</div>
 					<!-- end panel -->
-					
-					<button class="addBtn_board" type="button">작성</button>
 				</div>
 			</form>
 		</div>

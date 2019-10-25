@@ -50,4 +50,8 @@
 		insert into spos_board(board_index, user_index, board_title, board_content)
 		values(#{board_index}, #{user_index}, #{board_title}, #{board_content})
 	</insert>
+	
+	<delete id="delete">
+		delete from spos_board where board_index=#{board_index}
+	</delete>
 </mapper>

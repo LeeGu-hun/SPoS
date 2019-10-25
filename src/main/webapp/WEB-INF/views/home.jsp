@@ -21,7 +21,7 @@
 									<div class="panel-actions">
 										<sec:authorize access="isAuthenticated()">
 											<c:if test="${board.user_id eq currentUserName}">
-												<a href="javascript:void(0)" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
+												<a href="#" class="deleteBoard">x</a>
 											</c:if>
 										</sec:authorize>
 										<div class="dropdown pull-left">
@@ -42,13 +42,15 @@
 								<div class="panle-body">
 									<a class="gallery-box" href="#"> 
 										<input class="bidx" type="hidden" value="${board.board_index }"> 
+										<input class="uid" type="hidden" value="${board.user_id }"> 
 										<input class="bdate" type="hidden" value="${board.board_updatedate }">
 										<c:if test="${board.attachList[0].picture_path eq null}">
 											<img src="resources/images/noimg.png" class="img-responsive">
 										</c:if>
 										<c:if test="${board.attachList[0].picture_path ne null}">
 											<c:forEach items="${board.attachList }" var="attach" varStatus="status">
-												<img src="display?fileName=${attach.picture_path }/${attach.picture_uuid }_${attach.picture_name }" class="img-responsive" style="z-index:${status.index };<c:if test='${status.index ne 0}'>display: none;</c:if>">
+												<img src="display?fileName=${attach.picture_path }/${attach.picture_uuid }_${attach.picture_name }" class="img-responsive" alt="${status.index }" 
+													 style="<c:if test='${status.index ne 0}'>display: none;</c:if>">
 											</c:forEach>
 										</c:if>
 										<div class="gallery-overlay">
@@ -136,7 +138,7 @@
 					str += "		<img class='user_img' src='resources/images/avtar-1.jpg' alt='' width='90'>";
 					str += "		<div class='user-card-content'>";
 					str += "			<h4 class='replyTxt'>"+replyList[i].reply_content+"</h4>";
-					str += "		<small class='pull-right text-muted'>" + replyService.displayTime(replyList[i].reply_regdate) + "&nbsp&nbsp<a href='#' class='panel-action panel-action-dismiss reply-dismiss' data-panel-dismiss=''></a></small>";
+					str += "		<small class='pull-right text-muted'>" + replyService.displayTime(replyList[i].reply_regdate) + "&nbsp&nbsp<a href='deleteReply();' class='panel-action panel-action-dismiss reply-dismiss' data-panel-dismiss=''></a></small>";
 					str += "		</div></div></li>";
 				}
 				str += "<button class='btn btn-primary btn-block btn-lg' style='width: 100%;'>more</button>"
@@ -144,6 +146,28 @@
 				//$('#confirmModal .reply-content').animate({scrollTop: $('#confirmModal .reply-content').prop("scrollHeight")}, 500);
     		});
 		} // end showList
+		
+		function deleteBoard(board_index, user_index) {
+			$.ajax({
+				type : 'POST',
+				url : '/delete/' + board_index,
+				data : user_index,
+				beforeSend: function(xhr) {
+					xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+				}, 
+				contentType : "application/json",
+				success: function(result){
+					console.log(">-<");
+					console.log(result);
+					$("#boardDiv").html("");
+		    		var searchForm = $("#searchForm");
+		    		var type = searchForm.find("select[name='type']").val();
+		    		var keyword = searchForm.find("input[name='keyword']").val();
+			    	var cri =  {pageNum:1, amount:6, type:type, keyword:keyword};
+			    	getBoardList(cri);
+				}
+			});
+		}
 		
 	    $(document).ready(function(){
 	    	var thisPage = 1; 
@@ -186,6 +210,24 @@
 	    		
 	    		showList(4);
 	    	});
+
+	    	$("#main-content .row").on("click", ".deleteBoard", function(e){
+				e.preventDefault();
+	    		var board_index = $(this).parent().parent().parent().find(".bidx").val();
+	    		var user_id = $(this).parent().parent().parent().find(".uid").val();
+				console.log("delete.. : " + board_index);
+				console.log("delete.. : " + user_id);
+				
+				deleteBoard(board_index, user_id, function(result){});
+	    	});
+	    	
+	    	/* $(".left").on("click", function(e){
+	    		$(".gallery-box img").each(function(i, obj){
+					var jobj = $(obj);
+					console.log(jobj.attr("src"));
+	    		});
+	    		
+    		}); */
 	    	
 	    	$(".form-control").on("keydown keyup keypress", function(e){
 	    		$(".addBtn_reply").attr("disabled", false);

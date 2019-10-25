@@ -3,6 +3,7 @@ package org.zerock.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,7 +50,7 @@ public class ReplyController {
 		return new ResponseEntity<>(service.getReply(reply_index), HttpStatus.OK);
 	}
 	
-	//@PreAuthorize("isAuthenticated()")
+	@PreAuthorize("isAuthenticated()")
 	@DeleteMapping(value = "/{reply_index}")
 	public ResponseEntity<String> removeReply(@RequestBody ReplyVO vo, @PathVariable("reply_index") Long reply_index) {
 		log.info("remove reply: " + reply_index);
