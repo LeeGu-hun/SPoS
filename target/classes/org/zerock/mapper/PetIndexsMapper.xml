@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.PetIndexsMapper">
+
+	<select id="getCateAll" resultType="org.zerock.domain.PetSortVO">
+		select distinct pet_sort from spos_pet_info 
+	</select>
+
+	<select id="getProdAll" resultType="org.zerock.domain.PetInfoVO">
+		select * from spos_pet_info 
+	</select>
+
+	<select id="getProdList" resultType="org.zerock.domain.PetInfoVO">
+		select * from spos_pet_info where pet_sort = #{pet_sort} 
+	</select>
+	
+</mapper>

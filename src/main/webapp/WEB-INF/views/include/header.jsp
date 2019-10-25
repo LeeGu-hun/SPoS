@@ -57,11 +57,15 @@
             <header id="hoe-header" hoe-lpanel-effect="shrink">
 			<div class="hoe-left-header">
                     <a href="#"> P<span>ET</span></a>
-                    <span class="hoe-sidebar-toggle"><a href="#"></a></span>
+                    <sec:authorize access = "isAuthenticated()">
+                    	<span class="hoe-sidebar-toggle"><a href="#"></a></span>
+					</sec:authorize>                    
                 </div>
 
                 <div class="hoe-right-header" hoe-position-type="relative">
-                    <span class="hoe-sidebar-toggle"><a href="#"></a></span>
+                    <sec:authorize access = "isAuthenticated()">
+                   		<span class="hoe-sidebar-toggle"><a href="#"></a></span>
+                    </sec:authorize>
                     <ul class="left-navbar">
                         <li>
                             <div class="search-form-div">
@@ -86,33 +90,6 @@
                     </ul>
                     <ul class="right-navbar navbar-right">
                         <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"> <i class="ion-ios-bell-outline"></i> <span class="label label-danger">4</span></a>
-                            <ul class="dropdown-menu dropdown-menu-scale lg-dropdown notifications">
-                                <li> <p>You have 3 new notifications <a href="#"> Mark all Read</a></p></li>
-                                <li class="unread-notifications">
-                                    <a href="#">
-                                        <i class="ion-ios-email-outline pull-right"></i>
-                                        <span class="line">You have 8 Messages</span>
-                                        <span class="small-line">3 Minutes ago</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="ion-social-twitter-outline pull-right"></i>
-                                        <span class="line">You have 3 new followers</span>
-                                        <span class="small-line">8 Minutes ago</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="ion-ios-download-outline pull-right"></i>
-                                        <span class="line">Download Complete</span>
-                                        <span class="small-line">6 Minutes ago</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle"><img src="resources/images/avtar.png" alt="" width="30" class="img-circle">
                             	<sec:authorize access="isAuthenticated()">
 									<sec:authentication	property="principal.username" /> 님 환영합니다
@@ -121,11 +98,16 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-scale user-dropdown">
                                 <li><a href="#"><i class="ion-email-unread"></i> Inbox <span class="label label-warning">3</span></a></li>
-                                <li><a href="#"><i class="ion-person"></i> Profile </a></li>
+                                <sec:authorize access = "isAuthenticated()"><li><a href="modify"><i class="ion-person"></i> 회원정보수정 </a></li></sec:authorize>
                                 <li><a href="#"><i class="ion-settings"></i> Settings <span class="label label-primary">3/9</span></a></li>
                                 <li><a href="#"><i class="ion-calendar"></i> Calendar </a></li>
                                 <li><a href="#"><i class="ion-ios-compose"></i> Tasks </a></li>
-                                <li><a href="#"><i class="ion-log-out"></i> Logout </a></li>
+                                <sec:authorize access = "isAuthenticated()">
+                              		<li><a data-toggle="modal" data-target="#logoutModal"><i class="ion-log-out"></i> Logout </a></li>
+                                </sec:authorize>
+                                <sec:authorize access = "isAnonymous()">
+                               		<li><a href="/customLogin"><i class="ion-log-in"></i> Login </a></li>
+                                </sec:authorize>
                             </ul>
                         </li>
 				</ul>
@@ -134,6 +116,21 @@
 					<sec:authentication	property="principal.username" /> 님 환영합니다
 				</sec:authorize>
             </header>
+            
+            <!-- Logout Modal-->
+			<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content" style="left:50%;width:30%;top:300px;transform:translateX(-50%);">
+			      <div class="modal-header">
+			        <h5 class="modal-title" style="margin-bottom:0;line-height:1.5;"id="exampleModalLabel">로그아웃 하시겠습니까? </h5>
+			      </div>
+			      <div class="modal-footer" style="text-align: center;">
+			        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+			        <a class="btn btn-primary" href="/customLogout">Logout</a>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 <script>
 	$(document).ready(function(){
 		var searchForm = $("#searchForm");

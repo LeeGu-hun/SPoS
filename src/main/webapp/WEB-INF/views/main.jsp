@@ -12,7 +12,7 @@
 		<li><a href="#"><i class="fa fa-home"></i>&nbsp;타임라인</a></li>
 		<li><a href="#"><i class="fa fa-paw"></i>&nbsp;내 반려동물</a></li>
 		<li><a href="#"><i class="fa fa-user"></i>&nbsp;친구</a></li>
-		<li><a href="#"><i class="fa fa-info"></i>&nbsp;내 정보</a></li>
+		<li><a href="modify"><i class="fa fa-info"></i>&nbsp;정보수정</a></li>
 	</ul>
 </div>
 

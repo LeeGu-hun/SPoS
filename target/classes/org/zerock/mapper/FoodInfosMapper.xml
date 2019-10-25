@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.mapper.FoodInfosMapper">
+	<select id="getCustAll" resultType="org.zerock.domain.FoodinfoVO">
+		select * from spos_food_info 
+	</select>
+	<select id="getCust" resultType="org.zerock.domain.FoodinfoVO">
+		select food_info_index,food_name,food_kcal
+		from spos_food_info
+	</select>
+</mapper>

@@ -228,7 +228,6 @@
 	    		});
 	    		
     		}); */
-    		
 	    	
 	    	$(".form-control").on("keydown keyup keypress", function(e){
 	    		$(".addBtn_reply").attr("disabled", false);

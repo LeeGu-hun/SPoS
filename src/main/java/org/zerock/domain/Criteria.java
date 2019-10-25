@@ -1,5 +1,7 @@
 package org.zerock.domain;
 
+import java.util.Date;
+
 import org.springframework.web.util.UriComponentsBuilder;
 
 import lombok.Data;
@@ -8,6 +10,8 @@ import lombok.Data;
 public class Criteria {
 	private int pageNum, amount;
 	private String type, keyword;
+	private Date saleDateFrom, saleDateTo;
+	private String selCate, foodIndex, selProd;
 
 	public Criteria() {
 		this.pageNum = 1;

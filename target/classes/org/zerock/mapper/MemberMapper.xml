@@ -47,10 +47,15 @@
   update spos_user_info
   set
   	user_pw = #{user_pw},
+  	user_name = #{user_name},
   	user_email = #{user_email},
   	user_phonenum = #{user_phonenum}
   where
   	user_id = #{user_id}
 </update>
+
+<select id="getIndex" resultType="int">
+	select user_index from spos_user_info where user_id = #{user_id} 
+</select>
   
 </mapper>

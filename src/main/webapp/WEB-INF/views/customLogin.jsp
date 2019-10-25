@@ -33,7 +33,7 @@
     <body>
         <div class="page-center">
             <div class="page-center-in">
-                <form class="sign-box" role="form" method="post" action="/login">
+                <form class="sign-box" role="form" method="post" action="/login" style="margin-top: 10%;">
                     <div class="sign-avatar">
                         <img src="resources/images/avtar-2.png" alt="" class="img-circle">
                     </div>
@@ -53,10 +53,10 @@
                             <p><a href="#">Reset Password</a></p>
                         </div>
                     </div>
-                    <a href="index.html" id="alogin" class="btn btn-success rounded btn-lg">로그인</a>
+                    <a href="customLogin" id="alogin" class="btn btn-success rounded btn-lg">로그인</a>
                     <hr>
-                     <a href="membership">회원가입</a>
-                     <a href="modify">개인정보수정</a>
+                     <a href="membership">회원가입</a><br>
+                     <a href="/home">로그인 없이 시작</a>
                      <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
                 </form>
             </div><!--page center in-->

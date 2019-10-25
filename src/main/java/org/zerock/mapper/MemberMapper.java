@@ -14,5 +14,6 @@ public interface MemberMapper {
 	//modify
 	public int updateMember(MemberVO vo);
 	
+	public int getIndex(String user_id);
 	
 }

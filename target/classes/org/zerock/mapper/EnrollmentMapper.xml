@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.EnrollmentMapper">
+
+	<insert id="regOrders">
+		<selectKey keyProperty="orderId" resultType="_int"
+			order="BEFORE">
+			SELECT seq_spos_history.nextval FROM dual
+		</selectKey>
+		insert into spos_food_history(history_index, food_info_index,
+		food_amount, user_index)
+		values(#{orderId}, #{foodIndex}, #{total}, #{userId})
+	</insert>
+
+	<insert id="regOrderItems">
+		<foreach collection="orderItems" item="item" index="index"
+			open="INSERT ALL " separator=" " close="SELECT * FROM DUAL">
+			into
+			spos_user_pet_info(pet_index, user_index,
+			pet_info_index, pet_name,
+			pet_birth_date)
+			values
+			(seq_spos_pet.nextval,#{userId},
+			#{item.pet_kind},#{item.names},to_date(to_char(#{saleDate}, 'yymmdd')||' '||
+		to_char(sysdate,'hh24miss'),'yymmdd hh24miss'))
+		</foreach>
+	</insert>
+
+	<sql id="dateCommon">
+		<![CDATA[
+		AND o.food_date>=to_date(to_char(#{saleDateFrom}, 
+		'yymmdd')||' 000000','yymmdd hh24miss') 
+		AND o.food_date<=to_date(to_char(#{saleDateTo}, 
+		'yymmdd')||' 235959', 'yymmdd hh24miss')
+		]]>
+		<include refid="criteria" />
+	</sql>
+	<sql id="criteria">
+		<trim>
+			<if test="foodIndex != 'all'">
+				AND o.food_info_index = #{foodIndex}
+			</if>
+			<if test="selCate != 'all'">
+				AND p.pet_sort = #{selCate}
+			</if>
+			<if test="selProd != 'all'">
+				AND i.pet_info_index = #{selProd}
+			</if>
+		</trim>
+	</sql>
+	<select id="getOrders"
+		resultType="org.zerock.domain.PetFoodListDTO">
+		<![CDATA[
+		SELECT
+	    o.history_index, o.food_info_index, o.user_index,
+	    c.food_name,
+	    o.food_amount, o.food_date, u.user_name as userName
+		FROM spos_food_history O, spos_food_info C, spos_user_info U 
+		WHERE o.food_info_index=c.food_info_index AND o.user_index=u.user_index  order by o.food_date DESC;
+		]]>
+		<include refid="dateCommon" />
+	</select>
+
+	<select id="getOrderItems"
+		resultType="org.zerock.domain.PetFoodIndexListDTO">
+		<![CDATA[
+		SELECT
+	    o.history_index, o.food_info_index, o.user_index,
+	    c.food_name,
+	    o.food_amount, o.food_date, u.user_name as userName
+		FROM spos_food_history O, spos_food_info C, spos_user_info U 
+		WHERE o.food_info_index=c.food_info_index AND o.user_index=u.user_index  order by o.food_date DESC;
+		]]>
+		<include refid="dateCommon" />
+	</select>
+
+
+	<select id="getOrdersWithPaging"
+		resultType="org.zerock.domain.PetFoodListDTO">
+		<![CDATA[
+		SELECT
+	    o.history_index, o.food_info_index, o.user_index,
+	    c.food_name,c.food_kcal,
+	    o.food_amount, o.food_date, u.user_name as userName
+		FROM spos_food_history O, spos_food_info C, spos_user_info U 
+		WHERE o.food_info_index=c.food_info_index AND o.user_index=u.user_index  
+			]]>
+		<include refid="dateCommon" />
+		order by o.food_date DESC
+	</select>
+
+
+	<select id="getOrdersTotalCount" resultType="_int">
+		<![CDATA[
+		SELECT count(*) 
+		FROM spos_food_history O, spos_food_info C, spos_user_info U
+		WHERE o.food_info_index=c.food_info_index AND o.user_index=u.user_index
+		]]>
+		<include refid="dateCommon" />
+	</select>
+
+	<select id="getOrderItemsTotalCount" resultType="_int">
+		<![CDATA[
+		SELECT count(*)
+		FROM spos_food_history O, spos_food_info C, spos_user_info U, 
+			spos_user_pet_info i, spos_pet_info p 
+		WHERE o.user_index=i.user_index and o.food_info_index=c.food_info_index 
+		AND o.user_index=u.user_index and i.pet_info_index=p.pet_info_index		
+		]]>
+		<include refid="dateCommon" />
+	</select>
+
+
+</mapper>

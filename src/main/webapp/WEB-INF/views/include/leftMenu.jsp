@@ -11,23 +11,23 @@
 				<li class="hoe-sub-menu">
 					<div id="sub-menu-text">
 						<a href="#">
-							<span class="menu-text">[150 g] / [150 g]<br>[750 kcal] / [750 kcal] <br><br>
-							현재 사료 량<br>[150 g]
-							</span>
+							<h5>[${food.food_amount } g]<br>
+							    [${food.food_k } kcal]
+							</h5>
 						</a>
 					</div>
 				</li>
 			</ul>
 		</li>
 		<li>
-			<a href="#">
+			<a href="/Enrollment">
 				<i class="fa fa-paw" aria-hidden="true"></i>
 				<span class="menu-text">반려동물 정보</span>
 				<span class="selected"></span>
 			</a>
 		</li>
 		<li>
-			<a href="#">
+			<a href="/PetFood">
 				<i class="fa fa-info" aria-hidden="true"></i>
 				<span class="menu-text">사료 정보</span>
 				<span class="selected"></span>
